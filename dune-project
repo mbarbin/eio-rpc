@@ -17,8 +17,10 @@
 
 (package
  (name grpc-spec)
- (synopsis "An opinionated library to build gRPC specifications")
- (description "An opinionated library to build gRPC specifications")
+ (synopsis
+  "An opinionated library to build gRPC specifications for Eio clients/servers")
+ (description
+  "An opinionated library to build gRPC specifications Eio clients/servers")
  (depends
   (ocaml
    (>= 5.1))
@@ -43,12 +45,16 @@
   (ocaml
    (>= 5.1))
   (grpc-eio
-   (>= 0.2.0-preview.2))))
+   (>= 0.2.0-preview.2))
+  (ppx_js_style
+   (and
+    (>= v0.16)
+    (< v0.17)))))
 
 (package
  (name grpc-client)
- (synopsis "An opinionated library to build gRPC clients")
- (description "An opinionated library to build gRPC clients")
+ (synopsis "An opinionated library to build gRPC Eio clients")
+ (description "An opinionated library to build gRPC Eio clients")
  (depends
   (ocaml
    (>= 5.1))
@@ -77,8 +83,8 @@
 
 (package
  (name grpc-server)
- (synopsis "An opinionated library to build gRPC servers")
- (description "An opinionated library to build gRPC servers")
+ (synopsis "An opinionated library to build gRPC Eio servers")
+ (description "An opinionated library to build gRPC Eio servers")
  (depends
   (ocaml
    (>= 5.1))
@@ -90,6 +96,10 @@
    (>= 0.2.0-preview.2))
   (grpc-spec
    (= :version))
+  (h2
+   (>= 0.11.0))
+  (h2-eio
+   (>= 0.11.0))
   (ppx_js_style
    (and
     (>= v0.16)
@@ -106,15 +116,79 @@
    (and
     (>= v0.16)
     (< v0.17)))
+  (eio
+   (>= 0.13))
   (expect_test_helpers_core
    (and
     (>= v0.16)
     (< v0.17)))
+  (grpc-client
+   (= :version))
+  (grpc-server
+   (= :version))
+  (grpc-spec
+   (= :version))
+  (grpc-stream
+   (= :version))
   (ppx_jane
    (and
     (>= v0.16)
     (< v0.17)))
   (ppx_js_style
+   (and
+    (>= v0.16)
+    (< v0.17)))))
+
+(package
+ (name eio-rpc-example)
+ (synopsis "Examples built with eio-rpc")
+ (description "Examples built with eio-rpc")
+ (depends
+  (ocaml
+   (>= 5.1))
+  (base
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (command-unix-for-opam
+   (>= 0.0.1))
+  (core
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (core_unix
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (eio
+   (>= 0.13))
+  (eio_main
+   (>= 0.13))
+  (expect_test_helpers_core
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (grpc-client
+   (= :version))
+  (grpc-server
+   (= :version))
+  (grpc-spec
+   (= :version))
+  (grpc-stream
+   (= :version))
+  (pbrt
+   (>= 3.0))
+  (pbrt_services
+   (>= 3.0))
+  (ppx_jane
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_js_style
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (stdio
    (and
     (>= v0.16)
     (< v0.17)))))

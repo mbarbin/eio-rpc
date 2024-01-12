@@ -1,0 +1,26 @@
+(library
+ (name keyval_command)
+ (public_name eio-rpc-example.keyval-command)
+ (flags
+  :standard
+  -w
+  +a-4-40-41-42-44-45-48-66
+  -warn-error
+  +a
+  -open
+  Base
+  -open
+  Stdio
+  -open
+  Or_error.Let_syntax)
+ (libraries
+  base
+  core.command
+  eio
+  eio_main
+  grpc-client
+  keyval_rpc
+  keyval_server
+  stdio)
+ (preprocess
+  (pps ppx_jane ppx_js_style -check-doc-comments)))

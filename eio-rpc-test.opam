@@ -12,7 +12,12 @@ depends: [
   "dune" {>= "3.12"}
   "ocaml" {>= "5.1"}
   "base" {>= "v0.16" & < "v0.17"}
+  "eio" {>= "0.13"}
   "expect_test_helpers_core" {>= "v0.16" & < "v0.17"}
+  "grpc-client" {= version}
+  "grpc-server" {= version}
+  "grpc-spec" {= version}
+  "grpc-stream" {= version}
   "ppx_jane" {>= "v0.16" & < "v0.17"}
   "ppx_js_style" {>= "v0.16" & < "v0.17"}
   "odoc" {with-doc}

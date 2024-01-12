@@ -3,8 +3,11 @@ module Connection = struct
 end
 
 let with_connection ~env ~sw ~addr ~f =
-  let socket = Eio.Net.connect ~sw (Eio.Stdenv.net env) addr in
-  let connection = H2_eio.Client.create_connection ~sw ~error_handler:ignore socket in
+  let%bind connection =
+    Or_error.try_with (fun () ->
+      let socket = Eio.Net.connect ~sw (Eio.Stdenv.net env) addr in
+      H2_eio.Client.create_connection ~sw ~error_handler:ignore socket)
+  in
   Exn.protect
     ~f:(fun () -> f connection)
     ~finally:(fun () -> Eio.Promise.await (H2_eio.Client.shutdown connection))

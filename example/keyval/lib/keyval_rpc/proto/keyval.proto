@@ -1,0 +1,38 @@
+syntax = "proto3";
+package keyval;
+
+message Key { string key = 1; }
+
+message Keys { repeated Key keys = 1; }
+
+message Value { string value = 1; }
+
+message Error { string error = 1; }
+
+message ValueOrError {
+  oneof value_or_error {
+    Value value = 1;
+    Error error = 2;
+  }
+}
+
+message KeyvalPair {
+  string key = 1;
+  string value = 2;
+}
+
+message Unit {}
+
+message UnitOrError {
+  oneof unit_or_error {
+    Unit unit = 1;
+    Error error = 2;
+  }
+}
+
+service Keyval {
+  rpc Get(Key) returns (ValueOrError) {}
+  rpc Set(KeyvalPair) returns (Unit) {}
+  rpc Delete(Key) returns (UnitOrError) {}
+  rpc ListKeys(Unit) returns (Keys) {}
+}
