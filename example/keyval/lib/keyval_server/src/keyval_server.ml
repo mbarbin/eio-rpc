@@ -23,16 +23,10 @@ let delete t key =
 let list_keys t = Hashtbl.keys t.table |> Set.of_list (module Keyval.Key)
 
 let implement_rpcs t =
-  Keyval_rpc_proto.Keyval.Keyval.Server.make
-    ~get:(fun rpc ->
-      Grpc_server.Rpc.unary rpc Keyval_rpc.Get.rpc ~f:(fun key -> get t key))
-    ~set:(fun rpc ->
-      Grpc_server.Rpc.unary rpc Keyval_rpc.Set_.rpc ~f:(fun keyval_pair ->
-        set t keyval_pair))
-    ~delete:(fun rpc ->
-      Grpc_server.Rpc.unary rpc Keyval_rpc.Delete.rpc ~f:(fun key -> delete t key))
-    ~listKeys:(fun rpc ->
-      Grpc_server.Rpc.unary rpc Keyval_rpc.List_keys.rpc ~f:(fun () -> list_keys t))
-    ()
-  |> Grpc_server.implement
+  Grpc_server.implement
+    [ Grpc_server.Rpc.unary Keyval_rpc.Get.rpc ~f:(fun key -> get t key)
+    ; Grpc_server.Rpc.unary Keyval_rpc.Set_.rpc ~f:(fun keyval_pair -> set t keyval_pair)
+    ; Grpc_server.Rpc.unary Keyval_rpc.Delete.rpc ~f:(fun key -> delete t key)
+    ; Grpc_server.Rpc.unary Keyval_rpc.List_keys.rpc ~f:(fun () -> list_keys t)
+    ]
 ;;

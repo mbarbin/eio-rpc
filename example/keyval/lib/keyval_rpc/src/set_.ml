@@ -20,7 +20,8 @@ module Response = Proto_unit
 
 let rpc =
   Grpc_spec.unary
-    Keyval_rpc_proto.Keyval.Keyval.Client.set
+    ~client_rpc:Keyval_rpc_proto.Keyval.Keyval.Client.set
+    ~server_rpc:Keyval_rpc_proto.Keyval.Keyval.Server.rpc_set
     (module Request)
     (module Response)
 ;;

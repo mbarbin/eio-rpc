@@ -13,7 +13,8 @@ module Response = Proto_unit_or_error
 
 let rpc =
   Grpc_spec.unary
-    Keyval_rpc_proto.Keyval.Keyval.Client.delete
+    ~client_rpc:Keyval_rpc_proto.Keyval.Keyval.Client.delete
+    ~server_rpc:Keyval_rpc_proto.Keyval.Keyval.Server.rpc_delete
     (module Request)
     (module Response)
 ;;
