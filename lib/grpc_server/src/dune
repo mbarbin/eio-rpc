@@ -1,0 +1,7 @@
+(library
+ (name grpc_server)
+ (public_name grpc-server)
+ (flags :standard -w +a-4-40-41-42-44-45-48-66 -warn-error +a)
+ (libraries grpc-eio grpc-spec grpc-stream)
+ (preprocess
+  (pps ppx_js_style -check-doc-comments)))

@@ -16,29 +16,56 @@
 (documentation "https://mbarbin.github.io/eio-rpc/")
 
 (package
- (name eio-rpc)
- (synopsis "Exploring RPC libraries running with an Eio backend")
- (description "Exploring RPC libraries running with an Eio backend")
+ (name grpc-spec)
+ (synopsis "An opinionated library to build gRPC specifications")
+ (description "An opinionated library to build gRPC specifications")
  (depends
   (ocaml
    (>= 5.1))
-  (dune
-   (>= 3.12))
+  (grpc
+   (>= 0.2.0-preview.2))
+  (grpc-protoc
+   (>= 0.2.0-preview.2))
+  (ocaml-protoc
+   (>= 3.0))
+  (pbrt_services
+   (>= 3.0))
+  (ppx_js_style
+   (and
+    (>= v0.16)
+    (< v0.17)))))
+
+(package
+ (name grpc-stream)
+ (synopsis "A (temporary) library to manipulate gRPC streams")
+ (description "A (temporary) library to manipulate gRPC streams")
+ (depends
+  (ocaml
+   (>= 5.1))
+  (grpc-eio
+   (>= 0.2.0-preview.2))))
+
+(package
+ (name grpc-client)
+ (synopsis "An opinionated library to build gRPC clients")
+ (description "An opinionated library to build gRPC clients")
+ (depends
+  (ocaml
+   (>= 5.1))
   (base
    (and
     (>= v0.16)
     (< v0.17)))
-  (command-unix-for-opam
-   (>= 0.0.1))
-  (core
-   (and
-    (>= v0.16)
-    (< v0.17)))
-  (expect_test_helpers_core
-   (and
-    :with-test
-    (>= v0.16)
-    (< v0.17)))
+  (eio
+   (>= 0.13))
+  (grpc
+   (>= 0.2.0-preview.2))
+  (grpc-eio
+   (>= 0.2.0-preview.2))
+  (grpc-spec
+   (= :version))
+  (h2-eio
+   (>= 0.11.0))
   (ppx_jane
    (and
     (>= v0.16)
@@ -46,8 +73,48 @@
   (ppx_js_style
    (and
     (>= v0.16)
+    (< v0.17)))))
+
+(package
+ (name grpc-server)
+ (synopsis "An opinionated library to build gRPC servers")
+ (description "An opinionated library to build gRPC servers")
+ (depends
+  (ocaml
+   (>= 5.1))
+  (eio
+   (>= 0.13))
+  (grpc
+   (>= 0.2.0-preview.2))
+  (grpc-eio
+   (>= 0.2.0-preview.2))
+  (grpc-spec
+   (= :version))
+  (ppx_js_style
+   (and
+    (>= v0.16)
+    (< v0.17)))))
+
+(package
+ (name eio-rpc-test)
+ (synopsis "Tests for eio-rpc")
+ (description "Tests for eio-rpc")
+ (depends
+  (ocaml
+   (>= 5.1))
+  (base
+   (and
+    (>= v0.16)
     (< v0.17)))
-  (stdio
+  (expect_test_helpers_core
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_jane
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_js_style
    (and
     (>= v0.16)
     (< v0.17)))))

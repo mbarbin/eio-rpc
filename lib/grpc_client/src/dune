@@ -1,0 +1,16 @@
+(library
+ (name grpc_client)
+ (public_name grpc-client)
+ (flags
+  :standard
+  -w
+  +a-4-40-41-42-44-45-48-66
+  -warn-error
+  +a
+  -open
+  Base
+  -open
+  Or_error.Let_syntax)
+ (libraries base eio grpc grpc-eio grpc-spec grpc-stream h2-eio)
+ (preprocess
+  (pps ppx_jane ppx_js_style -check-doc-comments)))

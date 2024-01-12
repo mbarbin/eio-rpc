@@ -1,6 +1,7 @@
 (library
- (name eio_rpc)
- (public_name eio-rpc)
+ (name grpc_spec_test)
+ (package eio-rpc-test)
+ (inline_tests)
  (flags
   :standard
   -w
@@ -10,7 +11,7 @@
   -open
   Base
   -open
-  Stdio)
- (libraries base core.command stdio)
+  Expect_test_helpers_base)
+ (libraries base expect_test_helpers_core.expect_test_helpers_base grpc_spec)
  (preprocess
   (pps ppx_jane ppx_js_style -check-doc-comments)))
