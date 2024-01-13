@@ -27,7 +27,7 @@ end
 let rpc =
   Grpc_spec.unary
     ~client_rpc:Keyval_rpc_proto.Keyval.Keyval.Client.listKeys
-    ~server_rpc:Keyval_rpc_proto.Keyval.Keyval.Server.rpc_listKeys
+    ~server_rpc:Keyval_rpc_proto.Keyval.Keyval.Server.listKeys
     (module Request)
     (module Response)
 ;;
