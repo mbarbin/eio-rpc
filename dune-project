@@ -116,6 +116,10 @@
    (and
     (>= v0.16)
     (< v0.17)))
+  (base_quickcheck
+   (and
+    (>= v0.16)
+    (< v0.17)))
   (eio
    (>= 0.13))
   (expect_test_helpers_core
@@ -147,6 +151,10 @@
   (ocaml
    (>= 5.1))
   (base
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (base_quickcheck
    (and
     (>= v0.16)
     (< v0.17)))

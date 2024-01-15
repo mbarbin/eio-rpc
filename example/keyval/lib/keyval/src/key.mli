@@ -1,4 +1,4 @@
-type t [@@deriving compare, equal, hash, sexp_of]
+type t [@@deriving compare, equal, hash, quickcheck, sexp_of]
 
 include Comparable.S with type t := t
 

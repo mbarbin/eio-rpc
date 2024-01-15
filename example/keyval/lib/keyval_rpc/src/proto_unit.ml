@@ -1,4 +1,4 @@
-type t = unit [@@deriving compare, equal, hash, sexp_of]
+type t = unit [@@deriving compare, equal, hash, quickcheck, sexp_of]
 
 module Proto = struct
   type t = Keyval_rpc_proto.Keyval.unit_

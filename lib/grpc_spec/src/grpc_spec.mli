@@ -122,3 +122,14 @@ val server_rpc
        , 'response_mode
        , Grpc.Rpc.Service_spec.t )
        Grpc.Rpc.Server_rpc.t
+
+module Private : sig
+  (** The [Private] module is not meant to be used by the users of the library
+      directly. It is exported for tests. *)
+
+  val service_spec : _ t -> Grpc.Rpc.Service_spec.t
+  val encode_request : ('request, _, _, _) t -> 'request -> string
+  val decode_request : ('request, _, _, _) t -> string -> 'request
+  val encode_response : (_, _, 'response, _) t -> 'response -> string
+  val decode_response : (_, _, 'response, _) t -> string -> 'response
+end

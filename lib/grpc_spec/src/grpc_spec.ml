@@ -189,3 +189,31 @@ let server_rpc
   | T { server_rpc; make_server_rpc; request_of_proto; response_to_proto; _ } ->
     server_rpc |> make_server_rpc |> map_rpc ~request_of_proto ~response_to_proto
 ;;
+
+module Private = struct
+  let service_spec (T t) =
+    { Grpc.Rpc.Service_spec.package = t.client_rpc.package
+    ; service_name = t.client_rpc.service_name
+    }
+  ;;
+
+  let encode_request t =
+    let client_rpc = client_rpc t in
+    client_rpc.encode_request
+  ;;
+
+  let decode_request t =
+    let server_rpc = server_rpc t in
+    server_rpc.decode_request
+  ;;
+
+  let encode_response t =
+    let server_rpc = server_rpc t in
+    server_rpc.encode_response
+  ;;
+
+  let decode_response t =
+    let client_rpc = client_rpc t in
+    client_rpc.decode_response
+  ;;
+end

@@ -15,3 +15,13 @@ let to_proto (t : t) : Keyval_rpc_proto.Keyval.unit_or_error =
   | Ok () -> Unit
   | Error error -> Error { error = Error.to_string_hum error }
 ;;
+
+let quickcheck_observer = Observer.of_hash_fold (Or_error.hash_fold_t Unit.hash_fold_t)
+let quickcheck_shrinker = Shrinker.atomic
+
+let quickcheck_generator =
+  Generator.union
+    [ Generator.map (Generator.return ()) ~f:(fun () -> Ok ())
+    ; Generator.map quickcheck_generator_string ~f:(fun s -> Or_error.error_string s)
+    ]
+;;

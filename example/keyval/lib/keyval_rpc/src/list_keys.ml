@@ -3,6 +3,13 @@ module Request = Proto_unit
 module Response = struct
   type t = Set.M(Keyval.Key).t [@@deriving compare, equal, hash, sexp_of]
 
+  let quickcheck_generator =
+    Generator.set_t_m (module Keyval.Key) Keyval.Key.quickcheck_generator
+  ;;
+
+  let quickcheck_observer = Observer.set_t Keyval.Key.quickcheck_observer
+  let quickcheck_shrinker = Shrinker.set_t Keyval.Key.quickcheck_shrinker
+
   module Proto = struct
     type t = Keyval_rpc_proto.Keyval.keys
   end

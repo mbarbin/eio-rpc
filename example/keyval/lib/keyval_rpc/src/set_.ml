@@ -1,5 +1,5 @@
 module Request = struct
-  type t = Keyval.Keyval_pair.t [@@deriving compare, equal, hash, sexp_of]
+  type t = Keyval.Keyval_pair.t [@@deriving compare, equal, hash, quickcheck, sexp_of]
 
   module Proto = struct
     type t = Keyval_rpc_proto.Keyval.keyval_pair

@@ -1,7 +1,16 @@
 (library
  (name keyval)
  (public_name eio-rpc-example.keyval)
- (flags :standard -w +a-4-40-41-42-44-45-48-66 -warn-error +a -open Base)
- (libraries base)
+ (flags
+  :standard
+  -w
+  +a-4-40-41-42-44-45-48-66
+  -warn-error
+  +a
+  -open
+  Base
+  -open
+  Base_quickcheck)
+ (libraries base base_quickcheck)
  (preprocess
   (pps ppx_jane ppx_js_style -check-doc-comments)))
