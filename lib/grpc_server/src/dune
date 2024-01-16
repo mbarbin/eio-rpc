@@ -1,7 +1,7 @@
 (library
  (name grpc_server)
  (public_name grpc-server)
- (flags :standard -w +a-4-40-41-42-44-45-48-66 -warn-error +a)
- (libraries grpc-eio grpc-spec grpc-stream h2 h2-eio)
+ (flags :standard -w +a-4-40-41-42-44-45-48-66 -warn-error +a -open Base)
+ (libraries base grpc-eio grpc-spec grpc-stream h2 h2-eio)
  (preprocess
-  (pps ppx_js_style -check-doc-comments)))
+  (pps ppx_jane ppx_js_style -check-doc-comments)))

@@ -35,12 +35,16 @@ type t = Grpc_eio.Server.t
 let implement handlers = Grpc_eio.Server.Typed_rpc.server (Handlers { handlers })
 
 let connection_handler server ~sw =
-  let error_handler client_address ?request:_ _error start_response =
+  let error_handler client_address ?request:_ error start_response =
     Eio.traceln "Error in request from:%a" Eio.Net.Sockaddr.pp client_address;
     let response_body = start_response H2.Headers.empty in
     H2.Body.Writer.write_string
       response_body
-      "There was an error handling your request.\n";
+      "There was an error handling your request:\n";
+    H2.Body.Writer.write_string
+      response_body
+      (Sexp.to_string_hum
+         [%sexp (error : [ `Bad_request | `Internal_server_error | `Exn of Exn.t ])]);
     H2.Body.Writer.close response_body
   in
   let request_handler client_address request_descriptor =

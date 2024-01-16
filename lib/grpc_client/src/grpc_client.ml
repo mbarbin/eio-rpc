@@ -1,12 +1,29 @@
 module Connection = struct
   type t = H2_eio.Client.t
+
+  let raise_client_error (error : H2.Client_connection.error) =
+    match error with
+    | `Malformed_response msg -> raise_s [%sexp `Malformed_response (msg : string)]
+    | `Invalid_response_body_length response ->
+      let response = Stdlib.Format.asprintf "%a" H2.Response.pp_hum response in
+      raise_s [%sexp `Invalid_response_body_length (response : string)]
+    | `Protocol_error (error_code, msg) ->
+      raise_s
+        [%sexp
+          `Protocol_error
+            { error_code = (H2.Error_code.to_string error_code : string); msg : string }]
+    | `Exn exn -> Exn.raise_without_backtrace exn
+  ;;
 end
 
 let with_connection ~env ~sw ~addr ~f =
   let%bind connection =
     Or_error.try_with (fun () ->
       let socket = Eio.Net.connect ~sw (Eio.Stdenv.net env) addr in
-      H2_eio.Client.create_connection ~sw ~error_handler:ignore socket)
+      H2_eio.Client.create_connection
+        ~sw
+        ~error_handler:Connection.raise_client_error
+        socket)
   in
   Exn.protect
     ~f:(fun () -> f connection)
@@ -17,7 +34,8 @@ let unary rpc ~connection request =
   match
     Grpc_eio.Client.Typed_rpc.call
       (Grpc_spec.client_rpc rpc)
-      ~do_request:(H2_eio.Client.request connection ~error_handler:ignore)
+      ~do_request:
+        (H2_eio.Client.request connection ~error_handler:Connection.raise_client_error)
       ~handler:(Grpc_eio.Client.Typed_rpc.unary request ~f:Fn.id)
       ()
   with
@@ -33,7 +51,8 @@ let server_streaming rpc ~connection request =
   match
     Grpc_eio.Client.Typed_rpc.call
       (Grpc_spec.client_rpc rpc)
-      ~do_request:(H2_eio.Client.request connection ~error_handler:ignore)
+      ~do_request:
+        (H2_eio.Client.request connection ~error_handler:Connection.raise_client_error)
       ~handler:(Grpc_eio.Client.Typed_rpc.server_streaming request ~f:Fn.id)
       ()
   with
@@ -46,7 +65,8 @@ let client_streaming rpc ~connection ~f =
   match
     Grpc_eio.Client.Typed_rpc.call
       (Grpc_spec.client_rpc rpc)
-      ~do_request:(H2_eio.Client.request connection ~error_handler:ignore)
+      ~do_request:
+        (H2_eio.Client.request connection ~error_handler:Connection.raise_client_error)
       ~handler:(Grpc_eio.Client.Typed_rpc.client_streaming ~f)
       ()
   with
@@ -59,7 +79,8 @@ let bidirectional_streaming rpc ~connection ~f =
   match
     Grpc_eio.Client.Typed_rpc.call
       (Grpc_spec.client_rpc rpc)
-      ~do_request:(H2_eio.Client.request connection ~error_handler:ignore)
+      ~do_request:
+        (H2_eio.Client.request connection ~error_handler:Connection.raise_client_error)
       ~handler:(Grpc_eio.Client.Typed_rpc.bidirectional_streaming ~f)
       ()
   with
