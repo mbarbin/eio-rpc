@@ -10,3 +10,13 @@
   (glob_files *.proto))
  (action
   (run ocaml-protoc keyval.proto --binary --services --ml_out .)))
+
+(rule
+ (alias runtest)
+ (action
+  (diff keyval.ml.expected keyval.ml)))
+
+(rule
+ (alias runtest)
+ (action
+  (diff keyval.mli.expected keyval.mli)))
