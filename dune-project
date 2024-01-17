@@ -40,7 +40,6 @@
 (package
  (name grpc-stream)
  (synopsis "A (temporary) library to manipulate gRPC streams")
- (description "A (temporary) library to manipulate gRPC streams")
  (depends
   (ocaml
    (>= 5.1))
@@ -54,7 +53,6 @@
 (package
  (name grpc-client)
  (synopsis "An opinionated library to build gRPC Eio clients")
- (description "An opinionated library to build gRPC Eio clients")
  (depends
   (ocaml
    (>= 5.1))
@@ -84,7 +82,6 @@
 (package
  (name grpc-server)
  (synopsis "An opinionated library to build gRPC Eio servers")
- (description "An opinionated library to build gRPC Eio servers")
  (depends
   (ocaml
    (>= 5.1))
@@ -116,7 +113,6 @@
 (package
  (name eio-rpc-test)
  (synopsis "Tests for eio-rpc")
- (description "Tests for eio-rpc")
  (depends
   (ocaml
    (>= 5.1))
@@ -154,7 +150,6 @@
 (package
  (name eio-rpc-example)
  (synopsis "Examples built with eio-rpc")
- (description "Examples built with eio-rpc")
  (depends
   (ocaml
    (>= 5.1))
