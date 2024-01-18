@@ -10,20 +10,17 @@ let%expect_test "rountrip" =
           key));
   [%expect {||}];
   require_does_not_raise [%here] (fun () ->
-    Base_quickcheck.Test.run_exn
-      (module Keyval_rpc.Delete.Response)
-      ~f:(fun response ->
-        Roundtrip.test_response
-          Keyval_rpc.Delete.rpc
-          (module Keyval_rpc.Delete.Response)
-          response));
+    show_raise ~hide_positions:true (fun () ->
+      Base_quickcheck.Test.run_exn
+        (module Keyval_rpc.Delete.Response)
+        ~f:(fun response ->
+          Roundtrip.test_response
+            Keyval_rpc.Delete.rpc
+            (module Keyval_rpc.Delete.Response)
+            response)));
   [%expect
     {|
-    (* CR require-failed: example/keyval/lib/keyval_rpc/test/test__delete.ml:12:25.
-       Do not 'X' this CR; instead make the required property true,
-       which will make the CR disappear.  For more information, see
-       [Expect_test_helpers_base.require]. *)
-    ("unexpectedly raised" (
+    (raised (
       "Base_quickcheck.Test.run: test failed"
       (input (Ok ()))
       (error ("Pbrt.Decoder.Failure(Malformed_variant(\"unit_or_error\"))")))) |}];
@@ -39,15 +36,11 @@ let%expect_test "roundtrip" =
   in
   require_does_not_raise [%here] (fun () -> test (Or_error.error_string "Hello Error"));
   [%expect {||}];
-  require_does_not_raise [%here] (fun () -> test (Ok ()));
+  require_does_not_raise [%here] (fun () ->
+    show_raise ~hide_positions:true (fun () -> test (Ok ())));
   [%expect
     {|
-    (* CR require-failed: example/keyval/lib/keyval_rpc/test/test__delete.ml:42:25.
-       Do not 'X' this CR; instead make the required property true,
-       which will make the CR disappear.  For more information, see
-       [Expect_test_helpers_base.require]. *)
-    ("unexpectedly raised" (
-      "Pbrt.Decoder.Failure(Malformed_variant(\"unit_or_error\"))")) |}];
+    (raised ("Pbrt.Decoder.Failure(Malformed_variant(\"unit_or_error\"))")) |}];
   ()
 ;;
 
