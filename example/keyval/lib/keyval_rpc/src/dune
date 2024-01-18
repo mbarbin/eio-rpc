@@ -1,6 +1,6 @@
 (library
  (name keyval_rpc)
- (public_name eio-rpc-example.keyval-rpc)
+ (public_name eio-rpc.keyval-rpc)
  (flags
   :standard
   -w

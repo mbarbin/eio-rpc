@@ -111,45 +111,8 @@
     (< v0.17)))))
 
 (package
- (name eio-rpc-test)
- (synopsis "Tests for eio-rpc")
- (depends
-  (ocaml
-   (>= 5.1))
-  (base
-   (and
-    (>= v0.16)
-    (< v0.17)))
-  (base_quickcheck
-   (and
-    (>= v0.16)
-    (< v0.17)))
-  (eio
-   (>= 0.13))
-  (expect_test_helpers_core
-   (and
-    (>= v0.16)
-    (< v0.17)))
-  (grpc-client
-   (= :version))
-  (grpc-server
-   (= :version))
-  (grpc-spec
-   (= :version))
-  (grpc-stream
-   (= :version))
-  (ppx_jane
-   (and
-    (>= v0.16)
-    (< v0.17)))
-  (ppx_js_style
-   (and
-    (>= v0.16)
-    (< v0.17)))))
-
-(package
- (name eio-rpc-example)
- (synopsis "Examples built with eio-rpc")
+ (name eio-rpc)
+ (synopsis "Tests & Examples for eio-rpc")
  (depends
   (ocaml
    (>= 5.1))

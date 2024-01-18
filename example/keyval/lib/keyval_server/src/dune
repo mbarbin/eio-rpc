@@ -1,6 +1,6 @@
 (library
  (name keyval_server)
- (public_name eio-rpc-example.keyval-server)
+ (public_name eio-rpc.keyval-server)
  (flags :standard -w +a-4-40-41-42-44-45-48-66 -warn-error +a -open Base)
  (libraries base grpc-server keyval keyval_rpc)
  (preprocess

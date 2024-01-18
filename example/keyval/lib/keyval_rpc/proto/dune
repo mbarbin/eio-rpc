@@ -1,6 +1,6 @@
 (library
  (name keyval_rpc_proto)
- (public_name eio-rpc-example.keyval-rpc-proto)
+ (public_name eio-rpc.keyval-rpc-proto)
  (flags :standard -w +a-4-40-41-42-44-45-48-66 -warn-error +a)
  (libraries pbrt pbrt_services))
 
