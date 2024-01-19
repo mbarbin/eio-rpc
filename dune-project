@@ -136,6 +136,8 @@
     (< v0.17)))
   (eio
    (>= 0.13))
+  (eio-writer
+   (>= 0.0.3))
   (eio_main
    (>= 0.13))
   (expect_test_helpers_core
@@ -159,10 +161,6 @@
     (>= v0.16)
     (< v0.17)))
   (ppx_js_style
-   (and
-    (>= v0.16)
-    (< v0.17)))
-  (stdio
    (and
     (>= v0.16)
     (< v0.17)))))

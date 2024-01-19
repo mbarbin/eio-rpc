@@ -10,17 +10,15 @@
   -open
   Base
   -open
-  Stdio
-  -open
   Or_error.Let_syntax)
  (libraries
   base
   core.command
   eio
+  eio-writer
   eio_main
   grpc-client
   keyval_rpc
-  keyval_server
-  stdio)
+  keyval_server)
  (preprocess
   (pps ppx_jane ppx_js_style -check-doc-comments)))

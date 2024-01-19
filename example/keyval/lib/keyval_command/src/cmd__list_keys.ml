@@ -9,6 +9,6 @@ let main =
        @@ fun sw ->
        Grpc_client.with_connection ~env ~sw ~addr:Connection.addr ~f:(fun connection ->
          let%bind keys = Grpc_client.unary Keyval_rpc.List_keys.rpc ~connection () in
-         print_s [%sexp (keys : Set.M(Keyval.Key).t)];
+         Eio_writer.print_sexp ~env [%sexp (keys : Set.M(Keyval.Key).t)];
          return ()))
 ;;

@@ -16,6 +16,6 @@ let main =
          let%bind value =
            Grpc_client.unary Keyval_rpc.Get.rpc ~connection key |> Or_error.join
          in
-         print_s [%sexp (value : Keyval.Value.t)];
+         Eio_writer.print_sexp ~env [%sexp (value : Keyval.Value.t)];
          return ()))
 ;;
