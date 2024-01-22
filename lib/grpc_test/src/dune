@@ -1,0 +1,7 @@
+(library
+ (name grpc_test)
+ (public_name grpc-test)
+ (flags :standard -w +a-4-40-41-42-44-45-48-66 -warn-error +a -open Base)
+ (libraries base core.command eio fpath grpc-client grpc-discovery)
+ (preprocess
+  (pps ppx_jane ppx_js_style -check-doc-comments)))

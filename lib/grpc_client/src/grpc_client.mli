@@ -7,8 +7,7 @@ val with_connection
        < fs : _ Eio.Path.t
        ; net : [> [ `Generic | `Unix ] Eio.Net.ty ] Eio.Resource.t
        ; .. >
-  -> sw:Eio.Switch.t
-  -> addr:Eio.Net.Sockaddr.stream
+  -> sockaddr:Eio.Net.Sockaddr.stream
   -> f:(Connection.t -> 'a Or_error.t)
   -> 'a Or_error.t
 

@@ -16,10 +16,12 @@ module Connection = struct
   ;;
 end
 
-let with_connection ~env ~sw ~addr ~f =
+let with_connection ~env ~sockaddr ~f =
+  Eio.Switch.run
+  @@ fun sw ->
   let%bind connection =
     Or_error.try_with (fun () ->
-      let socket = Eio.Net.connect ~sw (Eio.Stdenv.net env) addr in
+      let socket = Eio.Net.connect ~sw (Eio.Stdenv.net env) sockaddr in
       H2_eio.Client.create_connection
         ~sw
         ~error_handler:Connection.raise_client_error

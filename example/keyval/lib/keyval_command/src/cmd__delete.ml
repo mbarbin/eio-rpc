@@ -1,7 +1,8 @@
 let main =
   Command.basic_or_error
     ~summary:"delete a binding"
-    (let%map_open.Command key =
+    (let%map_open.Command connection_config = Grpc_discovery.Connection_config.param
+     and key =
        flag
          "--key"
          (required (Arg_type.create Keyval.Key.v))
@@ -10,8 +11,9 @@ let main =
      fun () ->
        Eio_main.run
        @@ fun env ->
-       Eio.Switch.run
-       @@ fun sw ->
-       Grpc_client.with_connection ~env ~sw ~addr:Connection.addr ~f:(fun connection ->
+       let%bind sockaddr =
+         Grpc_discovery.Connection_config.sockaddr connection_config ~env
+       in
+       Grpc_client.with_connection ~env ~sockaddr ~f:(fun connection ->
          Grpc_client.unary Keyval_rpc.Delete.rpc ~connection key |> Or_error.join))
 ;;

@@ -111,6 +111,72 @@
     (< v0.17)))))
 
 (package
+ (name grpc-discovery)
+ (synopsis "A library to help discover gRPC servers running on localhost")
+ (depends
+  (ocaml
+   (>= 5.1))
+  (base
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (core
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (eio
+   (>= 0.14))
+  (fpath
+   (>= 0.7.3))
+  (fpath-extended
+   (>= 0.0.2))
+  (grpc-client
+   (= :version))
+  (ppx_jane
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_js_style
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_yojson_conv
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (yojson
+   (>= 2.1.1))))
+
+(package
+ (name grpc-test)
+ (synopsis "A library to help writting tests for gRPC Eio applications")
+ (depends
+  (ocaml
+   (>= 5.1))
+  (base
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (core
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (eio
+   (>= 0.14))
+  (fpath
+   (>= 0.7.3))
+  (grpc-client
+   (= :version))
+  (ppx_jane
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_js_style
+   (and
+    (>= v0.16)
+    (< v0.17)))))
+
+(package
  (name eio-rpc)
  (synopsis "Tests & Examples for eio-rpc")
  (depends

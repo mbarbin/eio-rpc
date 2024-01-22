@@ -47,9 +47,8 @@ let connection_handler server ~sw =
          [%sexp (error : [ `Bad_request | `Internal_server_error | `Exn of Exn.t ])]);
     H2.Body.Writer.close response_body
   in
-  let request_handler client_address request_descriptor =
+  let request_handler _client_address request_descriptor =
     Eio.Fiber.fork ~sw (fun () ->
-      Eio.traceln "Received request from:%a" Eio.Net.Sockaddr.pp client_address;
       Grpc_eio.Server.handle_request server request_descriptor)
   in
   fun socket addr ->
