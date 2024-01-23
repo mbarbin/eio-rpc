@@ -222,6 +222,8 @@
    (>= 3.0.2-preview.2))
   (pbrt_services
    (>= 3.0.2-preview.2))
+  (ppx-let-fun
+   (>= 0.0.2))
   (ppx_jane
    (and
     (>= v0.16)

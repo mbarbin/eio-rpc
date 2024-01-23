@@ -1,6 +1,6 @@
 (library
  (name grpc_spec_test)
- (package eio-rpc)
+ (public_name eio-rpc.grpc-spec-test)
  (inline_tests)
  (flags
   :standard

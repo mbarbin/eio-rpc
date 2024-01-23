@@ -25,6 +25,7 @@ depends: [
   "grpc-stream" {= version}
   "pbrt" {>= "3.0.2-preview.2"}
   "pbrt_services" {>= "3.0.2-preview.2"}
+  "ppx-let-fun" {>= "0.0.2"}
   "ppx_jane" {>= "v0.16" & < "v0.17"}
   "ppx_js_style" {>= "v0.16" & < "v0.17"}
   "odoc" {with-doc}

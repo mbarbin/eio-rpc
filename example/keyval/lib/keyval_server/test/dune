@@ -1,5 +1,6 @@
 (library
  (name keyval_server_test)
+ (public_name eio-rpc.keyval-server-test)
  (inline_tests)
  (flags
   :standard

@@ -1,5 +1,6 @@
 (library
  (name grpc_discovery_test)
+ (public_name eio-rpc.grpc-discovery-test)
  (inline_tests)
  (flags
   :standard
