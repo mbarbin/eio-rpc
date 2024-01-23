@@ -129,7 +129,7 @@
   (fpath
    (>= 0.7.3))
   (fpath-extended
-   (>= 0.0.2))
+   (>= 0.0.3))
   (grpc-client
    (= :version))
   (ppx_jane
@@ -191,7 +191,7 @@
     (>= v0.16)
     (< v0.17)))
   (command-unix-for-opam
-   (>= 0.0.1))
+   (>= 0.0.2))
   (core
    (and
     (>= v0.16)

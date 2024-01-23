@@ -12,7 +12,7 @@ depends: [
   "ocaml" {>= "5.1"}
   "base" {>= "v0.16" & < "v0.17"}
   "base_quickcheck" {>= "v0.16" & < "v0.17"}
-  "command-unix-for-opam" {>= "0.0.1"}
+  "command-unix-for-opam" {>= "0.0.2"}
   "core" {>= "v0.16" & < "v0.17"}
   "core_unix" {>= "v0.16" & < "v0.17"}
   "eio" {>= "0.14"}
