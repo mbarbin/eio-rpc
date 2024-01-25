@@ -12,5 +12,7 @@
   -open
   Base_quickcheck)
  (libraries base base_quickcheck grpc-spec keyval keyval_rpc_proto)
+ (instrumentation
+  (backend bisect_ppx))
  (preprocess
   (pps ppx_jane ppx_js_style -check-doc-comments)))

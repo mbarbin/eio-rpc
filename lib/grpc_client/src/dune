@@ -12,5 +12,7 @@
   -open
   Or_error.Let_syntax)
  (libraries base eio grpc grpc-eio grpc-spec grpc-stream h2-eio)
+ (instrumentation
+  (backend bisect_ppx))
  (preprocess
   (pps ppx_jane ppx_js_style -check-doc-comments)))

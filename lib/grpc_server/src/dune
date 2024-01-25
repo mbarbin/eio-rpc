@@ -3,5 +3,7 @@
  (public_name grpc-server)
  (flags :standard -w +a-4-40-41-42-44-45-48-66 -warn-error +a -open Base)
  (libraries base grpc-eio grpc-spec grpc-stream h2 h2-eio)
+ (instrumentation
+  (backend bisect_ppx))
  (preprocess
   (pps ppx_jane ppx_js_style -check-doc-comments)))
