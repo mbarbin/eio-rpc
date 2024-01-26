@@ -1,6 +1,7 @@
 # eio-rpc
 
 [![CI Status](https://github.com/mbarbin/eio-rpc/workflows/ci/badge.svg)](https://github.com/mbarbin/eio-rpc/actions/workflows/ci.yml)
+[![Coverage Status](https://coveralls.io/repos/github/mbarbin/eio-rpc/badge.svg?branch=main&service=github)](https://coveralls.io/github/mbarbin/eio-rpc?branch=main)
 
 eio-rpc is a collection of opinionated libraries designed to build RPC clients
 and servers with `eio`.
