@@ -1,4 +1,4 @@
-let executable = "keyval"
+let executable = "./keyval.exe"
 
 let config =
   Grpc_test.Config.grpc_discovery
