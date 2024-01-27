@@ -31,11 +31,17 @@ let run_cmd =
            "Listening for connections on %a"
            Eio.Net.Sockaddr.pp
            (Eio.Net.listening_addr listening_socket);
+       let stop, stop_u = Eio.Promise.create () in
+       Stdlib.Sys.set_signal
+         Stdlib.Sys.sigterm
+         (Signal_handle (fun (_ : int) -> Eio.Promise.resolve stop_u ()));
        Eio.Net.run_server
          listening_socket
          (Grpc_server.connection_handler grpc_server ~sw)
+         ~stop
          ~on_error:(Eio.traceln "Error handling connection: %a" Fmt.exn)
-         ~max_connections:1000)
+         ~max_connections:1000;
+       return ())
 ;;
 
 let main = Command.group ~summary:"manage the server" [ "run", run_cmd ]

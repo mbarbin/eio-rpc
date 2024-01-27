@@ -182,7 +182,7 @@ let with_server ?(sockaddr_kind = Sockaddr_kind.Unix_socket) (T { env } as t) ~c
   Exn.protect
     ~f:(fun () ->
       f { With_server.server; client };
-      Eio.Process.signal server_process Stdlib.Sys.sigint;
+      Eio.Process.signal server_process Stdlib.Sys.sigterm;
       match Eio.Process.await server_process with
       | `Exited _ | `Signaled _ -> ())
     ~finally:(fun () ->
