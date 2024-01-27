@@ -16,5 +16,7 @@
   base
   expect_test_helpers_core.expect_test_helpers_base
   keyval_rpc)
+ (instrumentation
+  (backend bisect_ppx))
  (preprocess
   (pps ppx_jane ppx_js_style -check-doc-comments)))

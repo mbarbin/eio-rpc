@@ -22,5 +22,7 @@
   grpc_test
   keyval
   keyval_rpc)
+ (instrumentation
+  (backend bisect_ppx))
  (preprocess
   (pps ppx_jane ppx_js_style -check-doc-comments ppx-let-fun)))
