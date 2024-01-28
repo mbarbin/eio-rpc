@@ -29,9 +29,9 @@
   (grpc-protoc
    (>= 0.2.0-preview.2))
   (ocaml-protoc
-   (>= 3.0.2-preview.2))
+   (>= 3.0.2-preview.4))
   (pbrt_services
-   (>= 3.0.2-preview.2))
+   (>= 3.0.2-preview.4))
   (ppx_js_style
    (and
     (>= v0.16)
@@ -223,9 +223,9 @@
   (grpc-stream
    (= :version))
   (pbrt
-   (>= 3.0.2-preview.2))
+   (>= 3.0.2-preview.4))
   (pbrt_services
-   (>= 3.0.2-preview.2))
+   (>= 3.0.2-preview.4))
   (ppx-let-fun
    (>= 0.0.2))
   (ppx_jane
