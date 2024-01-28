@@ -17,8 +17,7 @@ let%expect_test "rountrip" =
           Keyval_rpc.Delete.rpc
           (module Keyval_rpc.Delete.Response)
           response));
-  [%expect
-    {| |}];
+  [%expect {| |}];
   ()
 ;;
 
@@ -33,9 +32,12 @@ let%expect_test "roundtrip" =
   [%expect {||}];
   require_does_not_raise [%here] (fun () -> test (Or_error.error_string ""));
   [%expect {||}];
+  require_does_not_raise [%here] (fun () -> test (Or_error.error_string "()"));
+  [%expect {||}];
+  require_does_not_raise [%here] (fun () -> test (Or_error.error_s [%sexp ()]));
+  [%expect {||}];
   require_does_not_raise [%here] (fun () -> test (Ok ()));
-  [%expect
-    {| |}];
+  [%expect {| |}];
   ()
 ;;
 
