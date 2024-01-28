@@ -2,16 +2,28 @@
  (name keyval_rpc_proto)
  (public_name eio-rpc.keyval-rpc-proto)
  (flags :standard -w +a-4-40-41-42-44-45-48-66 -warn-error +a)
- (libraries pbrt pbrt_services)
+ (libraries pbrt pbrt_quickcheck pbrt_services)
  (instrumentation
-  (backend bisect_ppx)))
+  (backend bisect_ppx))
+ (preprocess
+  (pps ppx_deriving_qcheck ppx_deriving.show ppx_deriving.eq)))
 
 (rule
  (targets keyval.ml keyval.mli)
  (deps
   (glob_files *.proto))
  (action
-  (run ocaml-protoc keyval.proto --binary --services --ml_out .)))
+  (run
+   ocaml-protoc
+   keyval.proto
+   --ocaml_all_types_ppx
+   "deriving show { with_path = false }, eq, qcheck2"
+   --binary
+   --yojson
+   --services
+   --quickcheck
+   --ml_out
+   .)))
 
 (rule
  (alias runtest)

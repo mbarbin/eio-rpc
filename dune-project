@@ -224,10 +224,16 @@
    (= :version))
   (pbrt
    (>= 3.0.2-preview.4))
+  (pbrt_quickcheck
+   (>= 3.0.2-preview.4))
   (pbrt_services
    (>= 3.0.2-preview.4))
   (ppx-let-fun
    (>= 0.0.2))
+  (ppx_deriving
+   (>= 5.2.1))
+  (ppx_deriving_qcheck
+   (>= 0.4.1))
   (ppx_jane
    (and
     (>= v0.16)
