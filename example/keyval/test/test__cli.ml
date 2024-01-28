@@ -29,11 +29,16 @@ let%expect_test "using the cli" =
   keyval [ [ "get" ]; [ "--key"; "foo" ] ];
   [%expect {| bar |}];
   (* And we can delete it. *)
-  (* Actually, currently we can't demonstrate this due to an issue:
-
-     https://github.com/mbarbin/eio-rpc/issues/1
-
-     We'll revisit this test once the issue is fixed. *)
+  keyval [ [ "delete" ]; [ "--key"; "foo" ] ];
+  [%expect {||}];
+  (* And now it's gone. *)
+  keyval [ [ "get" ]; [ "--key"; "foo" ] ];
+  [%expect {|
+    ("Key not found" ((key foo)))
+    [1] |}];
+  (* Let's add it back. *)
+  keyval [ [ "set" ]; [ "--key"; "foo" ]; [ "--value"; "bar" ] ];
+  [%expect {||}];
   (* Let's list the keys again! *)
   keyval [ [ "list-keys" ] ];
   [%expect {| (foo) |}];

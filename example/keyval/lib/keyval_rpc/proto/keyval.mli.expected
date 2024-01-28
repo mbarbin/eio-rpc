@@ -41,9 +41,9 @@ type keyval_pair = {
 type unit_ = unit
 [@@deriving show { with_path = false }, eq]
 
-type unit_or_error =
-  | Unit
-  | Error of error
+type unit_or_error = {
+  error : string;
+}
 [@@deriving show { with_path = false }, eq]
 
 
@@ -86,7 +86,10 @@ val default_keyval_pair :
 val default_unit_ : unit
 (** [default_unit_ ()] is the default value for type [unit_] *)
 
-val default_unit_or_error : unit -> unit_or_error
+val default_unit_or_error : 
+  ?error:string ->
+  unit ->
+  unit_or_error
 (** [default_unit_or_error ()] is the default value for type [unit_or_error] *)
 
 

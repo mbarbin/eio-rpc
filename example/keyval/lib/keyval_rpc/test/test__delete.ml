@@ -10,20 +10,15 @@ let%expect_test "rountrip" =
           key));
   [%expect {||}];
   require_does_not_raise [%here] (fun () ->
-    show_raise ~hide_positions:true (fun () ->
-      Base_quickcheck.Test.run_exn
-        (module Keyval_rpc.Delete.Response)
-        ~f:(fun response ->
-          Roundtrip.test_response
-            Keyval_rpc.Delete.rpc
-            (module Keyval_rpc.Delete.Response)
-            response)));
+    Base_quickcheck.Test.run_exn
+      (module Keyval_rpc.Delete.Response)
+      ~f:(fun response ->
+        Roundtrip.test_response
+          Keyval_rpc.Delete.rpc
+          (module Keyval_rpc.Delete.Response)
+          response));
   [%expect
-    {|
-    (raised (
-      "Base_quickcheck.Test.run: test failed"
-      (input (Ok ()))
-      (error ("Pbrt.Decoder.Failure(Malformed_variant(\"unit_or_error\"))")))) |}];
+    {| |}];
   ()
 ;;
 
@@ -36,27 +31,25 @@ let%expect_test "roundtrip" =
   in
   require_does_not_raise [%here] (fun () -> test (Or_error.error_string "Hello Error"));
   [%expect {||}];
-  require_does_not_raise [%here] (fun () ->
-    show_raise ~hide_positions:true (fun () -> test (Ok ())));
+  require_does_not_raise [%here] (fun () -> test (Or_error.error_string ""));
+  [%expect {||}];
+  require_does_not_raise [%here] (fun () -> test (Ok ()));
   [%expect
-    {|
-    (raised ("Pbrt.Decoder.Failure(Malformed_variant(\"unit_or_error\"))")) |}];
+    {| |}];
   ()
 ;;
 
 let%expect_test "encoding of Unit" =
   let encoder = Pbrt.Encoder.create () in
-  Keyval_rpc_proto.Keyval.encode_pb_unit_or_error Unit encoder;
+  Keyval_rpc_proto.Keyval.encode_pb_unit_or_error { error = "" } encoder;
   let encoded = Pbrt.Encoder.to_string encoder in
   print_s [%sexp { encoded : string }];
-  [%expect {| ((encoded "\000\n")) |}];
+  [%expect {| ((encoded "\n\000")) |}];
   let decoder = Pbrt.Decoder.of_string encoded in
-  require_does_raise [%here] (fun () ->
-    let decoded = Keyval_rpc_proto.Keyval.decode_pb_unit_or_error decoder in
-    print_s
-      (match decoded with
-       | Unit -> [%sexp Unit]
-       | Error { error } -> [%sexp Error (error : string)]));
-  [%expect {| ("Pbrt.Decoder.Failure(Malformed_variant(\"unit_or_error\"))") |}];
+  let decoded = Keyval_rpc_proto.Keyval.decode_pb_unit_or_error decoder in
+  print_s
+    (match decoded with
+     | { error } -> [%sexp Error (error : string)]);
+  [%expect {| (Error "") |}];
   ()
 ;;

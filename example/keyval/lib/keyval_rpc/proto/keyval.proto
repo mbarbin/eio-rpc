@@ -23,12 +23,7 @@ message KeyvalPair {
 
 message Unit {}
 
-message UnitOrError {
-  oneof unit_or_error {
-    Unit unit = 1;
-    Error error = 2;
-  }
-}
+message UnitOrError { string error = 1; }
 
 service Keyval {
   rpc Get(Key) returns (ValueOrError) {}

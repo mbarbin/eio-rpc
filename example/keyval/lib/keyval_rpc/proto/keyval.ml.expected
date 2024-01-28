@@ -34,9 +34,9 @@ type keyval_pair = {
 type unit_ = unit
 [@@deriving show { with_path = false }, eq, qcheck2]
 
-type unit_or_error =
-  | Unit
-  | Error of error
+type unit_or_error = {
+  error : string;
+}
 [@@deriving show { with_path = false }, eq, qcheck2]
 
 let rec default_key 
@@ -75,7 +75,11 @@ let rec default_keyval_pair
 
 let rec default_unit_ = ()
 
-let rec default_unit_or_error (): unit_or_error = Unit
+let rec default_unit_or_error 
+  ?error:((error:string) = "")
+  () : unit_or_error  = {
+  error;
+}
 
 type key_mutable = {
   mutable key : string;
@@ -117,6 +121,14 @@ type keyval_pair_mutable = {
 let default_keyval_pair_mutable () : keyval_pair_mutable = {
   key = "";
   value = "";
+}
+
+type unit_or_error_mutable = {
+  mutable error : string;
+}
+
+let default_unit_or_error_mutable () : unit_or_error_mutable = {
+  error = "";
 }
 
 [@@@ocaml.warning "-27-30-39"]
@@ -166,14 +178,9 @@ let rec encode_pb_unit_ (v:unit_) encoder =
 ()
 
 let rec encode_pb_unit_or_error (v:unit_or_error) encoder = 
-  begin match v with
-  | Unit ->
-    Pbrt.Encoder.key 1 Pbrt.Bytes encoder; 
-    Pbrt.Encoder.empty_nested encoder
-  | Error x ->
-    Pbrt.Encoder.nested encode_pb_error x encoder;
-    Pbrt.Encoder.key 2 Pbrt.Bytes encoder; 
-  end
+  Pbrt.Encoder.string v.error encoder;
+  Pbrt.Encoder.key 1 Pbrt.Bytes encoder; 
+  ()
 
 [@@@ocaml.warning "-27-30-39"]
 
@@ -297,23 +304,23 @@ let rec decode_pb_unit_ d =
   | Some (_, pk) -> 
     Pbrt.Decoder.unexpected_payload "Unexpected fields in empty message(unit_)" pk
 
-let rec decode_pb_unit_or_error d = 
-  let rec loop () = 
-    let ret:unit_or_error = match Pbrt.Decoder.key d with
-      | None -> Pbrt.Decoder.malformed_variant "unit_or_error"
-      | Some (1, _) -> begin 
-        Pbrt.Decoder.empty_nested d ;
-        (Unit : unit_or_error)
-      end
-      | Some (2, _) -> (Error (decode_pb_error (Pbrt.Decoder.nested d)) : unit_or_error) 
-      | Some (n, payload_kind) -> (
-        Pbrt.Decoder.skip d payload_kind; 
-        loop () 
-      )
-    in
-    ret
-  in
-  loop ()
+let rec decode_pb_unit_or_error d =
+  let v = default_unit_or_error_mutable () in
+  let continue__= ref true in
+  while !continue__ do
+    match Pbrt.Decoder.key d with
+    | None -> (
+    ); continue__ := false
+    | Some (1, Pbrt.Bytes) -> begin
+      v.error <- Pbrt.Decoder.string d;
+    end
+    | Some (1, pk) -> 
+      Pbrt.Decoder.unexpected_payload "Message(unit_or_error), field(1)" pk
+    | Some (_, payload_kind) -> Pbrt.Decoder.skip d payload_kind
+  done;
+  ({
+    error = v.error;
+  } : unit_or_error)
 
 [@@@ocaml.warning "-27-30-39"]
 
@@ -358,10 +365,9 @@ let rec encode_json_unit_ (v:unit_) =
 Pbrt_yojson.make_unit v
 
 let rec encode_json_unit_or_error (v:unit_or_error) = 
-  begin match v with
-  | Unit -> `Assoc [("unit", `Null)]
-  | Error v -> `Assoc [("error", encode_json_error v)]
-  end
+  let assoc = [] in 
+  let assoc = ("error", Pbrt_yojson.make_string v.error) :: assoc in
+  `Assoc assoc
 
 [@@@ocaml.warning "-27-30-39"]
 
@@ -472,20 +478,21 @@ let rec decode_json_keyval_pair d =
 let rec decode_json_unit_ d =
 Pbrt_yojson.unit d "unit_" "empty record"
 
-let rec decode_json_unit_or_error json =
-  let assoc = match json with
+let rec decode_json_unit_or_error d =
+  let v = default_unit_or_error_mutable () in
+  let assoc = match d with
     | `Assoc assoc -> assoc
     | _ -> assert(false)
   in
-  let rec loop = function
-    | [] -> Pbrt_yojson.E.malformed_variant "unit_or_error"
-    | ("unit", _)::_-> (Unit : unit_or_error)
-    | ("error", json_value)::_ -> 
-      (Error ((decode_json_error json_value)) : unit_or_error)
+  List.iter (function 
+    | ("error", json_value) -> 
+      v.error <- Pbrt_yojson.string json_value "unit_or_error" "error"
     
-    | _ :: tl -> loop tl
-  in
-  loop assoc
+    | (_, _) -> () (*Unknown fields are ignored*)
+  ) assoc;
+  ({
+    error = v.error;
+  } : unit_or_error)
 
 [@@@ocaml.warning "-27-30-39"]
 
