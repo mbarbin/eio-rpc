@@ -1,18 +1,9 @@
 (executable
  (name main)
  (flags :standard -w +a-4-40-41-42-44-45-48-66 -warn-error +a)
- (libraries
-  keyval_rpc_proto
-  pbrt
-  pbrt_quickcheck
-  pbrt_yojson
-  qcheck
-  qcheck-core
-  yojson)
+ (libraries keyval_rpc_proto qcheck)
  (instrumentation
-  (backend bisect_ppx))
- (preprocess
-  (pps ppx_deriving_qcheck ppx_deriving.show ppx_deriving.eq)))
+  (backend bisect_ppx)))
 
 (rule
  (target test.outputs)
