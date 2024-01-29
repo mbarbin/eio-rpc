@@ -1,7 +1,6 @@
 (library
- (name keyval_rpc_test)
- (public_name eio-rpc.keyval-rpc-test)
- (inline_tests)
+ (name grpc_quickcheck)
+ (public_name grpc-quickcheck)
  (flags
   :standard
   -w
@@ -14,9 +13,9 @@
   Expect_test_helpers_base)
  (libraries
   base
+  base_quickcheck
   expect_test_helpers_core.expect_test_helpers_base
-  grpc_quickcheck
-  keyval_rpc)
+  grpc_spec)
  (instrumentation
   (backend bisect_ppx))
  (preprocess

@@ -1,33 +1,17 @@
 let%expect_test "rountrip" =
-  require_does_not_raise [%here] (fun () ->
-    Base_quickcheck.Test.run_exn
-      (module Keyval_rpc.Delete.Request)
-      ~examples:[ Keyval.Key.v "foo"; Keyval.Key.v "bar" ]
-      ~f:(fun key -> Roundtrip.test_request (module Keyval_rpc.Delete) key));
+  (* There used to be a bug in the deserialization of [Unit]. We monitor for
+     regressions here. *)
+  Grpc_quickcheck.run_exn
+    (module Keyval_rpc.Delete)
+    ~requests:[ Keyval.Key.v "foo"; Keyval.Key.v "bar" ]
+    ~responses:
+      [ Or_error.error_string "Hello Error"
+      ; Or_error.error_string ""
+      ; Or_error.error_string "()"
+      ; Or_error.error_s [%sexp ()]
+      ; Ok ()
+      ];
   [%expect {||}];
-  require_does_not_raise [%here] (fun () ->
-    Base_quickcheck.Test.run_exn
-      (module Keyval_rpc.Delete.Response)
-      ~f:(fun response -> Roundtrip.test_response (module Keyval_rpc.Delete) response));
-  [%expect {| |}];
-  ()
-;;
-
-(* There used to be a bug in the deserialization of [Unit]. We monitor for
-   regressions here. *)
-
-let%expect_test "roundtrip" =
-  let test key = Roundtrip.test_response (module Keyval_rpc.Delete) key in
-  require_does_not_raise [%here] (fun () -> test (Or_error.error_string "Hello Error"));
-  [%expect {||}];
-  require_does_not_raise [%here] (fun () -> test (Or_error.error_string ""));
-  [%expect {||}];
-  require_does_not_raise [%here] (fun () -> test (Or_error.error_string "()"));
-  [%expect {||}];
-  require_does_not_raise [%here] (fun () -> test (Or_error.error_s [%sexp ()]));
-  [%expect {||}];
-  require_does_not_raise [%here] (fun () -> test (Ok ()));
-  [%expect {| |}];
   ()
 ;;
 
