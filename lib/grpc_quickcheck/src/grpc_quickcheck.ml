@@ -19,6 +19,7 @@ type ('request, 'request_mode, 'response, 'response_mode) t =
 
 let run_request_exn
   (type request request_mode response response_mode)
+  here
   ?config
   ?examples
   (t : (request, request_mode, response, response_mode) t)
@@ -31,18 +32,20 @@ let run_request_exn
        and type Response.t = response
        and type response_mode = response_mode)
   in
-  Base_quickcheck.Test.run_exn
+  quickcheck_m
+    here
     (module M.Request)
     ?config
     ?examples
     ~f:(fun request ->
       let buffer = Grpc_spec.Private.encode_request (module M) request in
       let request' = Grpc_spec.Private.decode_request (module M) buffer in
-      require_equal [%here] (module M.Request) request request')
+      require_equal here (module M.Request) request request')
 ;;
 
 let run_response_exn
   (type request request_mode response response_mode)
+  here
   ?config
   ?examples
   (t : (request, request_mode, response, response_mode) t)
@@ -55,17 +58,18 @@ let run_response_exn
        and type Response.t = response
        and type response_mode = response_mode)
   in
-  Base_quickcheck.Test.run_exn
+  quickcheck_m
+    here
     (module M.Response)
     ?config
     ?examples
     ~f:(fun response ->
       let buffer = Grpc_spec.Private.encode_response (module M) response in
       let response' = Grpc_spec.Private.decode_response (module M) buffer in
-      require_equal [%here] (module M.Response) response response')
+      require_equal here (module M.Response) response response')
 ;;
 
-let run_exn ?config ?requests ?responses t =
-  run_request_exn ?config ?examples:requests t;
-  run_response_exn ?config ?examples:responses t
+let run_exn here ?config ?requests ?responses t =
+  run_request_exn here ?config ?examples:requests t;
+  run_response_exn here ?config ?examples:responses t
 ;;

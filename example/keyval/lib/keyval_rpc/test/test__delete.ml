@@ -2,6 +2,7 @@ let%expect_test "rountrip" =
   (* There used to be a bug in the deserialization of [Unit]. We monitor for
      regressions here. *)
   Grpc_quickcheck.run_exn
+    [%here]
     (module Keyval_rpc.Delete)
     ~requests:[ Keyval.Key.v "foo"; Keyval.Key.v "bar" ]
     ~responses:

@@ -22,7 +22,8 @@ type ('request, 'request_mode, 'response, 'response_mode) t =
 (** Run 2 quickcheck tests to go over requests and responses and make sure the
     generated inputs roundtrips correctly through serialization. *)
 val run_exn
-  :  ?config:Base_quickcheck.Test.Config.t
+  :  Source_code_position.t
+  -> ?config:Base_quickcheck.Test.Config.t
   -> ?requests:'request list
   -> ?responses:'response list
   -> ('request, 'request_mode, 'response, 'response_mode) t
@@ -31,13 +32,15 @@ val run_exn
 (** {1 Individual tests} *)
 
 val run_request_exn
-  :  ?config:Base_quickcheck.Test.Config.t
+  :  Source_code_position.t
+  -> ?config:Base_quickcheck.Test.Config.t
   -> ?examples:'request list
   -> ('request, 'request_mode, 'response, 'response_mode) t
   -> unit
 
 val run_response_exn
-  :  ?config:Base_quickcheck.Test.Config.t
+  :  Source_code_position.t
+  -> ?config:Base_quickcheck.Test.Config.t
   -> ?examples:'response list
   -> ('request, 'request_mode, 'response, 'response_mode) t
   -> unit
