@@ -11,16 +11,16 @@
 (* A util to push all bindings from server1 to server2. *)
 let push_all_bindings ~connection1 ~connection2 =
   let keys =
-    Grpc_client.unary Keyval_rpc.List_keys.rpc ~connection:connection1 ()
+    Grpc_client.unary (module Keyval_rpc.List_keys) ~connection:connection1 ()
     |> Or_error.ok_exn
   in
   Set.iter keys ~f:(fun key ->
     let value =
-      Grpc_client.unary Keyval_rpc.Get.rpc ~connection:connection1 key
+      Grpc_client.unary (module Keyval_rpc.Get) ~connection:connection1 key
       |> Or_error.join
       |> Or_error.ok_exn
     in
-    Grpc_client.unary Keyval_rpc.Set_.rpc ~connection:connection2 { key; value }
+    Grpc_client.unary (module Keyval_rpc.Set_) ~connection:connection2 { key; value }
     |> Or_error.ok_exn)
 ;;
 
@@ -28,11 +28,11 @@ let push_all_bindings ~connection1 ~connection2 =
    directly as an RPC, this is just for the sake of the example). *)
 let all_bindings ~connection =
   let keys =
-    Grpc_client.unary Keyval_rpc.List_keys.rpc ~connection () |> Or_error.ok_exn
+    Grpc_client.unary (module Keyval_rpc.List_keys) ~connection () |> Or_error.ok_exn
   in
   List.map (Set.to_list keys) ~f:(fun key ->
     let value =
-      Grpc_client.unary Keyval_rpc.Get.rpc ~connection key
+      Grpc_client.unary (module Keyval_rpc.Get) ~connection key
       |> Or_error.join
       |> Or_error.ok_exn
     in

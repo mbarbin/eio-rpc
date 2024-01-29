@@ -6,4 +6,4 @@
  (instrumentation
   (backend bisect_ppx))
  (preprocess
-  (pps ppx_js_style -check-doc-comments)))
+  (pps ppx_jane ppx_js_style -check-doc-comments)))

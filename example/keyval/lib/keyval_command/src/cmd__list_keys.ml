@@ -9,7 +9,7 @@ let main =
          Grpc_discovery.Connection_config.sockaddr connection_config ~env
        in
        Grpc_client.with_connection ~env ~sockaddr ~f:(fun connection ->
-         let%bind keys = Grpc_client.unary Keyval_rpc.List_keys.rpc ~connection () in
+         let%bind keys = Grpc_client.unary (module Keyval_rpc.List_keys) ~connection () in
          Eio_writer.print_sexp ~env [%sexp (keys : Set.M(Keyval.Key).t)];
          return ()))
 ;;

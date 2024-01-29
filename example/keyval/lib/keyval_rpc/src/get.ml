@@ -11,10 +11,9 @@ end
 
 module Response = Proto_value_or_error
 
-let rpc =
-  Grpc_spec.unary
-    ~client_rpc:Keyval_rpc_proto.Keyval.Keyval.Client.get
-    ~server_rpc:Keyval_rpc_proto.Keyval.Keyval.Server.get
-    (module Request)
-    (module Response)
-;;
+include
+  Grpc_spec.Unary.Make (Request) (Response)
+    (struct
+      let client_rpc = Keyval_rpc_proto.Keyval.Keyval.Client.get
+      let server_rpc = Keyval_rpc_proto.Keyval.Keyval.Server.get
+    end)

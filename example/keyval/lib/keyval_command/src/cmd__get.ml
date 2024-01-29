@@ -16,7 +16,7 @@ let main =
        in
        Grpc_client.with_connection ~env ~sockaddr ~f:(fun connection ->
          let%bind value =
-           Grpc_client.unary Keyval_rpc.Get.rpc ~connection key |> Or_error.join
+           Grpc_client.unary (module Keyval_rpc.Get) ~connection key |> Or_error.join
          in
          Eio_writer.print_sexp ~env [%sexp (value : Keyval.Value.t)];
          return ()))

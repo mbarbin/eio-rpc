@@ -3,17 +3,12 @@ let%expect_test "rountrip" =
     Base_quickcheck.Test.run_exn
       (module Keyval_rpc.Get.Request)
       ~examples:[ Keyval.Key.v "foo"; Keyval.Key.v "bar" ]
-      ~f:(fun key ->
-        Roundtrip.test_request Keyval_rpc.Get.rpc (module Keyval_rpc.Get.Request) key));
+      ~f:(fun key -> Roundtrip.test_request (module Keyval_rpc.Get) key));
   [%expect {||}];
   require_does_not_raise [%here] (fun () ->
     Base_quickcheck.Test.run_exn
       (module Keyval_rpc.Get.Response)
-      ~f:(fun response ->
-        Roundtrip.test_response
-          Keyval_rpc.Get.rpc
-          (module Keyval_rpc.Get.Response)
-          response));
+      ~f:(fun response -> Roundtrip.test_response (module Keyval_rpc.Get) response));
   [%expect {||}];
   ()
 ;;

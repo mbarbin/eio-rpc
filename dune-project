@@ -32,6 +32,10 @@
    (>= 3.0.2-preview.4))
   (pbrt_services
    (>= 3.0.2-preview.4))
+  (ppx_jane
+   (and
+    (>= v0.16)
+    (< v0.17)))
   (ppx_js_style
    (and
     (>= v0.16)

@@ -3,7 +3,61 @@ module Value_mode : sig
   type stream = Grpc.Rpc.Value_mode.stream
 end
 
-type ('request, 'request_mode, 'response, 'response_mode) t
+(** {1 Creating RPC apis} *)
+
+module Rpc : sig
+  type ('request, 'request_mode, 'response, 'response_mode) t
+end
+
+module Protoable : sig
+  module type S = sig
+    type t [@@deriving equal, sexp_of]
+
+    module Proto : sig
+      type t
+    end
+
+    val of_proto : Proto.t -> t
+    val to_proto : t -> Proto.t
+  end
+end
+
+module Protospec : sig
+  module type S = sig
+    type request
+    type request_mode
+    type response
+    type response_mode
+
+    val client_rpc
+      : (request, request_mode, response, response_mode) Pbrt_services.Client.rpc
+
+    val server_rpc
+      : (request, request_mode, response, response_mode) Pbrt_services.Server.rpc
+  end
+end
+
+module type S = sig
+  module Request : sig
+    type t [@@deriving equal, sexp_of]
+  end
+
+  module Response : sig
+    type t [@@deriving equal, sexp_of]
+  end
+
+  type request_mode
+  type response_mode
+
+  val rpc : (Request.t, request_mode, Response.t, response_mode) Rpc.t
+end
+
+type ('request, 'request_mode, 'response, 'response_mode) t =
+  (module S
+     with type Request.t = 'request
+      and type Response.t = 'response
+      and type request_mode = 'request_mode
+      and type response_mode = 'response_mode)
 
 (** Some type aliases to help managing the complexity of the types. *)
 
@@ -19,88 +73,67 @@ type ('request, 'response) client_streaming =
 type ('request, 'response) bidirectional_streaming =
   ('request, Value_mode.stream, 'response, Value_mode.stream) t
 
-(** {1 Creating RPC apis} *)
+module Unary : sig
+  module type S =
+    S with type request_mode = Value_mode.unary and type response_mode = Value_mode.unary
 
-module Protoable : sig
-  module type S = sig
-    type t
-
-    module Proto : sig
-      type t
-    end
-
-    val of_proto : Proto.t -> t
-    val to_proto : t -> Proto.t
-  end
+  module Make
+      (Request : Protoable.S)
+      (Response : Protoable.S)
+      (_ : Protospec.S
+           with type request := Request.Proto.t
+            and type request_mode := Pbrt_services.Value_mode.unary
+            and type response := Response.Proto.t
+            and type response_mode := Pbrt_services.Value_mode.unary) :
+    S with module Request := Request and module Response := Response
 end
 
-val unary
-  :  client_rpc:
-       ( 'proto_request
-         , Pbrt_services.Value_mode.unary
-         , 'proto_response
-         , Pbrt_services.Value_mode.unary )
-         Pbrt_services.Client.rpc
-  -> server_rpc:
-       ( 'proto_request
-         , Pbrt_services.Value_mode.unary
-         , 'proto_response
-         , Pbrt_services.Value_mode.unary )
-         Pbrt_services.Server.rpc
-  -> (module Protoable.S with type t = 'request and type Proto.t = 'proto_request)
-  -> (module Protoable.S with type t = 'response and type Proto.t = 'proto_response)
-  -> ('request, 'response) unary
+module Client_streaming : sig
+  module type S =
+    S with type request_mode = Value_mode.stream and type response_mode = Value_mode.unary
 
-val server_streaming
-  :  client_rpc:
-       ( 'proto_request
-         , Pbrt_services.Value_mode.unary
-         , 'proto_response
-         , Pbrt_services.Value_mode.stream )
-         Pbrt_services.Client.rpc
-  -> server_rpc:
-       ( 'proto_request
-         , Pbrt_services.Value_mode.unary
-         , 'proto_response
-         , Pbrt_services.Value_mode.stream )
-         Pbrt_services.Server.rpc
-  -> (module Protoable.S with type t = 'request and type Proto.t = 'proto_request)
-  -> (module Protoable.S with type t = 'response and type Proto.t = 'proto_response)
-  -> ('request, 'response) server_streaming
+  module Make
+      (Request : Protoable.S)
+      (Response : Protoable.S)
+      (_ : Protospec.S
+           with type request := Request.Proto.t
+            and type request_mode := Pbrt_services.Value_mode.stream
+            and type response := Response.Proto.t
+            and type response_mode := Pbrt_services.Value_mode.unary) :
+    S with module Request := Request and module Response := Response
+end
 
-val client_streaming
-  :  client_rpc:
-       ( 'proto_request
-         , Pbrt_services.Value_mode.stream
-         , 'proto_response
-         , Pbrt_services.Value_mode.unary )
-         Pbrt_services.Client.rpc
-  -> server_rpc:
-       ( 'proto_request
-         , Pbrt_services.Value_mode.stream
-         , 'proto_response
-         , Pbrt_services.Value_mode.unary )
-         Pbrt_services.Server.rpc
-  -> (module Protoable.S with type t = 'request and type Proto.t = 'proto_request)
-  -> (module Protoable.S with type t = 'response and type Proto.t = 'proto_response)
-  -> ('request, 'response) client_streaming
+module Server_streaming : sig
+  module type S =
+    S with type request_mode = Value_mode.unary and type response_mode = Value_mode.stream
 
-val bidirectional_streaming
-  :  client_rpc:
-       ( 'proto_request
-         , Pbrt_services.Value_mode.stream
-         , 'proto_response
-         , Pbrt_services.Value_mode.stream )
-         Pbrt_services.Client.rpc
-  -> server_rpc:
-       ( 'proto_request
-         , Pbrt_services.Value_mode.stream
-         , 'proto_response
-         , Pbrt_services.Value_mode.stream )
-         Pbrt_services.Server.rpc
-  -> (module Protoable.S with type t = 'request and type Proto.t = 'proto_request)
-  -> (module Protoable.S with type t = 'response and type Proto.t = 'proto_response)
-  -> ('request, 'response) bidirectional_streaming
+  module Make
+      (Request : Protoable.S)
+      (Response : Protoable.S)
+      (_ : Protospec.S
+           with type request := Request.Proto.t
+            and type request_mode := Pbrt_services.Value_mode.unary
+            and type response := Response.Proto.t
+            and type response_mode := Pbrt_services.Value_mode.stream) :
+    S with module Request := Request and module Response := Response
+end
+
+module Bidirectional_streaming : sig
+  module type S =
+    S
+    with type request_mode = Value_mode.stream
+     and type response_mode = Value_mode.stream
+
+  module Make
+      (Request : Protoable.S)
+      (Response : Protoable.S)
+      (_ : Protospec.S
+           with type request := Request.Proto.t
+            and type request_mode := Pbrt_services.Value_mode.stream
+            and type response := Response.Proto.t
+            and type response_mode := Pbrt_services.Value_mode.stream) :
+    S with module Request := Request and module Response := Response
+end
 
 (** {1 Grpc Utils}
 

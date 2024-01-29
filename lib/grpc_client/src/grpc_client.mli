@@ -8,9 +8,6 @@ val with_connection
   -> f:(Connection.t -> 'a Or_error.t)
   -> 'a Or_error.t
 
-(*_ Note (mbarbin): In the constructors below, perhaps it would look nicer with a
-  first class module as first argument, rather than the [val rpc] value. TBD. *)
-
 val unary
   :  ('request, 'response) Grpc_spec.unary
   -> connection:Connection.t

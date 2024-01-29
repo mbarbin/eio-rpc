@@ -31,10 +31,9 @@ module Response = struct
   ;;
 end
 
-let rpc =
-  Grpc_spec.unary
-    ~client_rpc:Keyval_rpc_proto.Keyval.Keyval.Client.listKeys
-    ~server_rpc:Keyval_rpc_proto.Keyval.Keyval.Server.listKeys
-    (module Request)
-    (module Response)
-;;
+include
+  Grpc_spec.Unary.Make (Request) (Response)
+    (struct
+      let client_rpc = Keyval_rpc_proto.Keyval.Keyval.Client.listKeys
+      let server_rpc = Keyval_rpc_proto.Keyval.Keyval.Server.listKeys
+    end)

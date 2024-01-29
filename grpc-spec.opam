@@ -17,6 +17,7 @@ depends: [
   "grpc-protoc" {>= "0.2.0-preview.2"}
   "ocaml-protoc" {>= "3.0.2-preview.4"}
   "pbrt_services" {>= "3.0.2-preview.4"}
+  "ppx_jane" {>= "v0.16" & < "v0.17"}
   "ppx_js_style" {>= "v0.16" & < "v0.17"}
   "odoc" {with-doc}
 ]

@@ -14,7 +14,7 @@ let%expect_test "with_connection" =
   (* Now let's start access that binding using the RPC api. *)
   let%fun.F connection = Grpc_test.Server.with_connection server in
   let data =
-    Grpc_client.unary Keyval_rpc.Get.rpc ~connection (Keyval.Key.v "foo")
+    Grpc_client.unary (module Keyval_rpc.Get) ~connection (Keyval.Key.v "foo")
     |> Or_error.join
     |> Or_error.ok_exn
   in

@@ -6,4 +6,4 @@ module Response : sig
   type t = unit [@@deriving compare, equal, hash, quickcheck, sexp_of]
 end
 
-val rpc : (Request.t, Response.t) Grpc_spec.unary
+include Grpc_spec.Unary.S with module Request := Request and module Response := Response

@@ -3,20 +3,12 @@ let%expect_test "rountrip" =
     Base_quickcheck.Test.run_exn
       (module Keyval_rpc.Delete.Request)
       ~examples:[ Keyval.Key.v "foo"; Keyval.Key.v "bar" ]
-      ~f:(fun key ->
-        Roundtrip.test_request
-          Keyval_rpc.Delete.rpc
-          (module Keyval_rpc.Delete.Request)
-          key));
+      ~f:(fun key -> Roundtrip.test_request (module Keyval_rpc.Delete) key));
   [%expect {||}];
   require_does_not_raise [%here] (fun () ->
     Base_quickcheck.Test.run_exn
       (module Keyval_rpc.Delete.Response)
-      ~f:(fun response ->
-        Roundtrip.test_response
-          Keyval_rpc.Delete.rpc
-          (module Keyval_rpc.Delete.Response)
-          response));
+      ~f:(fun response -> Roundtrip.test_response (module Keyval_rpc.Delete) response));
   [%expect {| |}];
   ()
 ;;
@@ -25,9 +17,7 @@ let%expect_test "rountrip" =
    regressions here. *)
 
 let%expect_test "roundtrip" =
-  let test key =
-    Roundtrip.test_response Keyval_rpc.Delete.rpc (module Keyval_rpc.Delete.Response) key
-  in
+  let test key = Roundtrip.test_response (module Keyval_rpc.Delete) key in
   require_does_not_raise [%here] (fun () -> test (Or_error.error_string "Hello Error"));
   [%expect {||}];
   require_does_not_raise [%here] (fun () -> test (Or_error.error_string ""));

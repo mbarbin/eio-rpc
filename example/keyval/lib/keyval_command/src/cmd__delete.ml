@@ -15,5 +15,5 @@ let main =
          Grpc_discovery.Connection_config.sockaddr connection_config ~env
        in
        Grpc_client.with_connection ~env ~sockaddr ~f:(fun connection ->
-         Grpc_client.unary Keyval_rpc.Delete.rpc ~connection key |> Or_error.join))
+         Grpc_client.unary (module Keyval_rpc.Delete) ~connection key |> Or_error.join))
 ;;
