@@ -29,6 +29,18 @@ let%expect_test "offline" =
     [1] |}];
   (* This is what the [~offline:true] parameter is about. Let's demonstrate it
      below. *)
+  keyval ~offline:false [ [ "validate-key"; "--help" ] ];
+  [%expect {|
+       verify the syntactic validity of a provided key
+
+         keyval.exe validate-key KEY
+
+       This command performs a static validation of the key and does not require a
+       connection to a running server.
+
+       === flags ===
+
+         [-help], -?                . print this help text and exit |}];
   keyval ~offline:true [ [ "validate-key"; "my-key" ] ];
   [%expect {|
     ("Keyval.Key.of_string: invalid key" my-key)
