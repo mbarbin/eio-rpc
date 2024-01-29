@@ -3,10 +3,7 @@ module Connection : sig
 end
 
 val with_connection
-  :  env:
-       < fs : _ Eio.Path.t
-       ; net : [> [ `Generic | `Unix ] Eio.Net.ty ] Eio.Resource.t
-       ; .. >
+  :  env:< net : [> [ `Generic | `Unix ] Eio.Net.ty ] Eio.Resource.t ; .. >
   -> sockaddr:Eio.Net.Sockaddr.stream
   -> f:(Connection.t -> 'a Or_error.t)
   -> 'a Or_error.t
