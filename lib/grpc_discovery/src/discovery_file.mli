@@ -5,9 +5,9 @@
     file strategy for a client to discover dynamically where the server is
     listening. *)
 
-(** Load and parse discovery file from disk. *)
+(** Load and parse discovery file from disk. This is done by clients. *)
 val load : _ Eio.Path.t -> Eio.Net.Sockaddr.stream
 
 (** Save discovery file to disk. The responsibility of mkdir the parent is left
-    for the caller to handle. *)
+    for the caller to handle. This is done by servers. *)
 val save : _ Eio.Path.t -> sockaddr:Eio.Net.Sockaddr.stream -> unit

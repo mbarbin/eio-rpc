@@ -3,31 +3,74 @@
     This is built with expect-tests in mind. See the keyval application in this
     repo for a complete example of use.
 
+    {1 Testing environment}
+
+    To use the rest of this API, you need to introduce a new test environment to
+    the scope. This is done via the {!run} function. This function will run the
+    given function [f] with a fresh environment of type {!t}, and clean up the
+    environment at the end. *)
+
+type t
+
+val run
+  :  env:
+       < fs : _ Eio.Path.t
+       ; net : [> [ `Generic | `Unix ] Eio.Net.ty ] Eio.Resource.t
+       ; process_mgr : _ Eio.Process.mgr
+       ; stderr : _ Eio.Flow.sink
+       ; clock : _ Eio.Time.clock
+       ; .. >
+  -> f:(t -> unit)
+  -> unit
+
+(** {1 Socket kinds}
+
     The tests support both kind of sockaddr, unix sockets and tcp connections,
     in both cases to connect to a server running on the localhost where the
-    expect tests are running.
+    expect tests are running. *)
 
-    Here is what happens in each mode:
+module Sockaddr_kind : sig
+  (** Choosing the kind of sockaddr to use.
 
-    {2 Unix_socket}
+      Here is what happens in each mode:
 
-    The library creates a temporary file in the file system, and supplies
-    parameters to the server and client command pointing to it, to use it as a
-    unix socket.
+      {2 Unix_socket}
 
-    {2 Tcp_localhost}
+      The library creates a temporary file in the file system, and supplies
+      parameters to the server and client command pointing to it, to use it as a
+      unix socket.
 
-    The library creates a temporary file in the file system, and supplies
-    parameters to the server and client command pointing to it. This temporary
-    file will serve as a basic service discover via file:
+      {2 Tcp_localhost}
 
-    The server command is expected to let the OS choose an available port,
-    listen on the given port and write down that port to the file, as a plain
-    integer. The client command is expected to read the port from the file, and
-    use it to innitiate a connection to this port. *)
+      The library creates a temporary file in the file system, and supplies
+      parameters to the server and client command pointing to it. This temporary
+      file will serve as a basic service discover via file:
+
+      The server command is expected to let the OS choose an available port,
+      listen on the given port and write down that port to the file into a
+      parsable json format. The client command is expected to read the port from
+      the file, and use it to innitiate a connection to this port. The format in
+      used is defined by {!module:Grpc_discovery.Discovery_file}. *)
+
+  type t =
+    | Unix_socket
+    | Tcp_localhost
+end
+
+(** {1 Config} *)
 
 module Config : sig
-  (** The config allows each app to implement the bits required by this library. *)
+  (** A configuration is required by the library to know how to run your server
+      and client commands.
+
+      The library provides a default configuration that should work for most
+      simple cases. To use it, you have to make sure your server and client
+      commands accept command line parameters specified by the {!module:Grpc_discovery}
+      library. Then you can use the {!grpc_discovery} function to get a
+      configuration that will work. For more advanced uses, see
+      {!section-"advanced-api"}. *)
+
+  type t
 
   module Process_command : sig
     (** This type is used to represent a command that the library must run to
@@ -49,6 +92,15 @@ module Config : sig
       ; args : string list
       }
   end
+
+  (** If you use [Grpc_discovery] in your client and server command line, you
+      then only need to supply the path to both commands. *)
+  val grpc_discovery
+    :  run_server_command:Process_command.t
+    -> run_client_command:Process_command.t
+    -> t
+
+  (** {1:advanced-api Advanced API} *)
 
   module Client_invocation : sig
     (** In the tests, sometimes we run client commands that needs to connect to
@@ -77,31 +129,14 @@ module Config : sig
       -> Process_command.t
   end
 
-  type t
-
   val create : (module S) -> t
-
-  (** If you use [Grpc_discovery] in your client and server command line, you
-      then only need to supply the path to both commands. *)
-  val grpc_discovery
-    :  run_server_command:Process_command.t
-    -> run_client_command:Process_command.t
-    -> t
 end
 
-(** An environment for the test. *)
-type t
+(** {1 Server}
 
-val run
-  :  env:
-       < fs : _ Eio.Path.t
-       ; net : [> [ `Generic | `Unix ] Eio.Net.ty ] Eio.Resource.t
-       ; process_mgr : _ Eio.Process.mgr
-       ; stderr : _ Eio.Flow.sink
-       ; clock : _ Eio.Time.clock
-       ; .. >
-  -> f:(t -> unit)
-  -> unit
+    The rest of the API is used to run one or several server(s) and connect to
+    it, either by running your app's cli, or in OCaml directly via
+    {!Server.with_connection}. *)
 
 module Server : sig
   (** A server running that you can connect to during tests. *)
@@ -115,16 +150,13 @@ module Server : sig
 end
 
 module With_server : sig
+  (** This is what is introduced to the scope with the {!with_server} function. *)
   type t =
     { server : Server.t
     ; client : ?offline:bool -> string list list -> unit
+    (** [client ?offline args] is a convenient wrapper for {!run_client},
+        applied to the given server, and directly introduced to the scope. *)
     }
-end
-
-module Sockaddr_kind : sig
-  type t =
-    | Unix_socket
-    | Tcp_localhost
 end
 
 (** Takes care of starting a server, running [f] and stopping the server at the
