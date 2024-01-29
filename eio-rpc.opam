@@ -32,6 +32,7 @@ depends: [
   "ppx_deriving_qcheck" {>= "0.4.1"}
   "ppx_jane" {>= "v0.16" & < "v0.17"}
   "ppx_js_style" {>= "v0.16" & < "v0.17"}
+  "qcheck" {>= "0.21.3"}
   "odoc" {with-doc}
 ]
 build: [
