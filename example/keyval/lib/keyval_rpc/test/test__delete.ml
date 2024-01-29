@@ -51,7 +51,7 @@ let%expect_test "encoding of Unit" =
   let decoded = Keyval_rpc_proto.Keyval.decode_pb_unit_or_error decoder in
   print_s
     (match decoded with
-     | { error } -> [%sexp Error (error : string)]);
-  [%expect {| (Error "") |}];
+     | { error } -> [%sexp { error : string }]);
+  [%expect {| ((error "")) |}];
   ()
 ;;
