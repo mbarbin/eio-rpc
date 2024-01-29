@@ -6,5 +6,6 @@ let main =
     ; "list-keys", Cmd__list_keys.main
     ; "set", Cmd__set.main
     ; "server", Cmd__server.main
+    ; "validate-key", Cmd__validate_key.main
     ]
 ;;
