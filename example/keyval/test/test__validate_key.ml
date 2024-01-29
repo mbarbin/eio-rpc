@@ -34,6 +34,17 @@ let%expect_test "offline" =
     ("Keyval.Key.of_string: invalid key" my-key)
     [1] |}];
   keyval ~offline:true [ [ "validate-key"; "my_key" ] ];
-  [%expect {| |}];
+  [%expect {||}];
+  (* If you're trying to use [offline:true] with a command that actually does
+     need to connect to the server, you'll be left with whatever connection
+     specification is chosen by default. In this application, this is
+     [localhost:8080], which is not an address where a keyval server is listening
+     during the tests. *)
+  keyval ~offline:true [ [ "list-keys" ] ];
+  [%expect
+    {|
+    ( "Eio.Io Net Connection_failure Refused Unix_error (Connection refused, \"connect\", \"\"),\
+     \n  connecting to tcp:127.0.0.1:8080")
+    [1] |}];
   ()
 ;;
