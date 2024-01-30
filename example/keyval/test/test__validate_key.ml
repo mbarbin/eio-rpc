@@ -30,7 +30,8 @@ let%expect_test "offline" =
   (* This is what the [~offline:true] parameter is about. Let's demonstrate it
      below. *)
   keyval ~offline:false [ [ "validate-key"; "--help" ] ];
-  [%expect {|
+  [%expect
+    {|
        verify the syntactic validity of a provided key
 
          keyval.exe validate-key KEY
