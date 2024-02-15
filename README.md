@@ -40,3 +40,26 @@ other developers on GitHub.
 
 The code documentation of the latest release is built with `odoc` and published
 to `GitHub` pages [here](https://mbarbin.github.io/eio-rpc).
+
+## Build
+
+This repo depends on unreleased packages that are published to a custom
+[opam-repository](https://github.com/mbarbin/opam-repository.git), which must be
+added to the opam switch used to build the project.
+
+For example, if you use a local opam switch, this would look like this:
+
+```sh
+git clone https://github.com/mbarbin/eio-rpc.git
+cd eio-rpc
+opam switch create . 5.1.1 --no-install
+eval $(opam env)
+opam repo add mbarbin https://github.com/mbarbin/opam-repository.git
+opam install . --deps-only --with-test --with-doc
+```
+
+Once this is setup, you can build with dune:
+
+```sh
+dune build @all @runtest
+```
