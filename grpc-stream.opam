@@ -10,7 +10,7 @@ bug-reports: "https://github.com/mbarbin/eio-rpc/issues"
 depends: [
   "dune" {>= "3.14"}
   "ocaml" {>= "5.1"}
-  "grpc-eio" {>= "0.2.0-preview.2"}
+  "grpc-eio" {= "dev"}
   "ppx_js_style" {>= "v0.16" & < "v0.17"}
   "odoc" {with-doc}
 ]
@@ -29,3 +29,7 @@ build: [
   ]
 ]
 dev-repo: "git+https://github.com/mbarbin/eio-rpc.git"
+pin-depends: [
+  [ "grpc.dev" "git+https://github.com/mbarbin/ocaml-grpc.git#typed-rpc" ]
+  [ "grpc-eio.dev" "git+https://github.com/mbarbin/ocaml-grpc.git#typed-rpc" ]
+]

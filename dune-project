@@ -25,13 +25,13 @@
   (ocaml
    (>= 5.1))
   (grpc
-   (>= 0.2.0-preview.2))
+   (= "dev"))
   (grpc-protoc
-   (>= 0.2.0-preview.2))
+   (= "dev"))
   (ocaml-protoc
-   (>= 3.0.2-preview.4))
+   (= "dev"))
   (pbrt_services
-   (>= 3.0.2-preview.4))
+   (= "dev"))
   (ppx_jane
    (and
     (>= v0.16)
@@ -48,7 +48,7 @@
   (ocaml
    (>= 5.1))
   (grpc-eio
-   (>= 0.2.0-preview.2))
+   (= "dev"))
   (ppx_js_style
    (and
     (>= v0.16)
@@ -67,9 +67,9 @@
   (eio
    (>= 0.14))
   (grpc
-   (>= 0.2.0-preview.2))
+   (= "dev"))
   (grpc-eio
-   (>= 0.2.0-preview.2))
+   (= "dev"))
   (grpc-spec
    (= :version))
   (h2-eio
@@ -96,9 +96,9 @@
   (eio
    (>= 0.14))
   (grpc
-   (>= 0.2.0-preview.2))
+   (= "dev"))
   (grpc-eio
-   (>= 0.2.0-preview.2))
+   (= "dev"))
   (grpc-spec
    (= :version))
   (h2
@@ -133,7 +133,7 @@
   (fpath
    (>= 0.7.3))
   (fpath-extended
-   (>= 0.0.3))
+   (= "dev"))
   (grpc-client
    (= :version))
   (ppx_jane
@@ -228,7 +228,7 @@
     :dev
     (>= 2.8.3)))
   (command-unix-for-opam
-   (>= 0.0.2))
+   (= "dev"))
   (core
    (and
     (>= v0.16)
@@ -240,7 +240,7 @@
   (eio
    (>= 0.14))
   (eio-writer
-   (>= 0.0.3))
+   (= "dev"))
   (eio_main
    (>= 0.14))
   (expect_test_helpers_core
@@ -256,13 +256,13 @@
   (grpc-stream
    (= :version))
   (pbrt
-   (>= 3.0.2-preview.4))
+   (= "dev"))
   (pbrt_quickcheck
-   (>= 3.0.2-preview.4))
+   (= "dev"))
   (pbrt_services
-   (>= 3.0.2-preview.4))
+   (= "dev"))
   (ppx-let-fun
-   (>= 0.0.2))
+   (= "dev"))
   (ppx_deriving
    (>= 5.2.1))
   (ppx_deriving_qcheck

@@ -1,0 +1,9 @@
+pin-depends: [
+  [ "command-unix-for-opam.dev" "git+https://github.com/mbarbin/command-unix-for-opam.git" ]
+  [ "eio-writer.dev" "git+https://github.com/mbarbin/eio-writer.git" ]
+  [ "pbrt.dev" "git+https://github.com/mbarbin/ocaml-protoc.git#quickcheck-roundtrip-tests" ]
+  [ "pbrt_quickcheck.dev" "git+https://github.com/mbarbin/ocaml-protoc.git#quickcheck-roundtrip-tests" ]
+  [ "pbrt_services.dev" "git+https://github.com/mbarbin/ocaml-protoc.git#quickcheck-roundtrip-tests" ]
+  [ "pbrt_yojson.dev" "git+https://github.com/mbarbin/ocaml-protoc.git#quickcheck-roundtrip-tests" ]
+  [ "ppx-let-fun.dev" "git+https://github.com/mbarbin/ppx-let-fun.git" ]
+]

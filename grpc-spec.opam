@@ -13,10 +13,10 @@ bug-reports: "https://github.com/mbarbin/eio-rpc/issues"
 depends: [
   "dune" {>= "3.14"}
   "ocaml" {>= "5.1"}
-  "grpc" {>= "0.2.0-preview.2"}
-  "grpc-protoc" {>= "0.2.0-preview.2"}
-  "ocaml-protoc" {>= "3.0.2-preview.4"}
-  "pbrt_services" {>= "3.0.2-preview.4"}
+  "grpc" {= "dev"}
+  "grpc-protoc" {= "dev"}
+  "ocaml-protoc" {= "dev"}
+  "pbrt_services" {= "dev"}
   "ppx_jane" {>= "v0.16" & < "v0.17"}
   "ppx_js_style" {>= "v0.16" & < "v0.17"}
   "odoc" {with-doc}
@@ -36,3 +36,10 @@ build: [
   ]
 ]
 dev-repo: "git+https://github.com/mbarbin/eio-rpc.git"
+pin-depends: [
+  [ "grpc.dev" "git+https://github.com/mbarbin/ocaml-grpc.git#typed-rpc" ]
+  [ "grpc-protoc.dev" "git+https://github.com/mbarbin/ocaml-grpc.git#typed-rpc" ]
+  [ "ocaml-protoc.dev" "git+https://github.com/mbarbin/ocaml-protoc.git#quickcheck-roundtrip-tests" ]
+  [ "pbrt_services.dev" "git+https://github.com/mbarbin/ocaml-protoc.git#quickcheck-roundtrip-tests" ]
+  [ "pbrt_yojson.dev" "git+https://github.com/mbarbin/ocaml-protoc.git#quickcheck-roundtrip-tests" ]
+]

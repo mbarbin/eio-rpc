@@ -1,0 +1,4 @@
+pin-depends: [
+  [ "grpc.dev" "git+https://github.com/mbarbin/ocaml-grpc.git#typed-rpc" ]
+  [ "grpc-eio.dev" "git+https://github.com/mbarbin/ocaml-grpc.git#typed-rpc" ]
+]

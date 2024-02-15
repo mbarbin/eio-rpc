@@ -1,0 +1,7 @@
+pin-depends: [
+  [ "grpc.dev" "git+https://github.com/mbarbin/ocaml-grpc.git#typed-rpc" ]
+  [ "grpc-protoc.dev" "git+https://github.com/mbarbin/ocaml-grpc.git#typed-rpc" ]
+  [ "ocaml-protoc.dev" "git+https://github.com/mbarbin/ocaml-protoc.git#quickcheck-roundtrip-tests" ]
+  [ "pbrt_services.dev" "git+https://github.com/mbarbin/ocaml-protoc.git#quickcheck-roundtrip-tests" ]
+  [ "pbrt_yojson.dev" "git+https://github.com/mbarbin/ocaml-protoc.git#quickcheck-roundtrip-tests" ]
+]

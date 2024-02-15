@@ -13,21 +13,21 @@ depends: [
   "base" {>= "v0.16" & < "v0.17"}
   "base_quickcheck" {>= "v0.16" & < "v0.17"}
   "bisect_ppx" {dev & >= "2.8.3"}
-  "command-unix-for-opam" {>= "0.0.2"}
+  "command-unix-for-opam" {= "dev"}
   "core" {>= "v0.16" & < "v0.17"}
   "core_unix" {>= "v0.16" & < "v0.17"}
   "eio" {>= "0.14"}
-  "eio-writer" {>= "0.0.3"}
+  "eio-writer" {= "dev"}
   "eio_main" {>= "0.14"}
   "expect_test_helpers_core" {>= "v0.16" & < "v0.17"}
   "grpc-client" {= version}
   "grpc-server" {= version}
   "grpc-spec" {= version}
   "grpc-stream" {= version}
-  "pbrt" {>= "3.0.2-preview.4"}
-  "pbrt_quickcheck" {>= "3.0.2-preview.4"}
-  "pbrt_services" {>= "3.0.2-preview.4"}
-  "ppx-let-fun" {>= "0.0.2"}
+  "pbrt" {= "dev"}
+  "pbrt_quickcheck" {= "dev"}
+  "pbrt_services" {= "dev"}
+  "ppx-let-fun" {= "dev"}
   "ppx_deriving" {>= "5.2.1"}
   "ppx_deriving_qcheck" {>= "0.4.1"}
   "ppx_jane" {>= "v0.16" & < "v0.17"}
@@ -50,3 +50,12 @@ build: [
   ]
 ]
 dev-repo: "git+https://github.com/mbarbin/eio-rpc.git"
+pin-depends: [
+  [ "command-unix-for-opam.dev" "git+https://github.com/mbarbin/command-unix-for-opam.git" ]
+  [ "eio-writer.dev" "git+https://github.com/mbarbin/eio-writer.git" ]
+  [ "pbrt.dev" "git+https://github.com/mbarbin/ocaml-protoc.git#quickcheck-roundtrip-tests" ]
+  [ "pbrt_quickcheck.dev" "git+https://github.com/mbarbin/ocaml-protoc.git#quickcheck-roundtrip-tests" ]
+  [ "pbrt_services.dev" "git+https://github.com/mbarbin/ocaml-protoc.git#quickcheck-roundtrip-tests" ]
+  [ "pbrt_yojson.dev" "git+https://github.com/mbarbin/ocaml-protoc.git#quickcheck-roundtrip-tests" ]
+  [ "ppx-let-fun.dev" "git+https://github.com/mbarbin/ppx-let-fun.git" ]
+]

@@ -12,8 +12,8 @@ depends: [
   "ocaml" {>= "5.1"}
   "base" {>= "v0.16" & < "v0.17"}
   "eio" {>= "0.14"}
-  "grpc" {>= "0.2.0-preview.2"}
-  "grpc-eio" {>= "0.2.0-preview.2"}
+  "grpc" {= "dev"}
+  "grpc-eio" {= "dev"}
   "grpc-spec" {= version}
   "h2-eio" {>= "0.11.0"}
   "ppx_jane" {>= "v0.16" & < "v0.17"}
@@ -35,3 +35,7 @@ build: [
   ]
 ]
 dev-repo: "git+https://github.com/mbarbin/eio-rpc.git"
+pin-depends: [
+  [ "grpc.dev" "git+https://github.com/mbarbin/ocaml-grpc.git#typed-rpc" ]
+  [ "grpc-eio.dev" "git+https://github.com/mbarbin/ocaml-grpc.git#typed-rpc" ]
+]
