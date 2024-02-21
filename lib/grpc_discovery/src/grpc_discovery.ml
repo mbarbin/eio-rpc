@@ -21,8 +21,8 @@ module Connection_config = struct
         { host : [ `Localhost | `Ipaddr of Ipaddr.t ]
         ; port : int
         }
-    | Unix of { path : Fpath_extended.t }
-    | Discovery_file of { path : Fpath_extended.t }
+    | Unix of { path : Fpath.t }
+    | Discovery_file of { path : Fpath.t }
   [@@deriving equal, sexp_of]
 
   let param =
@@ -72,13 +72,13 @@ module Listening_config = struct
   module Specification = struct
     type t =
       | Tcp of { port : [ `Chosen_by_OS | `Supplied of int ] }
-      | Unix of { path : Fpath_extended.t }
+      | Unix of { path : Fpath.t }
     [@@deriving equal, sexp_of]
   end
 
   type t =
     { specification : Specification.t
-    ; discovery_file : Fpath_extended.t option
+    ; discovery_file : Fpath.t option
     }
   [@@deriving equal, sexp_of]
 

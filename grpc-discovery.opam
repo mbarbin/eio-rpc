@@ -14,7 +14,7 @@ depends: [
   "core" {>= "v0.16" & < "v0.17"}
   "eio" {>= "0.14"}
   "fpath" {>= "0.7.3"}
-  "fpath-extended" {>= "0.0.3"}
+  "fpath-extended" {>= "0.0.6"}
   "grpc-client" {= version}
   "ppx_jane" {>= "v0.16" & < "v0.17"}
   "ppx_js_style" {>= "v0.16" & < "v0.17"}

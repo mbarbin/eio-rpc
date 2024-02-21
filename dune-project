@@ -133,7 +133,7 @@
   (fpath
    (>= 0.7.3))
   (fpath-extended
-   (>= 0.0.3))
+   (>= 0.0.6))
   (grpc-client
    (= :version))
   (ppx_jane
