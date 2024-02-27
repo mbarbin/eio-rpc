@@ -455,7 +455,6 @@
     (< v0.17)))
   (ppx_expect
    (and
-    :with-test
     (>= v0.16)
     (< v0.17)))
   (ppx_hash

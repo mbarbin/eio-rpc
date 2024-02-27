@@ -33,7 +33,7 @@ depends: [
   "ppx_deriving" {>= "5.2.1"}
   "ppx_deriving_qcheck" {>= "0.4.1"}
   "ppx_enumerate" {>= "v0.16" & < "v0.17"}
-  "ppx_expect" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_expect" {>= "v0.16" & < "v0.17"}
   "ppx_hash" {>= "v0.16" & < "v0.17"}
   "ppx_here" {>= "v0.16" & < "v0.17"}
   "ppx_js_style" {>= "v0.16" & < "v0.17"}
