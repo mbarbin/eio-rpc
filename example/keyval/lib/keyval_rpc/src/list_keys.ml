@@ -16,7 +16,7 @@ module Response = struct
 
   let of_proto ({ keys } : Proto.t) : t =
     keys
-    |> List.map ~f:(fun { key } -> Keyval.Key.v key)
+    |> List.map ~f:(fun ({ key } : Keyval_rpc_proto.Keyval.key) -> Keyval.Key.v key)
     |> Set.of_list (module Keyval.Key)
   ;;
 
