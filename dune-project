@@ -32,11 +32,40 @@
    (>= 3.0.2-preview.4))
   (pbrt_services
    (>= 3.0.2-preview.4))
-  (ppx_jane
+  (ppx_compare
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_enumerate
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_expect
+   (and
+    :with-test
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_hash
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_here
    (and
     (>= v0.16)
     (< v0.17)))
   (ppx_js_style
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_let
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_sexp_conv
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_sexp_value
    (and
     (>= v0.16)
     (< v0.17)))))
@@ -74,11 +103,40 @@
    (= :version))
   (h2-eio
    (>= 0.11.0))
-  (ppx_jane
+  (ppx_compare
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_enumerate
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_expect
+   (and
+    :with-test
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_hash
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_here
    (and
     (>= v0.16)
     (< v0.17)))
   (ppx_js_style
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_let
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_sexp_conv
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_sexp_value
    (and
     (>= v0.16)
     (< v0.17)))))
@@ -105,11 +163,40 @@
    (>= 0.11.0))
   (h2-eio
    (>= 0.11.0))
-  (ppx_jane
+  (ppx_compare
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_enumerate
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_expect
+   (and
+    :with-test
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_hash
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_here
    (and
     (>= v0.16)
     (< v0.17)))
   (ppx_js_style
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_let
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_sexp_conv
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_sexp_value
    (and
     (>= v0.16)
     (< v0.17)))))
@@ -136,11 +223,40 @@
    (>= 0.0.7))
   (grpc-client
    (= :version))
-  (ppx_jane
+  (ppx_compare
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_enumerate
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_expect
+   (and
+    :with-test
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_hash
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_here
    (and
     (>= v0.16)
     (< v0.17)))
   (ppx_js_style
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_let
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_sexp_conv
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_sexp_value
    (and
     (>= v0.16)
     (< v0.17)))
@@ -171,11 +287,40 @@
    (>= 0.7.3))
   (grpc-client
    (= :version))
-  (ppx_jane
+  (ppx_compare
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_enumerate
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_expect
+   (and
+    :with-test
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_hash
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_here
    (and
     (>= v0.16)
     (< v0.17)))
   (ppx_js_style
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_let
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_sexp_conv
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_sexp_value
    (and
     (>= v0.16)
     (< v0.17)))))
@@ -200,11 +345,40 @@
     (< v0.17)))
   (grpc-spec
    (= :version))
-  (ppx_jane
+  (ppx_compare
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_enumerate
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_expect
+   (and
+    :with-test
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_hash
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_here
    (and
     (>= v0.16)
     (< v0.17)))
   (ppx_js_style
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_let
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_sexp_conv
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_sexp_value
    (and
     (>= v0.16)
     (< v0.17)))))
@@ -255,6 +429,10 @@
    (= :version))
   (grpc-stream
    (= :version))
+  (parsexp
+   (and
+    (>= v0.16)
+    (< v0.17)))
   (pbrt
    (>= 3.0.2-preview.4))
   (pbrt_quickcheck
@@ -263,15 +441,44 @@
    (>= 3.0.2-preview.4))
   (ppx-let-fun
    (>= 0.0.2))
+  (ppx_compare
+   (and
+    (>= v0.16)
+    (< v0.17)))
   (ppx_deriving
    (>= 5.2.1))
   (ppx_deriving_qcheck
    (>= 0.4.1))
-  (ppx_jane
+  (ppx_enumerate
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_expect
+   (and
+    :with-test
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_hash
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_here
    (and
     (>= v0.16)
     (< v0.17)))
   (ppx_js_style
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_let
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_sexp_conv
+   (and
+    (>= v0.16)
+    (< v0.17)))
+  (ppx_sexp_value
    (and
     (>= v0.16)
     (< v0.17)))

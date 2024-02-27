@@ -16,8 +16,15 @@ depends: [
   "fpath" {>= "0.7.3"}
   "fpath-extended" {>= "0.0.7"}
   "grpc-client" {= version}
-  "ppx_jane" {>= "v0.16" & < "v0.17"}
+  "ppx_compare" {>= "v0.16" & < "v0.17"}
+  "ppx_enumerate" {>= "v0.16" & < "v0.17"}
+  "ppx_expect" {with-test & >= "v0.16" & < "v0.17"}
+  "ppx_hash" {>= "v0.16" & < "v0.17"}
+  "ppx_here" {>= "v0.16" & < "v0.17"}
   "ppx_js_style" {>= "v0.16" & < "v0.17"}
+  "ppx_let" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_conv" {>= "v0.16" & < "v0.17"}
+  "ppx_sexp_value" {>= "v0.16" & < "v0.17"}
   "ppx_yojson_conv" {>= "v0.16" & < "v0.17"}
   "yojson" {>= "2.1.1"}
   "odoc" {with-doc}
