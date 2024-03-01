@@ -5,5 +5,7 @@
  (libraries grpc-eio)
  (instrumentation
   (backend bisect_ppx))
+ (lint
+  (pps ppx_js_style -check-doc-comments))
  (preprocess
   (pps ppx_js_style -check-doc-comments)))

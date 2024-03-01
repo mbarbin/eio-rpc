@@ -14,6 +14,8 @@
  (libraries base base_quickcheck grpc-spec keyval keyval_rpc_proto parsexp)
  (instrumentation
   (backend bisect_ppx))
+ (lint
+  (pps ppx_js_style -check-doc-comments))
  (preprocess
   (pps
    ppx_compare
@@ -23,6 +25,4 @@
    ppx_let
    base_quickcheck.ppx_quickcheck
    ppx_sexp_conv
-   ppx_sexp_value
-   ppx_js_style
-   -check-doc-comments)))
+   ppx_sexp_value)))
