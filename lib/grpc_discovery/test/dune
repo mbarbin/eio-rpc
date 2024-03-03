@@ -11,12 +11,8 @@
   -open
   Base
   -open
-  Expect_test_helpers_base)
- (libraries
-  base
-  core.command
-  expect_test_helpers_core.expect_test_helpers_base
-  grpc_discovery)
+  Expect_test_helpers)
+ (libraries base core.command expect-test-helpers grpc_discovery)
  (instrumentation
   (backend bisect_ppx))
  (lint

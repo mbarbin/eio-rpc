@@ -19,7 +19,7 @@ depends: [
   "eio" {>= "0.15"}
   "eio-writer" {>= "0.0.3"}
   "eio_main" {>= "0.15"}
-  "expect_test_helpers_core" {>= "v0.16" & < "v0.17"}
+  "expect-test-helpers" {>= "v0.16" & < "v0.17"}
   "grpc-client" {= version}
   "grpc-server" {= version}
   "grpc-spec" {= version}
