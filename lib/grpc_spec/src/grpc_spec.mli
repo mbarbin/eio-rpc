@@ -140,13 +140,13 @@ end
     The rest of the module contains utils to help creating what is required by
     the [Grpc] library. *)
 
-(** [client_rpc] is used by the implementation of {!module:Grpc_client}. *)
+(** [client_rpc] is used by the implementation of [Grpc_client]. *)
 val client_rpc
   :  ('request, 'request_mode, 'response, 'response_mode) t
   -> ('request, 'request_mode, 'response, 'response_mode) Grpc.Rpc.Client_rpc.t
 
-(** [server_rpc] is used by {!module:Grpc_server} to furnish the server
-    implementation for a given RPC. *)
+(** [server_rpc] is used by [Grpc_server] to furnish the server implementation
+    for a given RPC. *)
 val server_rpc
   :  ('request, 'request_mode, 'response, 'response_mode) t
   -> ( 'request
