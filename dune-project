@@ -223,8 +223,8 @@
    (>= 1.0))
   (fpath
    (>= 0.7.3))
-  (fpath-extended
-   (>= 0.0.7))
+  (fpath-base
+   (>= 0.0.8))
   (grpc-client
    (= :version))
   (ppx_compare
