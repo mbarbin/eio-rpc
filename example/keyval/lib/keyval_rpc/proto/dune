@@ -10,6 +10,7 @@
  (targets keyval.ml keyval.mli)
  (deps
   (glob_files *.proto))
+ (mode promote)
  (action
   (run
    ocaml-protoc
@@ -22,13 +23,3 @@
    --quickcheck
    --ml_out
    .)))
-
-(rule
- (alias runtest)
- (action
-  (diff keyval.ml.expected keyval.ml)))
-
-(rule
- (alias runtest)
- (action
-  (diff keyval.mli.expected keyval.mli)))
