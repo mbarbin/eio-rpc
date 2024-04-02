@@ -10,6 +10,7 @@
  (targets keyval.ml keyval.mli)
  (deps
   (glob_files *.proto))
+ (alias runtest)
  (mode promote)
  (action
   (run
