@@ -13,14 +13,16 @@
  (alias runtest)
  (mode promote)
  (action
-  (run
-   ocaml-protoc
-   keyval.proto
-   --ocaml_all_types_ppx
-   "deriving show { with_path = false }, eq, qcheck2"
-   --binary
-   --yojson
-   --services
-   --quickcheck
-   --ml_out
-   .)))
+  (progn
+   (run
+    ocaml-protoc
+    keyval.proto
+    --ocaml_all_types_ppx
+    "deriving show { with_path = false }, eq, qcheck2"
+    --binary
+    --yojson
+    --services
+    --quickcheck
+    --ml_out
+    .)
+   (run ocamlformat --inplace %{targets}))))
