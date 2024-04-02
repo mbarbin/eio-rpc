@@ -436,6 +436,10 @@
    (= :version))
   (grpc-stream
    (= :version))
+  (ocamlformat
+   (and
+    :with-test
+    (= 0.26.1)))
   (parsexp
    (and
     (>= v0.16)
