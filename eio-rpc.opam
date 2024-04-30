@@ -24,7 +24,7 @@ depends: [
   "grpc-server" {= version}
   "grpc-spec" {= version}
   "grpc-stream" {= version}
-  "ocamlformat" {with-test & = "0.26.1"}
+  "ocamlformat" {with-test & = "0.26.2"}
   "parsexp" {>= "v0.16" & < "v0.17"}
   "pbrt" {>= "3.0.2-preview.4"}
   "pbrt_quickcheck" {>= "3.0.2-preview.4"}

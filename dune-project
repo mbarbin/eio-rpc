@@ -439,7 +439,7 @@
   (ocamlformat
    (and
     :with-test
-    (= 0.26.1)))
+    (= 0.26.2)))
   (parsexp
    (and
     (>= v0.16)
