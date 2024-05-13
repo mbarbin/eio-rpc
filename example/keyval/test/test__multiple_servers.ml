@@ -40,16 +40,16 @@ let all_bindings ~connection =
 ;;
 
 let%expect_test "two servers" =
-  let%fun env = Eio_main.run in
-  let%fun.F t = Grpc_test.run ~env in
-  let%fun.F { server = server1; client = cli1 } =
+  let& env = Eio_main.run in
+  let&- t = Grpc_test.run ~env in
+  let&- { server = server1; client = cli1 } =
     Grpc_test.with_server t ~config:Keyval_test.config
   in
-  let%fun.F { server = server2; client = cli2 } =
+  let&- { server = server2; client = cli2 } =
     Grpc_test.with_server t ~config:Keyval_test.config
   in
-  let%fun.F connection1 = Grpc_test.Server.with_connection server1 in
-  let%fun.F connection2 = Grpc_test.Server.with_connection server2 in
+  let&- connection1 = Grpc_test.Server.with_connection server1 in
+  let&- connection2 = Grpc_test.Server.with_connection server2 in
   (* At first, none of the servers have keys. *)
   cli1 [ [ "list-keys" ] ];
   [%expect {| () |}];

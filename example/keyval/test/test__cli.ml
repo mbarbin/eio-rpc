@@ -4,9 +4,9 @@
    instead of bash. *)
 
 let%expect_test "using the cli" =
-  let%fun env = Eio_main.run in
-  let%fun.F t = Grpc_test.run ~env in
-  let%fun.F { server = _; client = keyval } =
+  let& env = Eio_main.run in
+  let&- t = Grpc_test.run ~env in
+  let&- { server = _; client = keyval } =
     Grpc_test.with_server t ~config:Keyval_test.config
   in
   (* At first, there are no keys in the server. *)

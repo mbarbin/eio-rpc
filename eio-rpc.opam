@@ -24,12 +24,12 @@ depends: [
   "grpc-server" {= version}
   "grpc-spec" {= version}
   "grpc-stream" {= version}
+  "letfun" {>= "0.0.1"}
   "ocamlformat" {with-test & = "0.26.2"}
   "parsexp" {>= "v0.16" & < "v0.17"}
   "pbrt" {>= "3.0.2-preview.4"}
   "pbrt_quickcheck" {>= "3.0.2-preview.4"}
   "pbrt_services" {>= "3.0.2-preview.4"}
-  "ppx-let-fun" {>= "0.0.2"}
   "ppx_compare" {>= "v0.16" & < "v0.17"}
   "ppx_deriving" {>= "5.2.1"}
   "ppx_deriving_qcheck" {>= "0.4.1"}

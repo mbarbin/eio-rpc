@@ -12,7 +12,9 @@
   -open
   Base
   -open
-  Expect_test_helpers)
+  Expect_test_helpers
+  -open
+  Letfun)
  (libraries
   base
   eio
@@ -21,11 +23,12 @@
   grpc_client
   grpc_test
   keyval
-  keyval_rpc)
+  keyval_rpc
+  letfun)
  (instrumentation
   (backend bisect_ppx))
  (lint
-  (pps ppx_js_style -check-doc-comments))
+  (pps ppx_js_style -allow-let-operators -check-doc-comments))
  (preprocess
   (pps
    ppx_compare
@@ -35,8 +38,7 @@
    ppx_here
    ppx_let
    ppx_sexp_conv
-   ppx_sexp_value
-   ppx-let-fun)))
+   ppx_sexp_value)))
 
 (rule
  (copy ../bin/main.exe keyval.exe))

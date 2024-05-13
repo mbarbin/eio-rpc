@@ -436,6 +436,8 @@
    (= :version))
   (grpc-stream
    (= :version))
+  (letfun
+   (>= 0.0.1))
   (ocamlformat
    (and
     :with-test
@@ -450,8 +452,6 @@
    (>= 3.0.2-preview.4))
   (pbrt_services
    (>= 3.0.2-preview.4))
-  (ppx-let-fun
-   (>= 0.0.2))
   (ppx_compare
    (and
     (>= v0.16)

@@ -4,8 +4,8 @@
    database). *)
 
 let%expect_test "testing server restart" =
-  let%fun env = Eio_main.run in
-  let%fun.F t = Grpc_test.run ~env in
+  let& env = Eio_main.run in
+  let&- t = Grpc_test.run ~env in
   Grpc_test.with_server t ~config:Keyval_test.config ~f:(fun { client = keyval; _ } ->
     keyval [ [ "list-keys" ] ];
     [%expect {| () |}];
