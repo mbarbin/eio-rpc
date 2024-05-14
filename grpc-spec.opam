@@ -12,7 +12,7 @@ doc: "https://mbarbin.github.io/eio-rpc/"
 bug-reports: "https://github.com/mbarbin/eio-rpc/issues"
 depends: [
   "dune" {>= "3.16"}
-  "ocaml" {>= "5.1"}
+  "ocaml" {>= "5.2"}
   "grpc" {>= "0.2.0-preview.2"}
   "grpc-protoc" {>= "0.2.0-preview.2"}
   "ocaml-protoc" {>= "3.1"}

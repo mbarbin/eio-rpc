@@ -23,7 +23,7 @@
   "An opinionated library to build gRPC specifications Eio clients/servers")
  (depends
   (ocaml
-   (>= 5.1))
+   (>= 5.2))
   (grpc
    (>= 0.2.0-preview.2))
   (grpc-protoc
@@ -76,7 +76,7 @@
  (synopsis "A (temporary) library to manipulate gRPC streams")
  (depends
   (ocaml
-   (>= 5.1))
+   (>= 5.2))
   (grpc-eio
    (>= 0.2.0-preview.2))
   (ppx_js_style
@@ -90,7 +90,7 @@
  (synopsis "An opinionated library to build gRPC Eio clients")
  (depends
   (ocaml
-   (>= 5.1))
+   (>= 5.2))
   (base
    (and
     (>= v0.17)
@@ -149,7 +149,7 @@
  (synopsis "An opinionated library to build gRPC Eio servers")
  (depends
   (ocaml
-   (>= 5.1))
+   (>= 5.2))
   (base
    (and
     (>= v0.17)
@@ -210,7 +210,7 @@
  (synopsis "A library to help discover gRPC servers running on localhost")
  (depends
   (ocaml
-   (>= 5.1))
+   (>= 5.2))
   (base
    (and
     (>= v0.17)
@@ -277,7 +277,7 @@
  (synopsis "A library to help writting tests for gRPC Eio applications")
  (depends
   (ocaml
-   (>= 5.1))
+   (>= 5.2))
   (base
    (and
     (>= v0.17)
@@ -336,7 +336,7 @@
  (synopsis "A library to help writting expect-tests for gRPC interfaces")
  (depends
   (ocaml
-   (>= 5.1))
+   (>= 5.2))
   (base
    (and
     (>= v0.17)
@@ -395,7 +395,7 @@
  (synopsis "Tests & Examples for eio-rpc")
  (depends
   (ocaml
-   (>= 5.1))
+   (>= 5.2))
   (base
    (and
     (>= v0.17)
