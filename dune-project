@@ -34,42 +34,42 @@
    (>= 3.0.2-preview.4))
   (ppx_compare
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_enumerate
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_expect
    (and
     :with-test
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_hash
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_here
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_js_style
    (and
     :dev
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_let
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_sexp_conv
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_sexp_value
    (and
-    (>= v0.16)
-    (< v0.17)))))
+    (>= v0.17)
+    (< v0.18)))))
 
 (package
  (name grpc-stream)
@@ -82,8 +82,8 @@
   (ppx_js_style
    (and
     :dev
-    (>= v0.16)
-    (< v0.17)))))
+    (>= v0.17)
+    (< v0.18)))))
 
 (package
  (name grpc-client)
@@ -93,8 +93,8 @@
    (>= 5.1))
   (base
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (eio
    (>= 1.0))
   (grpc
@@ -107,42 +107,42 @@
    (>= 0.11.0))
   (ppx_compare
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_enumerate
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_expect
    (and
     :with-test
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_hash
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_here
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_js_style
    (and
     :dev
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_let
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_sexp_conv
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_sexp_value
    (and
-    (>= v0.16)
-    (< v0.17)))))
+    (>= v0.17)
+    (< v0.18)))))
 
 (package
  (name grpc-server)
@@ -152,8 +152,8 @@
    (>= 5.1))
   (base
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (eio
    (>= 1.0))
   (grpc
@@ -168,42 +168,42 @@
    (>= 0.11.0))
   (ppx_compare
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_enumerate
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_expect
    (and
     :with-test
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_hash
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_here
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_js_style
    (and
     :dev
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_let
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_sexp_conv
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_sexp_value
    (and
-    (>= v0.16)
-    (< v0.17)))))
+    (>= v0.17)
+    (< v0.18)))))
 
 (package
  (name grpc-discovery)
@@ -213,12 +213,12 @@
    (>= 5.1))
   (base
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (core
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (eio
    (>= 1.0))
   (fpath
@@ -229,46 +229,46 @@
    (= :version))
   (ppx_compare
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_enumerate
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_expect
    (and
     :with-test
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_hash
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_here
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_js_style
    (and
     :dev
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_let
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_sexp_conv
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_sexp_value
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_yojson_conv
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (yojson
    (>= 2.1.1))))
 
@@ -280,12 +280,12 @@
    (>= 5.1))
   (base
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (core
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (eio
    (>= 1.0))
   (fpath
@@ -294,42 +294,42 @@
    (= :version))
   (ppx_compare
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_enumerate
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_expect
    (and
     :with-test
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_hash
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_here
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_js_style
    (and
     :dev
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_let
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_sexp_conv
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_sexp_value
    (and
-    (>= v0.16)
-    (< v0.17)))))
+    (>= v0.17)
+    (< v0.18)))))
 
 (package
  (name grpc-quickcheck)
@@ -339,56 +339,56 @@
    (>= 5.1))
   (base
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (base_quickcheck
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (expect-test-helpers
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (grpc-spec
    (= :version))
   (ppx_compare
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_enumerate
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_expect
    (and
     :with-test
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_hash
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_here
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_js_style
    (and
     :dev
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_let
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_sexp_conv
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_sexp_value
    (and
-    (>= v0.16)
-    (< v0.17)))))
+    (>= v0.17)
+    (< v0.18)))))
 
 (package
  (name eio-rpc)
@@ -398,12 +398,12 @@
    (>= 5.1))
   (base
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (base_quickcheck
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (bisect_ppx
    (and
     :dev
@@ -412,12 +412,12 @@
    (>= 0.0.2))
   (core
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (core_unix
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (eio
    (>= 1.0))
   (eio-writer
@@ -426,8 +426,8 @@
    (>= 1.0))
   (expect-test-helpers
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (grpc-client
    (= :version))
   (grpc-server
@@ -444,8 +444,8 @@
     (= 0.26.2)))
   (parsexp
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (pbrt
    (>= 3.0.2-preview.4))
   (pbrt_quickcheck
@@ -454,44 +454,44 @@
    (>= 3.0.2-preview.4))
   (ppx_compare
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_deriving
    (>= 5.2.1))
   (ppx_deriving_qcheck
    (>= 0.4.1))
   (ppx_enumerate
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_expect
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_hash
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_here
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_js_style
    (and
     :dev
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_let
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_sexp_conv
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (ppx_sexp_value
    (and
-    (>= v0.16)
-    (< v0.17)))
+    (>= v0.17)
+    (< v0.18)))
   (qcheck
    (>= 0.21.3))))
