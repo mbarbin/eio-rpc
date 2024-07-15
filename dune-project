@@ -29,9 +29,9 @@
   (grpc-protoc
    (>= 0.2.0-preview.2))
   (ocaml-protoc
-   (>= 3.0.2-preview.4))
+   (>= 3.1))
   (pbrt_services
-   (>= 3.0.2-preview.4))
+   (>= 3.1))
   (ppx_compare
    (and
     (>= v0.17)
@@ -447,9 +447,11 @@
     (>= v0.17)
     (< v0.18)))
   (pbrt
-   (>= 3.0.2-preview.4))
+   (>= 3.1))
   (pbrt_services
-   (>= 3.0.2-preview.4))
+   (>= 3.1))
+  (pbrt_yojson
+   (>= 3.1))
   (ppx_compare
    (and
     (>= v0.17)

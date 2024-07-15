@@ -1,4 +1,4 @@
-[@@@ocaml.warning "-27-30-39"]
+[@@@ocaml.warning "-27-30-39-44"]
 
 type key = { key : string } [@@deriving show { with_path = false }, eq]
 type keys = { keys : key list } [@@deriving show { with_path = false }, eq]

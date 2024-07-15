@@ -2,7 +2,7 @@
  (name keyval_rpc_proto)
  (public_name eio-rpc.keyval-rpc-proto)
  (flags :standard -w +a-4-40-41-42-44-45-48-66 -warn-error +a)
- (libraries pbrt pbrt_services)
+ (libraries pbrt pbrt_services pbrt_yojson)
  (preprocess
   (pps ppx_deriving.show ppx_deriving.eq)))
 
