@@ -1,3 +1,21 @@
+## 0.0.6 (unreleased)
+
+### Added
+
+### Changed
+
+- Upgrade `ocaml` to `5.2`.
+- Upgrade `dune` to `3.16`.
+- Upgrade `ocaml-protoc` to `3.1`, the required changes from the previous fork have now been upstreamed.
+
+### Deprecated
+
+### Fixed
+
+### Removed
+
+- Remove `qcheck` & `protoc-quickcheck` dependencies.
+
 ## 0.0.5 (2024-03-13)
 
 ### Changed
