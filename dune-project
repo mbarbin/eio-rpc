@@ -448,8 +448,6 @@
     (< v0.18)))
   (pbrt
    (>= 3.0.2-preview.4))
-  (pbrt_quickcheck
-   (>= 3.0.2-preview.4))
   (pbrt_services
    (>= 3.0.2-preview.4))
   (ppx_compare
@@ -458,8 +456,6 @@
     (< v0.18)))
   (ppx_deriving
    (>= 5.2.1))
-  (ppx_deriving_qcheck
-   (>= 0.4.1))
   (ppx_enumerate
    (and
     (>= v0.17)
@@ -492,6 +488,4 @@
   (ppx_sexp_value
    (and
     (>= v0.17)
-    (< v0.18)))
-  (qcheck
-   (>= 0.21.3))))
+    (< v0.18)))))

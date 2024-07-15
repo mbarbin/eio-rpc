@@ -2,9 +2,9 @@
  (name keyval_rpc_proto)
  (public_name eio-rpc.keyval-rpc-proto)
  (flags :standard -w +a-4-40-41-42-44-45-48-66 -warn-error +a)
- (libraries pbrt pbrt_quickcheck pbrt_services qcheck)
+ (libraries pbrt pbrt_services)
  (preprocess
-  (pps ppx_deriving_qcheck ppx_deriving.show ppx_deriving.eq)))
+  (pps ppx_deriving.show ppx_deriving.eq)))
 
 (rule
  (targets keyval.ml keyval.mli)
@@ -18,11 +18,10 @@
     ocaml-protoc
     keyval.proto
     --ocaml_all_types_ppx
-    "deriving show { with_path = false }, eq, qcheck2"
+    "deriving show { with_path = false }, eq"
     --binary
     --yojson
     --services
-    --quickcheck
     --ml_out
     .)
    (run ocamlformat --inplace %{targets}))))
