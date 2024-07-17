@@ -12,7 +12,7 @@ depends: [
   "ocaml" {>= "5.2"}
   "grpc-eio" {>= "0.2.0-preview.2"}
   "ppx_js_style" {dev & >= "v0.17" & < "v0.18"}
-  "ppxlib" {>= "0.32"}
+  "ppxlib" {>= "0.33"}
   "odoc" {with-doc}
 ]
 build: [
