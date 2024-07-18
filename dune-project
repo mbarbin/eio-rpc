@@ -69,7 +69,9 @@
   (ppx_sexp_value
    (and
     (>= v0.17)
-    (< v0.18)))))
+    (< v0.18)))
+  (ppxlib
+   (>= 0.32))))
 
 (package
  (name grpc-stream)
@@ -83,7 +85,9 @@
    (and
     :dev
     (>= v0.17)
-    (< v0.18)))))
+    (< v0.18)))
+  (ppxlib
+   (>= 0.32))))
 
 (package
  (name grpc-client)
@@ -142,7 +146,9 @@
   (ppx_sexp_value
    (and
     (>= v0.17)
-    (< v0.18)))))
+    (< v0.18)))
+  (ppxlib
+   (>= 0.32))))
 
 (package
  (name grpc-server)
@@ -203,7 +209,9 @@
   (ppx_sexp_value
    (and
     (>= v0.17)
-    (< v0.18)))))
+    (< v0.18)))
+  (ppxlib
+   (>= 0.32))))
 
 (package
  (name grpc-discovery)
@@ -269,6 +277,8 @@
    (and
     (>= v0.17)
     (< v0.18)))
+  (ppxlib
+   (>= 0.32))
   (yojson
    (>= 2.1.1))))
 
@@ -329,7 +339,9 @@
   (ppx_sexp_value
    (and
     (>= v0.17)
-    (< v0.18)))))
+    (< v0.18)))
+  (ppxlib
+   (>= 0.32))))
 
 (package
  (name grpc-quickcheck)
@@ -388,7 +400,9 @@
   (ppx_sexp_value
    (and
     (>= v0.17)
-    (< v0.18)))))
+    (< v0.18)))
+  (ppxlib
+   (>= 0.32))))
 
 (package
  (name eio-rpc)
@@ -490,4 +504,6 @@
   (ppx_sexp_value
    (and
     (>= v0.17)
-    (< v0.18)))))
+    (< v0.18)))
+  (ppxlib
+   (>= 0.32))))
