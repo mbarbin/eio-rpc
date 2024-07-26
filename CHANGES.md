@@ -1,16 +1,16 @@
-## 0.0.6 (unreleased)
+## 0.0.6 (2024-07-26)
 
 ### Added
 
+- Added dependabot config for automatically upgrading action files.
+
 ### Changed
 
+- Upgrade `ppxlib` to `0.33` - activate unused items warnings.
 - Upgrade `ocaml` to `5.2`.
 - Upgrade `dune` to `3.16`.
 - Upgrade `ocaml-protoc` to `3.1`, the required changes from the previous fork have now been upstreamed.
-
-### Deprecated
-
-### Fixed
+- Upgrade base & co to `0.17`.
 
 ### Removed
 
