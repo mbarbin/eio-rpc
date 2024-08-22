@@ -223,10 +223,8 @@
    (and
     (>= v0.17)
     (< v0.18)))
-  (core
-   (and
-    (>= v0.17)
-    (< v0.18)))
+  (commandlang
+   (>= 0.0.1))
   (eio
    (>= 1.0))
   (fpath
@@ -292,6 +290,14 @@
    (and
     (>= v0.17)
     (< v0.18)))
+  (cmdliner
+   (= 1.3.0))
+  (commandlang
+   (>= 0.0.1))
+  (commandlang-to-base
+   (>= 0.0.1))
+  (commandlang-to-cmdliner
+   (>= 0.0.1))
   (core
    (and
     (>= v0.17)
@@ -422,16 +428,6 @@
    (and
     :dev
     (>= 2.8.3)))
-  (command-unix-for-opam
-   (>= 0.0.2))
-  (core
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (core_unix
-   (and
-    (>= v0.17)
-    (< v0.18)))
   (eio
    (>= 1.0))
   (eio-writer

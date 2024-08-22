@@ -1,17 +1,24 @@
 open! Grpc_discovery
+module Core_command = Command
+open! Commandlang
 
-module type Paramable = sig
+module type Argable = sig
   type t [@@deriving equal, sexp_of]
 
-  val param : t Command.Param.t
-  val to_params : t -> string list
+  val arg : t Or_error.t Command.Arg.t
+  val to_args : t -> string list
 end
 
-let test_roundtrip (type a) ~(inputs : a list) (module P : Paramable with type t = a) =
+let test_roundtrip (type a) ~(inputs : a list) (module A : Argable with type t = a) =
   List.iter inputs ~f:(fun t ->
-    let params = P.to_params t in
-    let t' = Command.Param.parse P.param params |> Or_error.ok_exn in
-    require_equal [%here] (module P) t t')
+    let args = A.to_args t in
+    let { Commandlang_to_base.Translate.Private.Arg.param } =
+      Commandlang_to_base.Translate.Private.Arg.project
+        (Commandlang.Command.Private.To_ast.arg A.arg)
+        ~config:(Commandlang_to_base.Translate.Config.create ())
+    in
+    let t' = Core_command.Param.parse param args |> Or_error.join |> Or_error.ok_exn in
+    require_equal [%here] (module A) t t')
 ;;
 
 let%expect_test "connection_config" =

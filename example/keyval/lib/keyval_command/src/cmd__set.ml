@@ -1,24 +1,26 @@
 let main =
-  Command.basic_or_error
+  Command.make
     ~summary:"set a binding key=value"
-    (let%map_open.Command connection_config = Grpc_discovery.Connection_config.param
+    (let%map_open.Command connection_config = Grpc_discovery.Connection_config.arg
      and key =
-       flag
-         "--key"
-         (required (Arg_type.create Keyval.Key.v))
-         ~doc:"KEY the name of the key"
+       Arg.named
+         [ "key" ]
+         (Param.validated_string (module Keyval.Key))
+         ~docv:"KEY"
+         ~doc:"the name of the key"
      and value =
-       flag
-         "--value"
-         (required (Arg_type.create Keyval.Value.of_string))
-         ~doc:"VALUE the desired value"
+       Arg.named
+         [ "value" ]
+         (Param.stringable (module Keyval.Value))
+         ~docv:"VALUE"
+         ~doc:"the desired value"
      in
-     fun () ->
-       Eio_main.run
-       @@ fun env ->
-       let%bind sockaddr =
-         Grpc_discovery.Connection_config.sockaddr connection_config ~env
-       in
-       Grpc_client.with_connection ~env ~sockaddr ~f:(fun connection ->
-         Grpc_client.unary (module Keyval_rpc.Set_) ~connection { key; value }))
+     let%bind connection_config = connection_config in
+     Eio_main.run
+     @@ fun env ->
+     let%bind sockaddr =
+       Grpc_discovery.Connection_config.sockaddr connection_config ~env
+     in
+     Grpc_client.with_connection ~env ~sockaddr ~f:(fun connection ->
+       Grpc_client.unary (module Keyval_rpc.Set_) ~connection { key; value }))
 ;;
