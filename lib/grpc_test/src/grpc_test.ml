@@ -34,7 +34,7 @@ module Config = struct
       let run_server_command ~listening_config =
         let { Process_command.executable; args } = run_server_command in
         { Process_command.executable
-        ; args = args @ Grpc_discovery.Listening_config.to_params listening_config
+        ; args = args @ Grpc_discovery.Listening_config.to_args listening_config
         }
       ;;
 
@@ -44,7 +44,7 @@ module Config = struct
           match (client_invocation : Client_invocation.t) with
           | Offline -> []
           | Connect_to { connection_config } ->
-            Grpc_discovery.Connection_config.to_params connection_config
+            Grpc_discovery.Connection_config.to_args connection_config
         in
         { Process_command.executable
         ; args = List.concat [ args; client_args; connection_args ]

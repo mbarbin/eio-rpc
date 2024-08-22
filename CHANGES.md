@@ -1,3 +1,17 @@
+## 0.0.7 (unreleased)
+
+### Added
+
+### Changed
+
+- Switched commands to `commandlang`.
+
+### Deprecated
+
+### Fixed
+
+### Removed
+
 ## 0.0.6 (2024-07-26)
 
 ### Added

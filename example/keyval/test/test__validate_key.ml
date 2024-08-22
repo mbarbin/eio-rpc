@@ -18,30 +18,56 @@ let%expect_test "offline" =
   keyval [ [ "validate-key"; "my-key" ] ];
   [%expect
     {|
-    Error parsing command line:
-
-      unknown flag --unix-socket
-
-    For usage information, run
-
-      keyval.exe validate-key -help
-
-    [1] |}];
+    keyval: unknown option '--unix-socket'.
+    Usage: keyval validate-key [OPTION]… KEY
+    Try 'keyval validate-key --help' or 'keyval --help' for more information.
+    [124]
+    |}];
   (* This is what the [~offline:true] parameter is about. Let's demonstrate it
      below. *)
-  keyval ~offline:false [ [ "validate-key"; "--help" ] ];
+  keyval ~offline:false [ [ "validate-key"; "--help=plain" ] ];
   [%expect
     {|
-       verify the syntactic validity of a provided key
+    NAME
+           keyval-validate-key - verify the syntactic validity of a provided key
 
-         keyval.exe validate-key KEY
+    SYNOPSIS
+           keyval validate-key [OPTION]… KEY
 
-       This command performs a static validation of the key and does not require a
-       connection to a running server.
 
-       === flags ===
 
-         [-help], -?                . print this help text and exit |}];
+           This command performs a static validation of the key and does not
+           require a connection to a running server.
+
+
+
+    ARGUMENTS
+           KEY (required)
+               the key to validate.
+
+    COMMON OPTIONS
+           --help[=FMT] (default=auto)
+               Show this help in format FMT. The value FMT must be one of auto,
+               pager, groff or plain. With auto, the format is pager or plain
+               whenever the TERM env var is dumb or undefined.
+
+           --version
+               Show version information.
+
+    EXIT STATUS
+           keyval validate-key exits with:
+
+           0   on success.
+
+           123 on indiscriminate errors reported on standard error.
+
+           124 on command line parsing errors.
+
+           125 on unexpected internal errors (bugs).
+
+    SEE ALSO
+           keyval(1)
+    |}];
   keyval ~offline:true [ [ "validate-key"; "my-key" ] ];
   [%expect {|
     ("Keyval.Key.of_string: invalid key" my-key)

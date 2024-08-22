@@ -10,10 +10,12 @@
   -open
   Base
   -open
-  Or_error.Let_syntax)
+  Or_error.Let_syntax
+  -open
+  Commandlang)
  (libraries
   base
-  core.command
+  commandlang
   eio
   eio-writer
   eio_main

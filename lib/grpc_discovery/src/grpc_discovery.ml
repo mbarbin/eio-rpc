@@ -1,10 +1,10 @@
 module Discovery_file = Discovery_file
 
 module Switch = struct
-  let port = "--port"
-  let unix_socket = "--unix-socket"
-  let discovery_file = "--discovery-file"
-  let port_chosen_by_os = "--port-chosen-by-os"
+  let port = "port"
+  let unix_socket = "unix-socket"
+  let discovery_file = "discovery-file"
+  let port_chosen_by_os = "port-chosen-by-os"
 end
 
 module Connection_config = struct
@@ -25,31 +25,43 @@ module Connection_config = struct
     | Discovery_file of { path : Fpath.t }
   [@@deriving equal, sexp_of]
 
-  let param =
-    let%map_open.Command t =
-      let open Command.Let_syntax in
-      choose_one
-        [ flag Switch.port (optional int) ~doc:"PORT connect to localhost TCP port"
-          >>| Option.map ~f:(fun port -> Tcp { host = `Localhost; port })
-        ; flag Switch.unix_socket (optional string) ~doc:"PATH connect to unix socket"
-          >>| Option.map ~f:(fun path -> Unix { path = Fpath.v path })
-        ; flag
-            Switch.discovery_file
-            (optional string)
-            ~doc:"PATH read sockaddr from discovery file"
-          >>| Option.map ~f:(fun path -> Discovery_file { path = Fpath.v path })
-        ]
-        ~if_nothing_chosen:(Default_to (Tcp { host = `Localhost; port = 8080 }))
+  let arg =
+    let%map_open.Command by_port =
+      Arg.named_opt
+        [ Switch.port ]
+        Param.int
+        ~docv:"PORT"
+        ~doc:"connect to localhost TCP port"
+      >>| Option.map ~f:(fun port -> Tcp { host = `Localhost; port })
+    and by_unix_socket =
+      Arg.named_opt
+        [ Switch.unix_socket ]
+        (Param.validated_string (module Fpath))
+        ~docv:"PATH"
+        ~doc:"connect to unix socket"
+      >>| Option.map ~f:(fun path -> Unix { path })
+    and by_discovery_file =
+      Arg.named_opt
+        [ Switch.discovery_file ]
+        (Param.validated_string (module Fpath))
+        ~docv:"PATH"
+        ~doc:"read sockaddr from discovery file"
+      >>| Option.map ~f:(fun path -> Discovery_file { path })
     in
-    t
+    match List.filter_opt [ by_port; by_unix_socket; by_discovery_file ] with
+    | [ spec ] -> Or_error.return spec
+    | [] -> Or_error.return (Tcp { host = `Localhost; port = 8080 })
+    | _ :: _ :: _ ->
+      Or_error.error_string
+        "Only one of --port, --unix-socket, or --discovery-file can be used"
   ;;
 
-  let to_params t =
+  let to_args t =
     match t with
     | Tcp { host = `Ipaddr _; port = _ } -> failwith "Not implemented"
-    | Tcp { host = `Localhost; port } -> [ Switch.port; Int.to_string port ]
-    | Unix { path } -> [ Switch.unix_socket; Fpath.to_string path ]
-    | Discovery_file { path } -> [ Switch.discovery_file; Fpath.to_string path ]
+    | Tcp { host = `Localhost; port } -> [ "--" ^ Switch.port; Int.to_string port ]
+    | Unix { path } -> [ "--" ^ Switch.unix_socket; Fpath.to_string path ]
+    | Discovery_file { path } -> [ "--" ^ Switch.discovery_file; Fpath.to_string path ]
   ;;
 
   let sockaddr t ~env : Eio.Net.Sockaddr.stream Or_error.t =
@@ -82,44 +94,59 @@ module Listening_config = struct
     }
   [@@deriving equal, sexp_of]
 
-  let param =
+  let arg =
+    let open Command.Let_syntax in
     let%map_open.Command specification =
-      let open Command.Let_syntax in
-      choose_one
-        [ (if%map
-             flag
-               Switch.port_chosen_by_os
-               no_arg
-               ~doc:" listen on localhost TCP port chosen by OS (default)"
-           then Some (Specification.Tcp { port = `Chosen_by_OS })
-           else None)
-        ; flag Switch.port (optional int) ~doc:"PORT listen on localhost TCP port"
-          >>| Option.map ~f:(fun port -> Specification.Tcp { port = `Supplied port })
-        ; flag Switch.unix_socket (optional string) ~doc:"PATH listen on unix socket"
-          >>| Option.map ~f:(fun path -> Specification.Unix { path = Fpath.v path })
-        ]
-        ~if_nothing_chosen:(Default_to (Tcp { port = `Chosen_by_OS }))
+      let%map by_os =
+        if%map
+          Arg.flag
+            [ Switch.port_chosen_by_os ]
+            ~doc:"listen on localhost TCP port chosen by OS (default)"
+        then Some (Specification.Tcp { port = `Chosen_by_OS })
+        else None
+      and by_port =
+        Arg.named_opt
+          [ Switch.port ]
+          Param.int
+          ~docv:"PORT"
+          ~doc:"listen on localhost TCP port"
+        >>| Option.map ~f:(fun port -> Specification.Tcp { port = `Supplied port })
+      and by_socket =
+        Arg.named_opt
+          [ Switch.unix_socket ]
+          (Param.validated_string (module Fpath))
+          ~docv:"PATH"
+          ~doc:"listen on unix socket"
+        >>| Option.map ~f:(fun path -> Specification.Unix { path })
+      in
+      match List.filter_opt [ by_os; by_port; by_socket ] with
+      | [ spec ] -> Or_error.return spec
+      | [] -> Or_error.return (Specification.Tcp { port = `Chosen_by_OS })
+      | _ :: _ :: _ ->
+        Or_error.error_string
+          "Only one of --port, --unix-socket, or --port-chosen-by-os can be used"
     and discovery_file =
-      flag
-        Switch.discovery_file
-        (optional string)
-        ~doc:"PATH save sockaddr to discovery file"
-      >>| Option.map ~f:Fpath.v
+      Arg.named_opt
+        [ Switch.discovery_file ]
+        (Param.validated_string (module Fpath))
+        ~docv:"PATH"
+        ~doc:"save sockaddr to discovery file"
     in
+    let%map.Or_error specification = specification in
     { specification; discovery_file }
   ;;
 
-  let to_params t =
+  let to_args t =
     let specification =
       match t.specification with
-      | Tcp { port = `Chosen_by_OS } -> [ Switch.port_chosen_by_os ]
-      | Tcp { port = `Supplied port } -> [ Switch.port; Int.to_string port ]
-      | Unix { path } -> [ Switch.unix_socket; Fpath.to_string path ]
+      | Tcp { port = `Chosen_by_OS } -> [ "--" ^ Switch.port_chosen_by_os ]
+      | Tcp { port = `Supplied port } -> [ "--" ^ Switch.port; Int.to_string port ]
+      | Unix { path } -> [ "--" ^ Switch.unix_socket; Fpath.to_string path ]
     in
     let discovery_file =
       match t.discovery_file with
       | None -> []
-      | Some path -> [ Switch.discovery_file; Fpath.to_string path ]
+      | Some path -> [ "--" ^ Switch.discovery_file; Fpath.to_string path ]
     in
     List.concat [ specification; discovery_file ]
   ;;

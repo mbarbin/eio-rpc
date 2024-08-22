@@ -20,7 +20,7 @@ module Connection_config : sig
     | Discovery_file of { path : Fpath.t }
   [@@deriving equal, sexp_of]
 
-  val param : t Command.Param.t
+  val arg : t Or_error.t Command.Arg.t
 
   val sockaddr
     :  t
@@ -31,7 +31,7 @@ module Connection_config : sig
       rebuild [t] via {!param}. This is used by tests and by
       {!val:Grpc_test.Config.grpc_discovery} to create the right invocations for
       clients whose cli uses {!param}. *)
-  val to_params : t -> string list
+  val to_args : t -> string list
 end
 
 module Listening_config : sig
@@ -56,7 +56,7 @@ module Listening_config : sig
     }
   [@@deriving equal, sexp_of]
 
-  val param : t Command.Param.t
+  val arg : t Or_error.t Command.Arg.t
   val sockaddr : t -> Eio.Net.Sockaddr.stream
 
   (** To be run on the server after starting to listen for connections. If a
@@ -73,5 +73,5 @@ module Listening_config : sig
       via {!param}. This is used by tests and by
       {!val:Grpc_test.Config.grpc_discovery} to create the right invocations
       for servers whose cli uses {!param}. *)
-  val to_params : t -> string list
+  val to_args : t -> string list
 end
