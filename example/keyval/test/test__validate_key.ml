@@ -3,9 +3,9 @@
 
 let%expect_test "offline" =
   let& env = Eio_main.run in
-  let&- t = Grpc_test.run ~env in
+  let&- t = Grpc_test_helpers.run ~env in
   let&- { server = _; client = keyval } =
-    Grpc_test.with_server t ~config:Keyval_test.config
+    Grpc_test_helpers.with_server t ~config:Keyval_test.config
   in
   (* By default, [Grpc_test] adds to all commands invocation the necessary
      parameters to find the running server and connect to it. That's what

@@ -5,9 +5,9 @@
 
 let%expect_test "using the cli" =
   let& env = Eio_main.run in
-  let&- t = Grpc_test.run ~env in
+  let&- t = Grpc_test_helpers.run ~env in
   let&- { server = _; client = keyval } =
-    Grpc_test.with_server t ~config:Keyval_test.config
+    Grpc_test_helpers.with_server t ~config:Keyval_test.config
   in
   (* At first, there are no keys in the server. *)
   keyval [ [ "list-keys" ] ];

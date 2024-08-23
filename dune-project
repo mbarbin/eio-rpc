@@ -224,7 +224,7 @@
     (>= v0.17)
     (< v0.18)))
   (commandlang
-   (>= 0.0.1))
+   (>= 0.0.2))
   (eio
    (>= 1.0))
   (fpath
@@ -281,7 +281,7 @@
    (>= 2.1.1))))
 
 (package
- (name grpc-test)
+ (name grpc-test-helpers)
  (synopsis "A library to help writting tests for gRPC Eio applications")
  (depends
   (ocaml
@@ -351,7 +351,7 @@
    (and
     (>= v0.17)
     (< v0.18)))
-  (expect-test-helpers
+  (expect_test_helpers_core
    (and
     (>= v0.17)
     (< v0.18)))
@@ -399,7 +399,7 @@
    (>= 0.33))))
 
 (package
- (name eio-rpc)
+ (name eio-rpc-tests)
  (synopsis "Tests & Examples for eio-rpc")
  (depends
   (ocaml
@@ -419,11 +419,11 @@
   (cmdliner
    (= 1.3.0))
   (commandlang
-   (>= 0.0.1))
+   (>= 0.0.2))
   (commandlang-to-base
-   (>= 0.0.1))
+   (>= 0.0.2))
   (commandlang-to-cmdliner
-   (>= 0.0.1))
+   (>= 0.0.2))
   (core
    (and
     (>= v0.17)
@@ -434,7 +434,7 @@
    (>= 0.0.3))
   (eio_main
    (>= 1.0))
-  (expect-test-helpers
+  (expect_test_helpers_core
    (and
     (>= v0.17)
     (< v0.18)))

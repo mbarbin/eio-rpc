@@ -4,6 +4,9 @@
 
 ### Changed
 
+- Renamed `grpc-test` to `grpc-test-helpers` to clarify it is a user facing library.
+- Split test package.
+- Use `expect_test_helpers_core.expect_test_helpers_base`.
 - Switched commands to `commandlang`.
 
 ### Deprecated

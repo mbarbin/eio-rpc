@@ -29,7 +29,7 @@ module Connection_config : sig
 
   (** Returns the arguments that a client command needs to be supplied to
       rebuild [t] via {!param}. This is used by tests and by
-      {!val:Grpc_test.Config.grpc_discovery} to create the right invocations for
+      {!val:Grpc_test_helpers.Config.grpc_discovery} to create the right invocations for
       clients whose cli uses {!param}. *)
   val to_args : t -> string list
 end
@@ -71,7 +71,7 @@ module Listening_config : sig
 
   (** Returns the arguments that a server needs to be supplied to rebuild [t]
       via {!param}. This is used by tests and by
-      {!val:Grpc_test.Config.grpc_discovery} to create the right invocations
+      {!val:Grpc_test_helpers.Config.grpc_discovery} to create the right invocations
       for servers whose cli uses {!param}. *)
   val to_args : t -> string list
 end

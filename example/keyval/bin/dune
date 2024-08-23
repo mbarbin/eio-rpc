@@ -1,7 +1,7 @@
 (executable
  (name main)
  (public_name keyval)
- (package eio-rpc)
+ (package eio-rpc-tests)
  (flags :standard -w +a-4-40-41-42-44-45-48-66 -warn-error +a)
  (libraries base cmdliner commandlang commandlang-to-cmdliner keyval_command)
  (instrumentation
