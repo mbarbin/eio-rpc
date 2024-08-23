@@ -1,4 +1,4 @@
-(** A library to help writting tests for gRPC Eio applications.
+(** A library to help writing tests for gRPC Eio applications.
 
     This is built with expect-tests in mind. See the keyval application in this
     repo for a complete example of use.

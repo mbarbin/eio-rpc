@@ -1,6 +1,6 @@
 (library
  (name grpc_server_test)
- (public_name eio-rpc.grpc-server-test)
+ (public_name eio-rpc-tests.grpc_server_test)
  (inline_tests)
  (flags
   :standard
@@ -11,8 +11,11 @@
   -open
   Base
   -open
-  Expect_test_helpers)
- (libraries base expect-test-helpers grpc_server)
+  Expect_test_helpers_base)
+ (libraries
+  base
+  expect_test_helpers_core.expect_test_helpers_base
+  grpc_server)
  (instrumentation
   (backend bisect_ppx))
  (lint

@@ -1,6 +1,6 @@
 (library
  (name keyval_rpc_test)
- (public_name eio-rpc.keyval-rpc-test)
+ (public_name eio-rpc-tests.keyval_rpc_test)
  (inline_tests)
  (flags
   :standard
@@ -11,8 +11,12 @@
   -open
   Base
   -open
-  Expect_test_helpers)
- (libraries base expect-test-helpers grpc_quickcheck keyval_rpc)
+  Expect_test_helpers_base)
+ (libraries
+  base
+  expect_test_helpers_core.expect_test_helpers_base
+  grpc_quickcheck
+  keyval_rpc)
  (instrumentation
   (backend bisect_ppx))
  (lint

@@ -1,6 +1,6 @@
 (library
  (name keyval_command_test)
- (public_name eio-rpc.keyval-command-test)
+ (public_name eio-rpc-tests.keyval_command_test)
  (inline_tests)
  (flags
   :standard
@@ -11,8 +11,11 @@
   -open
   Base
   -open
-  Expect_test_helpers)
- (libraries base expect-test-helpers keyval_command)
+  Expect_test_helpers_base)
+ (libraries
+  base
+  expect_test_helpers_core.expect_test_helpers_base
+  keyval_command)
  (instrumentation
   (backend bisect_ppx))
  (lint

@@ -1,5 +1,6 @@
 (library
  (name grpc_quickcheck_test)
+ (public_name eio-rpc-tests.grpc_quickcheck_test)
  (inline_tests)
  (flags
   :standard
@@ -10,8 +11,11 @@
   -open
   Base
   -open
-  Expect_test_helpers)
- (libraries base expect-test-helpers grpc_quickcheck)
+  Expect_test_helpers_base)
+ (libraries
+  base
+  expect_test_helpers_core.expect_test_helpers_base
+  grpc_quickcheck)
  (instrumentation
   (backend bisect_ppx))
  (lint

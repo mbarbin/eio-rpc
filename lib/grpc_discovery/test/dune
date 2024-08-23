@@ -1,6 +1,6 @@
 (library
  (name grpc_discovery_test)
- (public_name eio-rpc.grpc-discovery-test)
+ (public_name eio-rpc-tests.grpc_discovery_test)
  (inline_tests)
  (flags
   :standard
@@ -11,13 +11,13 @@
   -open
   Base
   -open
-  Expect_test_helpers)
+  Expect_test_helpers_base)
  (libraries
   base
   commandlang
   commandlang-to-base
   core.command
-  expect-test-helpers
+  expect_test_helpers_core.expect_test_helpers_base
   grpc_discovery)
  (instrumentation
   (backend bisect_ppx))

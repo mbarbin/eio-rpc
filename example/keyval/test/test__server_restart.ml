@@ -5,21 +5,27 @@
 
 let%expect_test "testing server restart" =
   let& env = Eio_main.run in
-  let&- t = Grpc_test.run ~env in
-  Grpc_test.with_server t ~config:Keyval_test.config ~f:(fun { client = keyval; _ } ->
-    keyval [ [ "list-keys" ] ];
-    [%expect {| () |}];
-    keyval [ [ "set" ]; [ "--key"; "foo" ]; [ "--value"; "bar" ] ];
-    [%expect {||}];
-    keyval [ [ "get" ]; [ "--key"; "foo" ] ];
-    [%expect {| bar |}];
-    keyval [ [ "list-keys" ] ];
-    [%expect {| (foo) |}]);
-  Grpc_test.with_server t ~config:Keyval_test.config ~f:(fun { client = keyval; _ } ->
-    keyval [ [ "list-keys" ] ];
-    [%expect {| () |}];
-    keyval [ [ "get" ]; [ "--key"; "foo" ] ];
-    [%expect {|
+  let&- t = Grpc_test_helpers.run ~env in
+  Grpc_test_helpers.with_server
+    t
+    ~config:Keyval_test.config
+    ~f:(fun { client = keyval; _ } ->
+      keyval [ [ "list-keys" ] ];
+      [%expect {| () |}];
+      keyval [ [ "set" ]; [ "--key"; "foo" ]; [ "--value"; "bar" ] ];
+      [%expect {||}];
+      keyval [ [ "get" ]; [ "--key"; "foo" ] ];
+      [%expect {| bar |}];
+      keyval [ [ "list-keys" ] ];
+      [%expect {| (foo) |}]);
+  Grpc_test_helpers.with_server
+    t
+    ~config:Keyval_test.config
+    ~f:(fun { client = keyval; _ } ->
+      keyval [ [ "list-keys" ] ];
+      [%expect {| () |}];
+      keyval [ [ "get" ]; [ "--key"; "foo" ] ];
+      [%expect {|
       ("Key not found" ((key foo)))
       [1] |}]);
   ()

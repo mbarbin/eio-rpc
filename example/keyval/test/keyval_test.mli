@@ -1,1 +1,1 @@
-val config : Grpc_test.Config.t
+val config : Grpc_test_helpers.Config.t

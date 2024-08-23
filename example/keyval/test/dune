@@ -1,6 +1,6 @@
 (library
  (name keyval_functional_test)
- (public_name eio-rpc.keyval-functional-test)
+ (public_name eio-rpc-tests.keyval-functional-test)
  (inline_tests
   (deps keyval.exe))
  (flags
@@ -12,16 +12,16 @@
   -open
   Base
   -open
-  Expect_test_helpers
+  Letfun
   -open
-  Letfun)
+  Expect_test_helpers_base)
  (libraries
   base
   eio
   eio_main
-  expect-test-helpers
+  expect_test_helpers_core.expect_test_helpers_base
   grpc_client
-  grpc_test
+  grpc_test_helpers
   keyval
   keyval_rpc
   letfun)
