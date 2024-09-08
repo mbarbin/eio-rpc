@@ -1,6 +1,6 @@
 (lang dune 3.16)
 
-(name eio-rpc)
+(name eio-rpc-tests)
 
 (generate_opam_files)
 
