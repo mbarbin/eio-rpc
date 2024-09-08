@@ -11,5 +11,5 @@ connection to a running server.
      in
      match Keyval.Key.of_string key with
      | Ok (_ : Keyval.Key.t) -> return ()
-     | Error _ as error -> error)
+     | Error (`Msg m) -> Or_error.error_string m)
 ;;

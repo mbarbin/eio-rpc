@@ -13,12 +13,15 @@ let invariant t =
 let to_string t = t
 
 let of_string s =
-  if invariant s
-  then Ok s
-  else Or_error.error_s [%sexp "Keyval.Key.of_string: invalid key", (s : string)]
+  if invariant s then Ok s else Error (`Msg (Printf.sprintf "%S: invalid key" s))
 ;;
 
-let v t = t |> of_string |> Or_error.ok_exn
+let v str =
+  match str |> of_string with
+  | Ok t -> t
+  | Error (`Msg m) -> invalid_arg m
+;;
+
 let quickcheck_observer = quickcheck_observer_string
 let quickcheck_shrinker = quickcheck_shrinker_string
 

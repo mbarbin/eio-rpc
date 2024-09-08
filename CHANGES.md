@@ -1,19 +1,15 @@
-## 0.0.7 (unreleased)
+## 0.0.7 (2024-09-08)
 
 ### Added
+
+- Configure `with-dev-setup` dependencies - attached to test package only.
 
 ### Changed
 
 - Renamed `grpc-test` to `grpc-test-helpers` to clarify it is a user facing library.
 - Split test package.
 - Use `expect_test_helpers_core.expect_test_helpers_base`.
-- Switched commands to `commandlang`.
-
-### Deprecated
-
-### Fixed
-
-### Removed
+- Switched commands to `cmdlang`.
 
 ## 0.0.6 (2024-07-26)
 

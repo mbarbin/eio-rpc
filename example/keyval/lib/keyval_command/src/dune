@@ -12,10 +12,10 @@
   -open
   Or_error.Let_syntax
   -open
-  Commandlang)
+  Cmdlang)
  (libraries
   base
-  commandlang
+  cmdlang
   eio
   eio-writer
   eio_main
