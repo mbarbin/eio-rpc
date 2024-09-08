@@ -1,6 +1,6 @@
 open! Grpc_discovery
 module Core_command = Command
-open! Commandlang
+open! Cmdlang
 
 module type Argable = sig
   type t [@@deriving equal, sexp_of]
@@ -12,10 +12,10 @@ end
 let test_roundtrip (type a) ~(inputs : a list) (module A : Argable with type t = a) =
   List.iter inputs ~f:(fun t ->
     let args = A.to_args t in
-    let { Commandlang_to_base.Translate.Private.Arg.param } =
-      Commandlang_to_base.Translate.Private.Arg.project
-        (Commandlang.Command.Private.To_ast.arg A.arg)
-        ~config:(Commandlang_to_base.Translate.Config.create ())
+    let { Cmdlang_to_base.Translate.Private.Arg.param } =
+      Cmdlang_to_base.Translate.Private.Arg.project
+        (Cmdlang.Command.Private.To_ast.arg A.arg)
+        ~config:(Cmdlang_to_base.Translate.Config.create ())
     in
     let t' = Core_command.Param.parse param args |> Or_error.join |> Or_error.ok_exn in
     require_equal [%here] (module A) t t')

@@ -53,11 +53,6 @@
    (and
     (>= v0.17)
     (< v0.18)))
-  (ppx_js_style
-   (and
-    :dev
-    (>= v0.17)
-    (< v0.18)))
   (ppx_let
    (and
     (>= v0.17)
@@ -80,14 +75,7 @@
   (ocaml
    (>= 5.2))
   (grpc-eio
-   (>= 0.2.0-preview.2))
-  (ppx_js_style
-   (and
-    :dev
-    (>= v0.17)
-    (< v0.18)))
-  (ppxlib
-   (>= 0.33))))
+   (>= 0.2.0-preview.2))))
 
 (package
  (name grpc-client)
@@ -108,7 +96,9 @@
   (grpc-spec
    (= :version))
   (h2-eio
-   (>= 0.11.0))
+   (and
+    (>= 0.11.0)
+    (< 0.13.0)))
   (ppx_compare
    (and
     (>= v0.17)
@@ -128,11 +118,6 @@
     (< v0.18)))
   (ppx_here
    (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_js_style
-   (and
-    :dev
     (>= v0.17)
     (< v0.18)))
   (ppx_let
@@ -169,9 +154,13 @@
   (grpc-spec
    (= :version))
   (h2
-   (>= 0.11.0))
+   (and
+    (>= 0.11.0)
+    (< 0.13.0)))
   (h2-eio
-   (>= 0.11.0))
+   (and
+    (>= 0.11.0)
+    (< 0.13.0)))
   (ppx_compare
    (and
     (>= v0.17)
@@ -191,11 +180,6 @@
     (< v0.18)))
   (ppx_here
    (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_js_style
-   (and
-    :dev
     (>= v0.17)
     (< v0.18)))
   (ppx_let
@@ -223,14 +207,14 @@
    (and
     (>= v0.17)
     (< v0.18)))
-  (commandlang
-   (>= 0.0.2))
+  (cmdlang
+   (>= 0.0.4))
   (eio
    (>= 1.0))
   (fpath
    (>= 0.7.3))
   (fpath-base
-   (>= 0.0.9))
+   (>= 0.2.0))
   (grpc-client
    (= :version))
   (ppx_compare
@@ -252,11 +236,6 @@
     (< v0.18)))
   (ppx_here
    (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_js_style
-   (and
-    :dev
     (>= v0.17)
     (< v0.18)))
   (ppx_let
@@ -317,11 +296,6 @@
    (and
     (>= v0.17)
     (< v0.18)))
-  (ppx_js_style
-   (and
-    :dev
-    (>= v0.17)
-    (< v0.18)))
   (ppx_let
    (and
     (>= v0.17)
@@ -378,11 +352,6 @@
    (and
     (>= v0.17)
     (< v0.18)))
-  (ppx_js_style
-   (and
-    :dev
-    (>= v0.17)
-    (< v0.18)))
   (ppx_let
    (and
     (>= v0.17)
@@ -404,6 +373,11 @@
  (depends
   (ocaml
    (>= 5.2))
+  (ocamlformat
+   (and
+    :with-test
+    :with-dev-setup
+    (= 0.26.2)))
   (base
    (and
     (>= v0.17)
@@ -414,16 +388,16 @@
     (< v0.18)))
   (bisect_ppx
    (and
-    :dev
+    :with-dev-setup
     (>= 2.8.3)))
+  (cmdlang
+   (>= 0.0.4))
+  (cmdlang-to-base
+   (>= 0.0.4))
+  (cmdlang-to-cmdliner
+   (>= 0.0.4))
   (cmdliner
    (= 1.3.0))
-  (commandlang
-   (>= 0.0.2))
-  (commandlang-to-base
-   (>= 0.0.2))
-  (commandlang-to-cmdliner
-   (>= 0.0.2))
   (core
    (and
     (>= v0.17)
@@ -448,10 +422,6 @@
    (= :version))
   (letfun
    (>= 0.0.1))
-  (ocamlformat
-   (and
-    :with-test
-    (= 0.26.2)))
   (parsexp
    (and
     (>= v0.17)
@@ -486,7 +456,7 @@
     (< v0.18)))
   (ppx_js_style
    (and
-    :dev
+    :with-dev-setup
     (>= v0.17)
     (< v0.18)))
   (ppx_let

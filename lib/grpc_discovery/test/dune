@@ -14,8 +14,8 @@
   Expect_test_helpers_base)
  (libraries
   base
-  commandlang
-  commandlang-to-base
+  cmdlang
+  cmdlang-to-base
   core.command
   expect_test_helpers_core.expect_test_helpers_base
   grpc_discovery)
