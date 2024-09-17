@@ -12,9 +12,9 @@ end
 let test_roundtrip (type a) ~(inputs : a list) (module A : Argable with type t = a) =
   List.iter inputs ~f:(fun t ->
     let args = A.to_args t in
-    let { Cmdlang_to_base.Translate.Private.Arg.param } =
-      Cmdlang_to_base.Translate.Private.Arg.project
-        (Cmdlang.Command.Private.To_ast.arg A.arg)
+    let param =
+      Cmdlang_to_base.Translate.arg
+        A.arg
         ~config:(Cmdlang_to_base.Translate.Config.create ())
     in
     let t' = Core_command.Param.parse param args |> Or_error.join |> Or_error.ok_exn in
