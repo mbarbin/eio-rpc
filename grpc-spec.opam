@@ -4,7 +4,7 @@ synopsis:
   "An opinionated library to build gRPC specifications for Eio clients/servers"
 description:
   "An opinionated library to build gRPC specifications Eio clients/servers"
-maintainer: ["Mathieu Barbin"]
+maintainer: ["Mathieu Barbin <opensource@mbarbin.org>"]
 authors: ["Mathieu Barbin"]
 license: "MIT"
 homepage: "https://github.com/mbarbin/eio-rpc"
