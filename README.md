@@ -36,7 +36,7 @@ this library for inclusion in a public opam package. However, by making this
 repo public, I can reference this code in discussions, issues, and PRs with
 other developers on GitHub.
 
-## Code documentation
+## Code Documentation
 
 The code documentation of the latest release is built with `odoc` and published
 to `GitHub` pages [here](https://mbarbin.github.io/eio-rpc).
