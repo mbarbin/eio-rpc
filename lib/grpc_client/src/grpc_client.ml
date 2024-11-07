@@ -19,7 +19,7 @@ end
 let with_connection ~env ~sockaddr ~f =
   Eio.Switch.run
   @@ fun sw ->
-  let%bind connection =
+  let%bind.Or_error connection =
     Or_error.try_with (fun () ->
       let socket = Eio.Net.connect ~sw (Eio.Stdenv.net env) sockaddr in
       H2_eio.Client.create_connection
