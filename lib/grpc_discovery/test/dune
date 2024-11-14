@@ -15,8 +15,7 @@
  (libraries
   base
   cmdlang
-  cmdlang-to-base
-  core.command
+  cmdlang-stdlib-runner
   expect_test_helpers_core.expect_test_helpers_base
   grpc_discovery)
  (instrumentation
