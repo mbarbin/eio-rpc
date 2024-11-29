@@ -208,7 +208,7 @@
     (>= v0.17)
     (< v0.18)))
   (cmdlang
-   (>= 0.0.8))
+   (>= 0.0.9))
   (eio
    (>= 1.0))
   (fpath
@@ -391,13 +391,13 @@
     :with-dev-setup
     (>= 2.8.3)))
   (cmdlang
-   (>= 0.0.8))
+   (>= 0.0.9))
   (cmdlang-cmdliner-runner
    (>= 0.0.8))
   (cmdlang-stdlib-runner
-   (>= 0.0.8))
+   (>= 0.0.9))
   (cmdlang-to-cmdliner
-   (>= 0.0.8))
+   (>= 0.0.9))
   (cmdliner
    (>= 1.3.0))
   (eio
