@@ -15,6 +15,8 @@
 
 (documentation "https://mbarbin.github.io/eio-rpc/")
 
+(implicit_transitive_deps false)
+
 (package
  (name grpc-spec)
  (synopsis
