@@ -9,7 +9,7 @@ homepage: "https://github.com/mbarbin/eio-rpc"
 doc: "https://mbarbin.github.io/eio-rpc/"
 bug-reports: "https://github.com/mbarbin/eio-rpc/issues"
 depends: [
-  "dune" {>= "3.16"}
+  "dune" {>= "3.17"}
   "ocaml" {>= "5.2"}
   "grpc" {>= "0.2.1-preview.3"}
   "grpc-protoc" {>= "0.2.1-preview.3"}
