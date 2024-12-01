@@ -1,14 +1,15 @@
 let main =
   Command.make
     ~summary:"set a binding key=value"
-    (let%map_open.Command connection_config = Grpc_discovery.Connection_config.arg
-     and key =
+    (let open Command.Std in
+     let+ connection_config = Grpc_discovery.Connection_config.arg
+     and+ key =
        Arg.named
          [ "key" ]
          (Param.validated_string (module Keyval.Key))
          ~docv:"KEY"
          ~doc:"the name of the key"
-     and value =
+     and+ value =
        Arg.named
          [ "value" ]
          (Param.stringable (module Keyval.Value))

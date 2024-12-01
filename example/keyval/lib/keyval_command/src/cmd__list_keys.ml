@@ -1,7 +1,8 @@
 let main =
   Command.make
     ~summary:"print the list of all known keys"
-    (let%map_open.Command connection_config = Grpc_discovery.Connection_config.arg in
+    (let open Command.Std in
+     let+ connection_config = Grpc_discovery.Connection_config.arg in
      Eio_main.run
      @@ fun env ->
      let%bind connection_config = connection_config in
