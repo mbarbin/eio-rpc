@@ -43,8 +43,10 @@ let connection_handler server ~sw =
       "There was an error handling your request:\n";
     H2.Body.Writer.write_string
       response_body
-      (Sexp.to_string_hum
-         [%sexp (error : [ `Bad_request | `Internal_server_error | `Exn of Exn.t ])]);
+      (match error with
+       | `Bad_request -> "Bad request"
+       | `Internal_server_error -> "Internal server error"
+       | `Exn exn -> Printexc.to_string exn);
     H2.Body.Writer.close response_body
   in
   let request_handler _client_address request_descriptor =
