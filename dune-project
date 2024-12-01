@@ -19,8 +19,6 @@
  (name grpc-spec)
  (synopsis
   "An opinionated library to build gRPC specifications for Eio clients/servers")
- (description
-  "An opinionated library to build gRPC specifications Eio clients/servers")
  (depends
   (ocaml
    (>= 5.2))
