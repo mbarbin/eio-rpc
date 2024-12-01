@@ -133,8 +133,9 @@ module Listening_config = struct
         ~docv:"PATH"
         ~doc:"save sockaddr to discovery file"
     in
-    let%map.Or_error specification = specification in
-    { specification; discovery_file }
+    match specification with
+    | Error _ as error -> error
+    | Ok specification -> Ok { specification; discovery_file }
   ;;
 
   let to_args t =

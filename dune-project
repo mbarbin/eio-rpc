@@ -61,41 +61,10 @@
   (h2-eio
    (and
     (>= 0.13.0)))
-  (ppx_compare
+  (sexplib0
    (and
     (>= v0.17)
-    (< v0.18)))
-  (ppx_enumerate
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_expect
-   (and
-    :with-test
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_hash
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_here
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_let
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_sexp_conv
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_sexp_value
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppxlib
-   (>= 0.33))))
+    (< v0.18)))))
 
 (package
  (name grpc-server)
@@ -142,32 +111,7 @@
    (and
     (>= v0.17)
     (< v0.18)))
-  (ppx_enumerate
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_expect
-   (and
-    :with-test
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_hash
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_here
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_let
-   (and
-    (>= v0.17)
-    (< v0.18)))
   (ppx_sexp_conv
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_sexp_value
    (and
     (>= v0.17)
     (< v0.18)))
@@ -177,6 +121,10 @@
     (< v0.18)))
   (ppxlib
    (>= 0.33))
+  (sexplib0
+   (and
+    (>= v0.17)
+    (< v0.18)))
   (yojson
    (>= 2.1.1))))
 
@@ -225,11 +173,6 @@
    (and
     (>= v0.17)
     (< v0.18)))
-  (ppx_expect
-   (and
-    :with-test
-    (>= v0.17)
-    (< v0.18)))
   (ppx_hash
    (and
     (>= v0.17)
@@ -261,7 +204,6 @@
    (>= 5.2))
   (ocamlformat
    (and
-    :with-test
     :with-dev-setup
     (= 0.26.2)))
   (base

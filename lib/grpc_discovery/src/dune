@@ -13,19 +13,10 @@
   Fpath_sexp0
   -open
   Cmdlang)
- (libraries base cmdlang eio fpath fpath-sexp0 yojson)
+ (libraries base cmdlang eio fpath fpath-sexp0 sexplib0 yojson)
  (instrumentation
   (backend bisect_ppx))
  (lint
   (pps ppx_js_style -allow-let-operators -check-doc-comments))
  (preprocess
-  (pps
-   -unused-type-warnings=force
-   ppx_compare
-   ppx_enumerate
-   ppx_hash
-   ppx_here
-   ppx_let
-   ppx_sexp_conv
-   ppx_sexp_value
-   ppx_yojson_conv)))
+  (pps -unused-code-warnings=force ppx_compare ppx_sexp_conv ppx_yojson_conv)))
