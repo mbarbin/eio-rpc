@@ -10,10 +10,10 @@
   -open
   Base
   -open
-  Fpath_base
+  Fpath_sexp0
   -open
   Cmdlang)
- (libraries base cmdlang eio fpath fpath-base yojson)
+ (libraries base cmdlang eio fpath fpath-sexp0 yojson)
  (instrumentation
   (backend bisect_ppx))
  (lint
