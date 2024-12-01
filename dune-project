@@ -25,9 +25,9 @@
   (ocaml
    (>= 5.2))
   (grpc
-   (>= 0.2.0-preview.2))
+   (>= 0.2.1-preview.3))
   (grpc-protoc
-   (>= 0.2.0-preview.2))
+   (>= 0.2.1-preview.3))
   (ocaml-protoc
    (>= 3.1))
   (pbrt_services
@@ -75,7 +75,7 @@
   (ocaml
    (>= 5.2))
   (grpc-eio
-   (>= 0.2.0-preview.2))))
+   (>= 0.2.1-preview.3))))
 
 (package
  (name grpc-client)
@@ -90,15 +90,14 @@
   (eio
    (>= 1.0))
   (grpc
-   (>= 0.2.0-preview.2))
+   (>= 0.2.1-preview.3))
   (grpc-eio
-   (>= 0.2.0-preview.2))
+   (>= 0.2.1-preview.3))
   (grpc-spec
    (= :version))
   (h2-eio
    (and
-    (>= 0.11.0)
-    (< 0.13.0)))
+    (>= 0.13.0)))
   (ppx_compare
    (and
     (>= v0.17)
@@ -148,19 +147,17 @@
   (eio
    (>= 1.0))
   (grpc
-   (>= 0.2.0-preview.2))
+   (>= 0.2.1-preview.3))
   (grpc-eio
-   (>= 0.2.0-preview.2))
+   (>= 0.2.1-preview.3))
   (grpc-spec
    (= :version))
   (h2
    (and
-    (>= 0.11.0)
-    (< 0.13.0)))
+    (>= 0.13.0)))
   (h2-eio
    (and
-    (>= 0.11.0)
-    (< 0.13.0)))
+    (>= 0.13.0)))
   (ppx_compare
    (and
     (>= v0.17)
@@ -208,7 +205,7 @@
     (>= v0.17)
     (< v0.18)))
   (cmdlang
-   (>= 0.0.8))
+   (>= 0.0.9))
   (eio
    (>= 1.0))
   (fpath
@@ -261,7 +258,7 @@
 
 (package
  (name grpc-test-helpers)
- (synopsis "A library to help writting tests for gRPC Eio applications")
+ (synopsis "A library to help writing tests for gRPC Eio applications")
  (depends
   (ocaml
    (>= 5.2))
@@ -313,7 +310,7 @@
 
 (package
  (name grpc-quickcheck)
- (synopsis "A library to help writting expect-tests for gRPC interfaces")
+ (synopsis "A library to help writing expect-tests for gRPC interfaces")
  (depends
   (ocaml
    (>= 5.2))
@@ -391,13 +388,11 @@
     :with-dev-setup
     (>= 2.8.3)))
   (cmdlang
-   (>= 0.0.8))
-  (cmdlang-cmdliner-runner
-   (>= 0.0.8))
+   (>= 0.0.9))
   (cmdlang-stdlib-runner
-   (>= 0.0.8))
+   (>= 0.0.9))
   (cmdlang-to-cmdliner
-   (>= 0.0.8))
+   (>= 0.0.9))
   (cmdliner
    (>= 1.3.0))
   (eio
