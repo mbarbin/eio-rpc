@@ -25,9 +25,9 @@
   (ocaml
    (>= 5.2))
   (grpc
-   (>= 0.2.0-preview.2))
+   (>= 0.2.1-preview.3))
   (grpc-protoc
-   (>= 0.2.0-preview.2))
+   (>= 0.2.1-preview.3))
   (ocaml-protoc
    (>= 3.1))
   (pbrt_services
@@ -75,7 +75,7 @@
   (ocaml
    (>= 5.2))
   (grpc-eio
-   (>= 0.2.0-preview.2))))
+   (>= 0.2.1-preview.3))))
 
 (package
  (name grpc-client)
@@ -90,15 +90,14 @@
   (eio
    (>= 1.0))
   (grpc
-   (>= 0.2.0-preview.2))
+   (>= 0.2.1-preview.3))
   (grpc-eio
-   (>= 0.2.0-preview.2))
+   (>= 0.2.1-preview.3))
   (grpc-spec
    (= :version))
   (h2-eio
    (and
-    (>= 0.11.0)
-    (< 0.13.0)))
+    (>= 0.13.0)))
   (ppx_compare
    (and
     (>= v0.17)
@@ -148,19 +147,17 @@
   (eio
    (>= 1.0))
   (grpc
-   (>= 0.2.0-preview.2))
+   (>= 0.2.1-preview.3))
   (grpc-eio
-   (>= 0.2.0-preview.2))
+   (>= 0.2.1-preview.3))
   (grpc-spec
    (= :version))
   (h2
    (and
-    (>= 0.11.0)
-    (< 0.13.0)))
+    (>= 0.13.0)))
   (h2-eio
    (and
-    (>= 0.11.0)
-    (< 0.13.0)))
+    (>= 0.13.0)))
   (ppx_compare
    (and
     (>= v0.17)
