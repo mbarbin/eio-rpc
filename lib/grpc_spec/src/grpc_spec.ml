@@ -294,7 +294,7 @@ module Bidirectional_streaming = struct
 end
 
 let client_rpc
-  : type proto_request request request_mode protoc_request_mode proto_response response response_mode protoc_response_mode.
+  : type request request_mode response response_mode.
     (request, request_mode, response, response_mode) t
     -> (request, request_mode, response, response_mode) Grpc.Rpc.Client_rpc.t
   =
@@ -319,7 +319,7 @@ let client_rpc
 ;;
 
 let server_rpc
-  : type proto_request request request_mode protoc_request_mode proto_response response response_mode protoc_response_mode.
+  : type request request_mode response response_mode.
     (request, request_mode, response, response_mode) t
     -> ( request
          , request_mode
