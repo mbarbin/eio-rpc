@@ -389,8 +389,6 @@
     (>= 2.8.3)))
   (cmdlang
    (>= 0.0.9))
-  (cmdlang-cmdliner-runner
-   (>= 0.0.8))
   (cmdlang-stdlib-runner
    (>= 0.0.9))
   (cmdlang-to-cmdliner
