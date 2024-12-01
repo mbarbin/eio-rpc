@@ -258,7 +258,7 @@
 
 (package
  (name grpc-test-helpers)
- (synopsis "A library to help writting tests for gRPC Eio applications")
+ (synopsis "A library to help writing tests for gRPC Eio applications")
  (depends
   (ocaml
    (>= 5.2))
@@ -310,7 +310,7 @@
 
 (package
  (name grpc-quickcheck)
- (synopsis "A library to help writting expect-tests for gRPC interfaces")
+ (synopsis "A library to help writing expect-tests for gRPC interfaces")
  (depends
   (ocaml
    (>= 5.2))
