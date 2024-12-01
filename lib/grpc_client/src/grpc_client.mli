@@ -1,5 +1,7 @@
 module Connection : sig
   type t = H2_eio.Client.t
+
+  val raise_client_error : H2.Client_connection.error -> _
 end
 
 val with_connection
