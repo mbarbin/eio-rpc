@@ -1,8 +1,9 @@
 let main =
   Command.make
     ~summary:"get the value attached to a key"
-    (let%map_open.Command connection_config = Grpc_discovery.Connection_config.arg
-     and key =
+    (let open Command.Std in
+     let+ connection_config = Grpc_discovery.Connection_config.arg
+     and+ key =
        Arg.named
          [ "key" ]
          (Param.validated_string (module Keyval.Key))

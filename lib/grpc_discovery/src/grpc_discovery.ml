@@ -26,21 +26,22 @@ module Connection_config = struct
   [@@deriving equal, sexp_of]
 
   let arg =
-    let%map_open.Command by_port =
+    let open Command.Std in
+    let+ by_port =
       Arg.named_opt
         [ Switch.port ]
         Param.int
         ~docv:"PORT"
         ~doc:"connect to localhost TCP port"
       >>| Option.map ~f:(fun port -> Tcp { host = `Localhost; port })
-    and by_unix_socket =
+    and+ by_unix_socket =
       Arg.named_opt
         [ Switch.unix_socket ]
         (Param.validated_string (module Fpath))
         ~docv:"PATH"
         ~doc:"connect to unix socket"
       >>| Option.map ~f:(fun path -> Unix { path })
-    and by_discovery_file =
+    and+ by_discovery_file =
       Arg.named_opt
         [ Switch.discovery_file ]
         (Param.validated_string (module Fpath))
@@ -95,23 +96,23 @@ module Listening_config = struct
   [@@deriving equal, sexp_of]
 
   let arg =
-    let open Command.Let_syntax in
-    let%map_open.Command specification =
-      let%map by_os =
-        if%map
+    let open Command.Std in
+    let+ specification =
+      let+ by_os =
+        let+ chosen_by_os =
           Arg.flag
             [ Switch.port_chosen_by_os ]
             ~doc:"listen on localhost TCP port chosen by OS (default)"
-        then Some (Specification.Tcp { port = `Chosen_by_OS })
-        else None
-      and by_port =
+        in
+        if chosen_by_os then Some (Specification.Tcp { port = `Chosen_by_OS }) else None
+      and+ by_port =
         Arg.named_opt
           [ Switch.port ]
           Param.int
           ~docv:"PORT"
           ~doc:"listen on localhost TCP port"
         >>| Option.map ~f:(fun port -> Specification.Tcp { port = `Supplied port })
-      and by_socket =
+      and+ by_socket =
         Arg.named_opt
           [ Switch.unix_socket ]
           (Param.validated_string (module Fpath))
@@ -125,15 +126,16 @@ module Listening_config = struct
       | _ :: _ :: _ ->
         Or_error.error_string
           "Only one of --port, --unix-socket, or --port-chosen-by-os can be used"
-    and discovery_file =
+    and+ discovery_file =
       Arg.named_opt
         [ Switch.discovery_file ]
         (Param.validated_string (module Fpath))
         ~docv:"PATH"
         ~doc:"save sockaddr to discovery file"
     in
-    let%map.Or_error specification = specification in
-    { specification; discovery_file }
+    match specification with
+    | Error _ as error -> error
+    | Ok specification -> Ok { specification; discovery_file }
   ;;
 
   let to_args t =

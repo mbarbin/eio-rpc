@@ -19,8 +19,6 @@
  (name grpc-spec)
  (synopsis
   "An opinionated library to build gRPC specifications for Eio clients/servers")
- (description
-  "An opinionated library to build gRPC specifications Eio clients/servers")
  (depends
   (ocaml
    (>= 5.2))
@@ -31,42 +29,7 @@
   (ocaml-protoc
    (>= 3.1))
   (pbrt_services
-   (>= 3.1))
-  (ppx_compare
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_enumerate
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_expect
-   (and
-    :with-test
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_hash
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_here
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_let
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_sexp_conv
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_sexp_value
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppxlib
-   (>= 0.33))))
+   (>= 3.1))))
 
 (package
  (name grpc-stream)
@@ -98,41 +61,10 @@
   (h2-eio
    (and
     (>= 0.13.0)))
-  (ppx_compare
+  (sexplib0
    (and
     (>= v0.17)
-    (< v0.18)))
-  (ppx_enumerate
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_expect
-   (and
-    :with-test
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_hash
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_here
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_let
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_sexp_conv
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_sexp_value
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppxlib
-   (>= 0.33))))
+    (< v0.18)))))
 
 (package
  (name grpc-server)
@@ -140,10 +72,6 @@
  (depends
   (ocaml
    (>= 5.2))
-  (base
-   (and
-    (>= v0.17)
-    (< v0.18)))
   (eio
    (>= 1.0))
   (grpc
@@ -157,42 +85,7 @@
     (>= 0.13.0)))
   (h2-eio
    (and
-    (>= 0.13.0)))
-  (ppx_compare
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_enumerate
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_expect
-   (and
-    :with-test
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_hash
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_here
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_let
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_sexp_conv
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_sexp_value
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppxlib
-   (>= 0.33))))
+    (>= 0.13.0)))))
 
 (package
  (name grpc-discovery)
@@ -210,7 +103,7 @@
    (>= 1.0))
   (fpath
    (>= 0.7.3))
-  (fpath-base
+  (fpath-sexp0
    (>= 0.2.2))
   (grpc-client
    (= :version))
@@ -218,32 +111,7 @@
    (and
     (>= v0.17)
     (< v0.18)))
-  (ppx_enumerate
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_expect
-   (and
-    :with-test
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_hash
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_here
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_let
-   (and
-    (>= v0.17)
-    (< v0.18)))
   (ppx_sexp_conv
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_sexp_value
    (and
     (>= v0.17)
     (< v0.18)))
@@ -253,6 +121,10 @@
     (< v0.18)))
   (ppxlib
    (>= 0.33))
+  (sexplib0
+   (and
+    (>= v0.17)
+    (< v0.18)))
   (yojson
    (>= 2.1.1))))
 
@@ -271,42 +143,7 @@
   (fpath
    (>= 0.7.3))
   (grpc-client
-   (= :version))
-  (ppx_compare
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_enumerate
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_expect
-   (and
-    :with-test
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_hash
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_here
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_let
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_sexp_conv
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_sexp_value
-   (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppxlib
-   (>= 0.33))))
+   (= :version))))
 
 (package
  (name grpc-quickcheck)
@@ -334,11 +171,6 @@
     (< v0.18)))
   (ppx_enumerate
    (and
-    (>= v0.17)
-    (< v0.18)))
-  (ppx_expect
-   (and
-    :with-test
     (>= v0.17)
     (< v0.18)))
   (ppx_hash
@@ -372,7 +204,6 @@
    (>= 5.2))
   (ocamlformat
    (and
-    :with-test
     :with-dev-setup
     (= 0.26.2)))
   (base
