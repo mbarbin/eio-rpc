@@ -154,7 +154,7 @@ module With_server : sig
   type t =
     { server : Server.t
     ; client : ?offline:bool -> string list list -> unit
-    (** [client ?offline args] is a convenient wrapper for {!run_client},
+      (** [client ?offline args] is a convenient wrapper for {!run_client},
         applied to the given server, and directly introduced to the scope. *)
     }
 end

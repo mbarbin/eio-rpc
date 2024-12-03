@@ -25,7 +25,8 @@ let%expect_test "testing server restart" =
       keyval [ [ "list-keys" ] ];
       [%expect {| () |}];
       keyval [ [ "get" ]; [ "--key"; "foo" ] ];
-      [%expect {|
+      [%expect
+        {|
       ("Key not found" ((key foo)))
       [1] |}]);
   ()

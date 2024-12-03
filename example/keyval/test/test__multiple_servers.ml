@@ -68,7 +68,8 @@ let%expect_test "two servers" =
   cli2 [ [ "set" ]; [ "--key"; "foo" ]; [ "--value"; "OLD-VALUE" ] ];
   cli2 [ [ "set" ]; [ "--key"; "bar" ]; [ "--value"; "sna" ] ];
   print_s [%sexp (all_bindings ~connection:connection2 : Keyval.Keyval_pair.t list)];
-  [%expect {|
+  [%expect
+    {|
     (((key bar) (value sna))
      ((key foo) (value OLD-VALUE))) |}];
   push_all_bindings ~connection1 ~connection2;

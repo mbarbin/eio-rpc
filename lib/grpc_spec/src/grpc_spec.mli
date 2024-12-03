@@ -80,11 +80,12 @@ module Unary : sig
   module Make
       (Request : Protoable.S)
       (Response : Protoable.S)
-      (_ : Protospec.S
-           with type request := Request.Proto.t
-            and type request_mode := Pbrt_services.Value_mode.unary
-            and type response := Response.Proto.t
-            and type response_mode := Pbrt_services.Value_mode.unary) :
+      (_ :
+         Protospec.S
+         with type request := Request.Proto.t
+          and type request_mode := Pbrt_services.Value_mode.unary
+          and type response := Response.Proto.t
+          and type response_mode := Pbrt_services.Value_mode.unary) :
     S with module Request := Request and module Response := Response
 end
 
@@ -95,11 +96,12 @@ module Client_streaming : sig
   module Make
       (Request : Protoable.S)
       (Response : Protoable.S)
-      (_ : Protospec.S
-           with type request := Request.Proto.t
-            and type request_mode := Pbrt_services.Value_mode.stream
-            and type response := Response.Proto.t
-            and type response_mode := Pbrt_services.Value_mode.unary) :
+      (_ :
+         Protospec.S
+         with type request := Request.Proto.t
+          and type request_mode := Pbrt_services.Value_mode.stream
+          and type response := Response.Proto.t
+          and type response_mode := Pbrt_services.Value_mode.unary) :
     S with module Request := Request and module Response := Response
 end
 
@@ -110,11 +112,12 @@ module Server_streaming : sig
   module Make
       (Request : Protoable.S)
       (Response : Protoable.S)
-      (_ : Protospec.S
-           with type request := Request.Proto.t
-            and type request_mode := Pbrt_services.Value_mode.unary
-            and type response := Response.Proto.t
-            and type response_mode := Pbrt_services.Value_mode.stream) :
+      (_ :
+         Protospec.S
+         with type request := Request.Proto.t
+          and type request_mode := Pbrt_services.Value_mode.unary
+          and type response := Response.Proto.t
+          and type response_mode := Pbrt_services.Value_mode.stream) :
     S with module Request := Request and module Response := Response
 end
 
@@ -127,11 +130,12 @@ module Bidirectional_streaming : sig
   module Make
       (Request : Protoable.S)
       (Response : Protoable.S)
-      (_ : Protospec.S
-           with type request := Request.Proto.t
-            and type request_mode := Pbrt_services.Value_mode.stream
-            and type response := Response.Proto.t
-            and type response_mode := Pbrt_services.Value_mode.stream) :
+      (_ :
+         Protospec.S
+         with type request := Request.Proto.t
+          and type request_mode := Pbrt_services.Value_mode.stream
+          and type response := Response.Proto.t
+          and type response_mode := Pbrt_services.Value_mode.stream) :
     S with module Request := Request and module Response := Response
 end
 

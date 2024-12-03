@@ -72,8 +72,8 @@ let rec encode_pb_key (v : key) encoder =
 let rec encode_pb_keys (v : keys) encoder =
   Pbrt.List_util.rev_iter_with
     (fun x encoder ->
-      Pbrt.Encoder.nested encode_pb_key x encoder;
-      Pbrt.Encoder.key 1 Pbrt.Bytes encoder)
+       Pbrt.Encoder.nested encode_pb_key x encoder;
+       Pbrt.Encoder.key 1 Pbrt.Bytes encoder)
     v.keys
     encoder;
   ()
@@ -539,11 +539,11 @@ module Keyval = struct
     ;;
 
     let make
-      ~get:__handler__get
-      ~set:__handler__set
-      ~delete:__handler__delete
-      ~listKeys:__handler__listKeys
-      ()
+          ~get:__handler__get
+          ~set:__handler__set
+          ~delete:__handler__delete
+          ~listKeys:__handler__listKeys
+          ()
       : _ Server.t
       =
       { Server.service_name = "Keyval"

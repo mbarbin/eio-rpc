@@ -114,9 +114,9 @@ module Server = struct
 end
 
 let run_client
-  { Server.test = T { env }; config; listening_on = _; connection_config }
-  ?(offline = false)
-  args
+      { Server.test = T { env }; config; listening_on = _; connection_config }
+      ?(offline = false)
+      args
   =
   let module C = (val config : Config.S) in
   run_client

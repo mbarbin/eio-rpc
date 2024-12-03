@@ -18,19 +18,16 @@ type ('request, 'request_mode, 'response, 'response_mode) t =
       and type response_mode = 'response_mode)
 
 let run_request_exn
-  (type request request_mode response response_mode)
-  here
-  ?config
-  ?examples
-  (t : (request, request_mode, response, response_mode) t)
+      (type request request_mode response response_mode)
+      here
+      ?config
+      ?examples
+      (t : (request, request_mode, response, response_mode) t)
   =
   let module M =
     (val t
-      : S
-      with type Request.t = request
-       and type request_mode = request_mode
-       and type Response.t = response
-       and type response_mode = response_mode)
+      : S with type Request.t = request and type request_mode = request_mode
+       and type Response.t = response and type response_mode = response_mode)
   in
   quickcheck_m
     here
@@ -44,19 +41,16 @@ let run_request_exn
 ;;
 
 let run_response_exn
-  (type request request_mode response response_mode)
-  here
-  ?config
-  ?examples
-  (t : (request, request_mode, response, response_mode) t)
+      (type request request_mode response response_mode)
+      here
+      ?config
+      ?examples
+      (t : (request, request_mode, response, response_mode) t)
   =
   let module M =
     (val t
-      : S
-      with type Request.t = request
-       and type request_mode = request_mode
-       and type Response.t = response
-       and type response_mode = response_mode)
+      : S with type Request.t = request and type request_mode = request_mode
+       and type Response.t = response and type response_mode = response_mode)
   in
   quickcheck_m
     here

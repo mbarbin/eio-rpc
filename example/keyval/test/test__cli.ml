@@ -14,12 +14,14 @@ let%expect_test "using the cli" =
   [%expect {| () |}];
   (* The cli exit with code [1] if we're trying to get an invalid key. *)
   keyval [ [ "get" ]; [ "--key"; "foo" ] ];
-  [%expect {|
+  [%expect
+    {|
     ("Key not found" ((key foo)))
     [1] |}];
   (* Same for delete. *)
   keyval [ [ "delete" ]; [ "--key"; "foo" ] ];
-  [%expect {|
+  [%expect
+    {|
       ("Key not found" ((key foo)))
       [1] |}];
   (* Now let's try to add a binding to the keyval store. *)
@@ -33,7 +35,8 @@ let%expect_test "using the cli" =
   [%expect {||}];
   (* And now it's gone. *)
   keyval [ [ "get" ]; [ "--key"; "foo" ] ];
-  [%expect {|
+  [%expect
+    {|
     ("Key not found" ((key foo)))
     [1] |}];
   (* Let's add it back. *)

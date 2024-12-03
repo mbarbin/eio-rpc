@@ -69,7 +69,8 @@ let%expect_test "offline" =
            keyval(1)
     |}];
   keyval ~offline:true [ [ "validate-key"; "my-key" ] ];
-  [%expect {|
+  [%expect
+    {|
     "my-key": invalid key
     [1]
     |}];

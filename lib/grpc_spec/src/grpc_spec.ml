@@ -63,11 +63,13 @@ module Protoable = struct
 end
 
 let unary
-  (type proto_request request proto_response response)
-  ~client_rpc
-  ~server_rpc
-  (module Request : Protoable.S with type t = request and type Proto.t = proto_request)
-  (module Response : Protoable.S with type t = response and type Proto.t = proto_response)
+      (type proto_request request proto_response response)
+      ~client_rpc
+      ~server_rpc
+      (module Request : Protoable.S with type t = request and type Proto.t = proto_request)
+      (module Response : Protoable.S
+        with type t = response
+         and type Proto.t = proto_response)
   =
   Rpc.T
     { client_rpc
@@ -82,11 +84,13 @@ let unary
 ;;
 
 let server_streaming
-  (type proto_request request proto_response response)
-  ~client_rpc
-  ~server_rpc
-  (module Request : Protoable.S with type t = request and type Proto.t = proto_request)
-  (module Response : Protoable.S with type t = response and type Proto.t = proto_response)
+      (type proto_request request proto_response response)
+      ~client_rpc
+      ~server_rpc
+      (module Request : Protoable.S with type t = request and type Proto.t = proto_request)
+      (module Response : Protoable.S
+        with type t = response
+         and type Proto.t = proto_response)
   =
   Rpc.T
     { client_rpc
@@ -101,11 +105,13 @@ let server_streaming
 ;;
 
 let client_streaming
-  (type proto_request request proto_response response)
-  ~client_rpc
-  ~server_rpc
-  (module Request : Protoable.S with type t = request and type Proto.t = proto_request)
-  (module Response : Protoable.S with type t = response and type Proto.t = proto_response)
+      (type proto_request request proto_response response)
+      ~client_rpc
+      ~server_rpc
+      (module Request : Protoable.S with type t = request and type Proto.t = proto_request)
+      (module Response : Protoable.S
+        with type t = response
+         and type Proto.t = proto_response)
   =
   Rpc.T
     { client_rpc
@@ -120,11 +126,13 @@ let client_streaming
 ;;
 
 let bidirectional_streaming
-  (type proto_request request proto_response response)
-  ~client_rpc
-  ~server_rpc
-  (module Request : Protoable.S with type t = request and type Proto.t = proto_request)
-  (module Response : Protoable.S with type t = response and type Proto.t = proto_response)
+      (type proto_request request proto_response response)
+      ~client_rpc
+      ~server_rpc
+      (module Request : Protoable.S with type t = request and type Proto.t = proto_request)
+      (module Response : Protoable.S
+        with type t = response
+         and type Proto.t = proto_response)
   =
   Rpc.T
     { client_rpc
@@ -194,11 +202,12 @@ module Unary = struct
   module Make
       (Request : Protoable.S)
       (Response : Protoable.S)
-      (Protospec : Protospec.S
-                   with type request := Request.Proto.t
-                    and type request_mode := Pbrt_services.Value_mode.unary
-                    and type response := Response.Proto.t
-                    and type response_mode := Pbrt_services.Value_mode.unary) =
+      (Protospec :
+         Protospec.S
+         with type request := Request.Proto.t
+          and type request_mode := Pbrt_services.Value_mode.unary
+          and type response := Response.Proto.t
+          and type response_mode := Pbrt_services.Value_mode.unary) =
   struct
     type request_mode = Value_mode.unary
     type response_mode = Value_mode.unary
@@ -220,11 +229,12 @@ module Client_streaming = struct
   module Make
       (Request : Protoable.S)
       (Response : Protoable.S)
-      (Protospec : Protospec.S
-                   with type request := Request.Proto.t
-                    and type request_mode := Pbrt_services.Value_mode.stream
-                    and type response := Response.Proto.t
-                    and type response_mode := Pbrt_services.Value_mode.unary) =
+      (Protospec :
+         Protospec.S
+         with type request := Request.Proto.t
+          and type request_mode := Pbrt_services.Value_mode.stream
+          and type response := Response.Proto.t
+          and type response_mode := Pbrt_services.Value_mode.unary) =
   struct
     type request_mode = Value_mode.stream
     type response_mode = Value_mode.unary
@@ -246,11 +256,12 @@ module Server_streaming = struct
   module Make
       (Request : Protoable.S)
       (Response : Protoable.S)
-      (Protospec : Protospec.S
-                   with type request := Request.Proto.t
-                    and type request_mode := Pbrt_services.Value_mode.unary
-                    and type response := Response.Proto.t
-                    and type response_mode := Pbrt_services.Value_mode.stream) =
+      (Protospec :
+         Protospec.S
+         with type request := Request.Proto.t
+          and type request_mode := Pbrt_services.Value_mode.unary
+          and type response := Response.Proto.t
+          and type response_mode := Pbrt_services.Value_mode.stream) =
   struct
     type request_mode = Value_mode.unary
     type response_mode = Value_mode.stream
@@ -274,11 +285,12 @@ module Bidirectional_streaming = struct
   module Make
       (Request : Protoable.S)
       (Response : Protoable.S)
-      (Protospec : Protospec.S
-                   with type request := Request.Proto.t
-                    and type request_mode := Pbrt_services.Value_mode.stream
-                    and type response := Response.Proto.t
-                    and type response_mode := Pbrt_services.Value_mode.stream) =
+      (Protospec :
+         Protospec.S
+         with type request := Request.Proto.t
+          and type request_mode := Pbrt_services.Value_mode.stream
+          and type response := Response.Proto.t
+          and type response_mode := Pbrt_services.Value_mode.stream) =
   struct
     type request_mode = Value_mode.stream
     type response_mode = Value_mode.stream
@@ -301,11 +313,8 @@ let client_rpc
   fun t ->
   let module T =
     (val t
-      : S
-      with type request_mode = request_mode
-       and type response_mode = response_mode
-       and type Request.t = request
-       and type Response.t = response)
+      : S with type request_mode = request_mode and type response_mode = response_mode
+       and type Request.t = request and type Response.t = response)
   in
   let map_rpc (rpc : _ Grpc.Rpc.Client_rpc.t) ~request_to_proto ~response_of_proto =
     { rpc with
@@ -331,17 +340,14 @@ let server_rpc
   fun t ->
   let module T =
     (val t
-      : S
-      with type request_mode = request_mode
-       and type response_mode = response_mode
-       and type Request.t = request
-       and type Response.t = response)
+      : S with type request_mode = request_mode and type response_mode = response_mode
+       and type Request.t = request and type Response.t = response)
   in
   let map_rpc
-    (rpc : _ Grpc.Rpc.Server_rpc.t)
-    ~(client_rpc : _ Pbrt_services.Client.rpc)
-    ~request_of_proto
-    ~response_to_proto
+        (rpc : _ Grpc.Rpc.Server_rpc.t)
+        ~(client_rpc : _ Pbrt_services.Client.rpc)
+        ~request_of_proto
+        ~response_to_proto
     =
     { rpc with
       service_spec =
@@ -361,16 +367,13 @@ let server_rpc
 
 module Private = struct
   let service_spec
-    (type request request_mode response response_mode)
-    (t : (request, request_mode, response, response_mode) t)
+        (type request request_mode response response_mode)
+        (t : (request, request_mode, response, response_mode) t)
     =
     let module T =
       (val t
-        : S
-        with type request_mode = request_mode
-         and type response_mode = response_mode
-         and type Request.t = request
-         and type Response.t = response)
+        : S with type request_mode = request_mode and type response_mode = response_mode
+         and type Request.t = request and type Response.t = response)
     in
     let (T t) = T.rpc in
     { Grpc.Rpc.Service_spec.package = t.client_rpc.package
