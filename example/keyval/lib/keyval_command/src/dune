@@ -19,8 +19,11 @@
   eio
   eio-writer
   eio_main
+  fmt
   grpc-client
   grpc-discovery
+  grpc-server
+  keyval
   keyval_rpc
   keyval_server)
  (instrumentation

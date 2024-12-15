@@ -16,7 +16,10 @@
   base
   expect_test_helpers_core.expect_test_helpers_base
   grpc_quickcheck
-  keyval_rpc)
+  keyval
+  keyval_rpc
+  keyval_rpc_proto
+  pbrt)
  (instrumentation
   (backend bisect_ppx))
  (lint

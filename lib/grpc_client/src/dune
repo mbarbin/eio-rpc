@@ -2,7 +2,7 @@
  (name grpc_client)
  (public_name grpc-client)
  (flags :standard -w +a-4-40-41-42-44-45-48-66 -warn-error +a -open Base)
- (libraries base eio grpc grpc-eio grpc-spec grpc-stream h2-eio sexplib0)
+ (libraries base eio grpc grpc-eio grpc-spec grpc-stream h2 h2-eio sexplib0)
  (instrumentation
   (backend bisect_ppx))
  (lint

@@ -17,6 +17,7 @@
   cmdlang
   cmdlang-stdlib-runner
   expect_test_helpers_core.expect_test_helpers_base
+  fpath
   grpc_discovery)
  (instrumentation
   (backend bisect_ppx))
