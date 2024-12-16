@@ -15,6 +15,7 @@ depends: [
   "grpc" {>= "0.2.1-preview.3"}
   "grpc-eio" {>= "0.2.1-preview.3"}
   "grpc-spec" {= version}
+  "h2" {>= "0.13.0"}
   "h2-eio" {>= "0.13.0"}
   "sexplib0" {>= "v0.17" & < "v0.18"}
   "odoc" {with-doc}

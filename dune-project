@@ -235,6 +235,10 @@
    (and
     (>= v0.17)
     (< v0.18)))
+  (fmt
+   (>= 0.9.0))
+  (fpath
+   (>= 0.7.3))
   (grpc-client
    (= :version))
   (grpc-server
