@@ -58,9 +58,10 @@
    (>= 0.2.1-preview.3))
   (grpc-spec
    (= :version))
+  (h2
+   (>= 0.13.0))
   (h2-eio
-   (and
-    (>= 0.13.0)))
+   (>= 0.13.0))
   (sexplib0
    (and
     (>= v0.17)
@@ -81,11 +82,9 @@
   (grpc-spec
    (= :version))
   (h2
-   (and
-    (>= 0.13.0)))
+   (>= 0.13.0))
   (h2-eio
-   (and
-    (>= 0.13.0)))))
+   (>= 0.13.0))))
 
 (package
  (name grpc-discovery)
