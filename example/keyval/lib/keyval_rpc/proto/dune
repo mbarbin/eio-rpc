@@ -7,8 +7,12 @@
   (pps ppx_deriving.show ppx_deriving.eq)))
 
 (rule
+ (copy %{project_root}/.ocamlformat .ocamlformat))
+
+(rule
  (targets keyval.ml keyval.mli)
  (deps
+  .ocamlformat
   (glob_files *.proto))
  (alias runtest)
  (mode promote)
