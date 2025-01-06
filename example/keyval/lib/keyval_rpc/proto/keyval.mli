@@ -89,7 +89,8 @@ val decode_pb_value : Pbrt.Decoder.t -> value
 (** [decode_pb_error decoder] decodes a [error] binary value from [decoder] *)
 val decode_pb_error : Pbrt.Decoder.t -> error
 
-(** [decode_pb_value_or_error decoder] decodes a [value_or_error] binary value from [decoder] *)
+(** [decode_pb_value_or_error decoder] decodes a [value_or_error] binary value from [decoder]
+*)
 val decode_pb_value_or_error : Pbrt.Decoder.t -> value_or_error
 
 (** [decode_pb_keyval_pair decoder] decodes a [keyval_pair] binary value from [decoder] *)
@@ -98,7 +99,8 @@ val decode_pb_keyval_pair : Pbrt.Decoder.t -> keyval_pair
 (** [decode_pb_unit_ decoder] decodes a [unit_] binary value from [decoder] *)
 val decode_pb_unit_ : Pbrt.Decoder.t -> unit_
 
-(** [decode_pb_unit_or_error decoder] decodes a [unit_or_error] binary value from [decoder] *)
+(** [decode_pb_unit_or_error decoder] decodes a [unit_or_error] binary value from [decoder]
+*)
 val decode_pb_unit_or_error : Pbrt.Decoder.t -> unit_or_error
 
 (** {2 Protobuf YoJson Encoding} *)
@@ -141,7 +143,8 @@ val decode_json_value : Yojson.Basic.t -> value
 (** [decode_json_error decoder] decodes a [error] value from [decoder] *)
 val decode_json_error : Yojson.Basic.t -> error
 
-(** [decode_json_value_or_error decoder] decodes a [value_or_error] value from [decoder] *)
+(** [decode_json_value_or_error decoder] decodes a [value_or_error] value from [decoder]
+*)
 val decode_json_value_or_error : Yojson.Basic.t -> value_or_error
 
 (** [decode_json_keyval_pair decoder] decodes a [keyval_pair] value from [decoder] *)
@@ -177,7 +180,8 @@ module Keyval : sig
       -> unit
       -> 'handler Pbrt_services.Server.t
 
-    (** The individual server stubs are only exposed for advanced users. Casual users should prefer accessing them through {!make}. *)
+    (** The individual server stubs are only exposed for advanced users. Casual users should prefer accessing them through {!make}.
+    *)
 
     val get : (key, unary, value_or_error, unary) Server.rpc
     val set : (keyval_pair, unary, unit_, unary) Server.rpc
