@@ -144,6 +144,8 @@
   (fpath
    (>= 0.7.3))
   (grpc-client
+   (= :version))
+  (grpc-discovery
    (= :version))))
 
 (package
