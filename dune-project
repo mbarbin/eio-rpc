@@ -243,11 +243,17 @@
    (>= 0.7.3))
   (grpc-client
    (= :version))
+  (grpc-discovery
+   (= :version))
+  (grpc-quickcheck
+   (= :version))
   (grpc-server
    (= :version))
   (grpc-spec
    (= :version))
   (grpc-stream
+   (= :version))
+  (grpc-test-helpers
    (= :version))
   (letfun
    (>= 0.0.1))
