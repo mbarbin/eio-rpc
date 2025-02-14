@@ -10,6 +10,8 @@
   -open
   Base
   -open
+  Stdio
+  -open
   Or_error.Let_syntax
   -open
   Cmdlang)
@@ -17,7 +19,6 @@
   base
   cmdlang
   eio
-  eio-writer
   eio_main
   fmt
   grpc-client
@@ -25,7 +26,8 @@
   grpc-server
   keyval
   keyval_rpc
-  keyval_server)
+  keyval_server
+  stdio)
  (instrumentation
   (backend bisect_ppx))
  (lint

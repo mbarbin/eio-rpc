@@ -11,6 +11,6 @@ let main =
      in
      Grpc_client.with_connection ~env ~sockaddr ~f:(fun connection ->
        let%bind keys = Grpc_client.unary (module Keyval_rpc.List_keys) ~connection () in
-       Eio_writer.print_sexp ~env [%sexp (keys : Set.M(Keyval.Key).t)];
+       print_s [%sexp (keys : Set.M(Keyval.Key).t)];
        return ()))
 ;;
