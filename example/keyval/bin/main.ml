@@ -2,7 +2,7 @@ let () =
   match
     Cmdliner.Cmd.eval_value'
       (Cmdlang_to_cmdliner.Translate.command
-         Keyval_command.main
+         Keyval_cli.main
          ~name:"keyval"
          ~version:"%%VERSION%%")
   with
