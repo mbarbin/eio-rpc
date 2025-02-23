@@ -1,7 +1,6 @@
 (library
- (name keyval_command_test)
- (public_name eio-rpc-tests.keyval_command_test)
- (inline_tests)
+ (name keyval_cli)
+ (public_name eio-rpc-tests.keyval-cli)
  (flags
   :standard
   -w
@@ -11,11 +10,24 @@
   -open
   Base
   -open
-  Expect_test_helpers_base)
+  Stdio
+  -open
+  Or_error.Let_syntax
+  -open
+  Cmdlang)
  (libraries
   base
-  expect_test_helpers_core.expect_test_helpers_base
-  keyval_command)
+  cmdlang
+  eio
+  eio_main
+  fmt
+  grpc-client
+  grpc-discovery
+  grpc-server
+  keyval
+  keyval_rpc
+  keyval_server
+  stdio)
  (instrumentation
   (backend bisect_ppx))
  (lint
@@ -25,7 +37,6 @@
    -unused-type-warnings=force
    ppx_compare
    ppx_enumerate
-   ppx_expect
    ppx_hash
    ppx_here
    ppx_let
