@@ -13,11 +13,16 @@ let run_cmd =
      let server = Keyval_server.create () in
      let grpc_server = Keyval_server.implement_rpcs server in
      let listening_socket =
+       let reuse_port =
+         match listening_config.specification with
+         | Tcp { port = `Supplied (_ : int) } -> true
+         | Tcp { port = `Chosen_by_OS } | Unix _ -> false
+       in
        Eio.Net.listen
          net
          ~sw
          ~reuse_addr:true
-         ~reuse_port:true
+         ~reuse_port
          ~backlog:5
          (Grpc_discovery.Listening_config.sockaddr listening_config)
      in
