@@ -10,14 +10,14 @@ bug-reports: "https://github.com/mbarbin/eio-rpc/issues"
 depends: [
   "dune" {>= "3.17"}
   "ocaml" {>= "5.2"}
-  "base" {>= "v0.17" & < "v0.18"}
+  "base" {>= "v0.17"}
   "eio" {>= "1.0"}
   "grpc" {>= "0.2.1-preview.3"}
   "grpc-eio" {>= "0.2.1-preview.3"}
   "grpc-spec" {= version}
   "h2" {>= "0.13.0"}
   "h2-eio" {>= "0.13.0"}
-  "sexplib0" {>= "v0.17" & < "v0.18"}
+  "sexplib0" {>= "v0.17"}
   "odoc" {with-doc}
 ]
 build: [
