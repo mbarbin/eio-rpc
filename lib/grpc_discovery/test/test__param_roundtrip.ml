@@ -13,7 +13,7 @@ let test_roundtrip (type a) ~(inputs : a list) (module A : Argable with type t =
     let args = A.to_args t in
     let t' =
       match
-        let cmd = Command.make A.arg ~summary:"return the args" in
+        let cmd = Command.make A.arg ~summary:"Return the args." in
         Cmdlang_stdlib_runner.eval cmd ~argv:(Array.of_list ("./main.exe" :: args))
       with
       | Ok (Ok a) -> a

@@ -1,6 +1,6 @@
 let main =
   Command.make
-    ~summary:"set a binding key=value"
+    ~summary:"Set a binding [key=value]."
     (let open Command.Std in
      let+ connection_config = Grpc_discovery.Connection_config.arg
      and+ key =
@@ -8,13 +8,13 @@ let main =
          [ "key" ]
          (Param.validated_string (module Keyval.Key))
          ~docv:"KEY"
-         ~doc:"the name of the key"
+         ~doc:"The name of the key."
      and+ value =
        Arg.named
          [ "value" ]
          (Param.stringable (module Keyval.Value))
          ~docv:"VALUE"
-         ~doc:"the desired value"
+         ~doc:"The desired value."
      in
      let%bind connection_config = connection_config in
      Eio_main.run

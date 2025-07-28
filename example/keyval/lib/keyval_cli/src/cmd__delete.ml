@@ -1,6 +1,6 @@
 let main =
   Command.make
-    ~summary:"delete a binding"
+    ~summary:"Delete a binding."
     (let open Command.Std in
      let+ connection_config = Grpc_discovery.Connection_config.arg
      and+ key =
@@ -8,7 +8,7 @@ let main =
          [ "key" ]
          (Param.validated_string (module Keyval.Key))
          ~docv:"KEY"
-         ~doc:"the name of the key"
+         ~doc:"The name of the key to delete."
      in
      Eio_main.run
      @@ fun env ->

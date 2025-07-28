@@ -32,21 +32,21 @@ module Connection_config = struct
         [ Switch.port ]
         Param.int
         ~docv:"PORT"
-        ~doc:"connect to localhost TCP port"
+        ~doc:"Connect to localhost TCP port."
       >>| Option.map ~f:(fun port -> Tcp { host = `Localhost; port })
     and+ by_unix_socket =
       Arg.named_opt
         [ Switch.unix_socket ]
         (Param.validated_string (module Fpath))
         ~docv:"PATH"
-        ~doc:"connect to unix socket"
+        ~doc:"Connect to unix socket."
       >>| Option.map ~f:(fun path -> Unix { path })
     and+ by_discovery_file =
       Arg.named_opt
         [ Switch.discovery_file ]
         (Param.validated_string (module Fpath))
         ~docv:"PATH"
-        ~doc:"read sockaddr from discovery file"
+        ~doc:"Read sockaddr from discovery file."
       >>| Option.map ~f:(fun path -> Discovery_file { path })
     in
     match List.filter_opt [ by_port; by_unix_socket; by_discovery_file ] with
@@ -54,12 +54,12 @@ module Connection_config = struct
     | [] -> Or_error.return (Tcp { host = `Localhost; port = 8080 })
     | _ :: _ :: _ ->
       Or_error.error_string
-        "Only one of --port, --unix-socket, or --discovery-file can be used"
+        "Only one of --port, --unix-socket, or --discovery-file can be used."
   ;;
 
   let to_args t =
     match t with
-    | Tcp { host = `Ipaddr _; port = _ } -> failwith "Not implemented"
+    | Tcp { host = `Ipaddr _; port = _ } -> failwith "Not implemented."
     | Tcp { host = `Localhost; port } -> [ "--" ^ Switch.port; Int.to_string port ]
     | Unix { path } -> [ "--" ^ Switch.unix_socket; Fpath.to_string path ]
     | Discovery_file { path } -> [ "--" ^ Switch.discovery_file; Fpath.to_string path ]
@@ -102,7 +102,7 @@ module Listening_config = struct
         let+ chosen_by_os =
           Arg.flag
             [ Switch.port_chosen_by_os ]
-            ~doc:"listen on localhost TCP port chosen by OS (default)"
+            ~doc:"Listen on localhost TCP port chosen by OS (default)."
         in
         if chosen_by_os then Some (Specification.Tcp { port = `Chosen_by_OS }) else None
       and+ by_port =
@@ -110,14 +110,14 @@ module Listening_config = struct
           [ Switch.port ]
           Param.int
           ~docv:"PORT"
-          ~doc:"listen on localhost TCP port"
+          ~doc:"Listen on localhost TCP port."
         >>| Option.map ~f:(fun port -> Specification.Tcp { port = `Supplied port })
       and+ by_socket =
         Arg.named_opt
           [ Switch.unix_socket ]
           (Param.validated_string (module Fpath))
           ~docv:"PATH"
-          ~doc:"listen on unix socket"
+          ~doc:"Listen on unix socket."
         >>| Option.map ~f:(fun path -> Specification.Unix { path })
       in
       match List.filter_opt [ by_os; by_port; by_socket ] with
@@ -125,13 +125,13 @@ module Listening_config = struct
       | [] -> Or_error.return (Specification.Tcp { port = `Chosen_by_OS })
       | _ :: _ :: _ ->
         Or_error.error_string
-          "Only one of --port, --unix-socket, or --port-chosen-by-os can be used"
+          "Only one of --port, --unix-socket, or --port-chosen-by-os can be used."
     and+ discovery_file =
       Arg.named_opt
         [ Switch.discovery_file ]
         (Param.validated_string (module Fpath))
         ~docv:"PATH"
-        ~doc:"save sockaddr to discovery file"
+        ~doc:"Save sockaddr to discovery file."
     in
     match specification with
     | Error _ as error -> error

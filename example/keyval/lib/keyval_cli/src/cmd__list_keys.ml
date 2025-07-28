@@ -1,6 +1,6 @@
 let main =
   Command.make
-    ~summary:"print the list of all known keys"
+    ~summary:"Print the list of all known keys."
     (let open Command.Std in
      let+ connection_config = Grpc_discovery.Connection_config.arg in
      Eio_main.run

@@ -1,6 +1,6 @@
 let main =
   Command.group
-    ~summary:"keyval is a key=value in-memory store served over gRPCs"
+    ~summary:"Keyval is a key=value in-memory store served over gRPCs."
     [ "delete", Cmd__delete.main
     ; "get", Cmd__get.main
     ; "list-keys", Cmd__list_keys.main

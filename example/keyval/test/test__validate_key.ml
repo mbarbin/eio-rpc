@@ -29,21 +29,17 @@ let%expect_test "offline" =
   [%expect
     {|
     NAME
-           keyval-validate-key - verify the syntactic validity of a provided key
+           keyval-validate-key - Verify the syntactic validity of a provided key.
 
     SYNOPSIS
            keyval validate-key [OPTION]… KEY
 
-
-
            This command performs a static validation of the key and does not
            require a connection to a running server.
 
-
-
     ARGUMENTS
            KEY (required)
-               the key to validate.
+               The key to validate.
 
     COMMON OPTIONS
            --help[=FMT] (default=auto)
