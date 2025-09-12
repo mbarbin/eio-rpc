@@ -1,3 +1,9 @@
+(*_********************************************************************************)
+(*_  eio-rpc - Build RPC clients and servers with eio and grpc                    *)
+(*_  SPDX-FileCopyrightText: 2023-2025 Mathieu Barbin <mathieu.barbin@gmail.com>  *)
+(*_  SPDX-License-Identifier: MIT                                                 *)
+(*_********************************************************************************)
+
 (** A library to help writing tests for gRPC Eio applications.
 
     This is built with expect-tests in mind. See the keyval application in this

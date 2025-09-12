@@ -1,3 +1,9 @@
+(*********************************************************************************)
+(*  eio-rpc - Build RPC clients and servers with eio and grpc                    *)
+(*  SPDX-FileCopyrightText: 2023-2025 Mathieu Barbin <mathieu.barbin@gmail.com>  *)
+(*  SPDX-License-Identifier: MIT                                                 *)
+(*********************************************************************************)
+
 module type S = sig
   module Request : sig
     type t [@@deriving equal, quickcheck, sexp_of]

@@ -1,3 +1,9 @@
+(*********************************************************************************)
+(*  eio-rpc - Build RPC clients and servers with eio and grpc                    *)
+(*  SPDX-FileCopyrightText: 2023-2025 Mathieu Barbin <mathieu.barbin@gmail.com>  *)
+(*  SPDX-License-Identifier: MIT                                                 *)
+(*********************************************************************************)
+
 (* In this test we connect to the server using tcp rather than via a unix socket. *)
 
 let%expect_test "using tcp" =

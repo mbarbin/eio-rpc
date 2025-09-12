@@ -1,3 +1,9 @@
+(*********************************************************************************)
+(*  eio-rpc - Build RPC clients and servers with eio and grpc                    *)
+(*  SPDX-FileCopyrightText: 2023-2025 Mathieu Barbin <mathieu.barbin@gmail.com>  *)
+(*  SPDX-License-Identifier: MIT                                                 *)
+(*********************************************************************************)
+
 (* In this test we show how to use a client command that doesn't connect to the
    running server (offline mode). *)
 

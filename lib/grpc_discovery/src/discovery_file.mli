@@ -1,3 +1,9 @@
+(*_********************************************************************************)
+(*_  eio-rpc - Build RPC clients and servers with eio and grpc                    *)
+(*_  SPDX-FileCopyrightText: 2023-2025 Mathieu Barbin <mathieu.barbin@gmail.com>  *)
+(*_  SPDX-License-Identifier: MIT                                                 *)
+(*_********************************************************************************)
+
 (** Encoding a sockaddr into a file.
 
     A discovery file is a file on the local file system that contains some json

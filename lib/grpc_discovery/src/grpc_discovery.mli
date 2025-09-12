@@ -1,3 +1,9 @@
+(*_********************************************************************************)
+(*_  eio-rpc - Build RPC clients and servers with eio and grpc                    *)
+(*_  SPDX-FileCopyrightText: 2023-2025 Mathieu Barbin <mathieu.barbin@gmail.com>  *)
+(*_  SPDX-License-Identifier: MIT                                                 *)
+(*_********************************************************************************)
+
 (** A simple service discovery via file. This supports both unix socket and tcp
     servers running on localhost. *)
 
