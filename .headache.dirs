@@ -1,0 +1,26 @@
+# List of directories for headache.sh
+# Add new directories below. Lines starting with '#' are ignored.
+example/keyval/bin
+example/keyval/lib/keyval/src
+example/keyval/lib/keyval/test
+example/keyval/lib/keyval_cli/src
+example/keyval/lib/keyval_cli/test
+example/keyval/lib/keyval_rpc/src
+example/keyval/lib/keyval_rpc/test
+example/keyval/lib/keyval_server/src
+example/keyval/lib/keyval_server/test
+example/keyval/test
+lib/grpc_client/src
+lib/grpc_client/test
+lib/grpc_discovery/src
+lib/grpc_discovery/test
+lib/grpc_quickcheck/src
+lib/grpc_quickcheck/test
+lib/grpc_server/src
+lib/grpc_server/test
+lib/grpc_spec/src
+lib/grpc_spec/test
+lib/grpc_stream/src
+lib/grpc_stream/test
+lib/grpc_test_helpers/src
+lib/grpc_test_helpers/test
